@@ -1,0 +1,67 @@
+<resources>
+    <string name="app_name">InternscopeApp</string>
+    <string name="banner_head">Over 1200+ jobs are waiting for you.</string>
+    <string name="welcome">Welcome to Internscope</string>
+    <string name="terms">By continuing, you agree to Internscope Terms of Use  and Privacy Policy</string>
+    <string name="forgot_pass">Fill in your email we will send a code to reset your password</string>
+    <string name="alerts">Stay updated with the latest alerts! Allow notification from <b><span style="color:#2b6566">Intern</span>
+    <span style="color:#efbf44">scope</span></b></string>
+    <string name="Google_login">Continue with Google</string>
+    <string name="email_login">Continue with Username</string>
+    <string name="dontacc">Dont have an account ? SignUp</string>
+    <string name="verifications">We have sent you a verification code to your email</string>
+    <string name="jobs">Over 1200+ jobs are waiting for you</string>
+    <string name="employers">650+ Employers</string>
+    <string name="available_jons">1200+ Available Jobs</string>
+    <string name="cvs">1500+ CV and Resumes</string>
+    <string name="profile">100% Profile Completed</string>
+    <string name="searches">Search Appearances</string>
+    <string name="recruit">Recruiter Action</string>
+    <string name="career">Find the Career you Deserve</string>
+    <string name="content_writer">Content Writer</string>
+    <string name="uiux">UI/UX Designer</string>
+    <string name="telecaller">Tele Caller</string>
+    <string name="webdevelop">Web Developer</string>
+    <string name="dataent">Data Entry</string>
+    <string name="likejob">Jobs you might like</string>
+    <string name="logo">Company Logo</string>
+    <string name="course">Course Type</string>
+    <string name="course_name">Course Name</string>
+    <string name="course_price">Course Price</string>
+    <string name="courselike">Courses you might like</string>
+    <string name="careerPath">Discover the career path</string>
+    <string name="opportunity">Find opportinities for you</string>
+    <string name="profileDescptn">The purpose of lorem ipsum is to create a natural looking block of text (sentence, paragraph, page, etc.) that doesnt distract from the layout.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="emplreg">Register for Employers</string>
+    <string name="publish">Publish Job Post Less Than 1 Ruppes Per Day</string>
+    <string name="talentpool">Access to wild Talentpool </string>
+    <string name="recruitment">Targeted Recruitment </string>
+    <string name="brand">Brand Recruitment</string>
+    <string name="industry">Learn From Industry Expert</string>
+    <string name="growcareer">Career Grow</string>
+    <string name="liveproject">Opportunity to Work On Live Project</string>
+    <string name="appprocess">Easy Application Process</string>
+    <string name="regtrain">Register for Training</string>
+    <string name="beready">Be Job Ready with us</string>
+    <string name="testyourself">Test Yourself with our job curated exams.</string>
+    <string name="testimonials">It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. </string>
+    <string name="resume">Create your Resume \n with Us</string>
+    <string name="web_client_id">589584469180-da4fngjbsp24dmhaevss4uinm3utng5v.apps.googleusercontent.com</string>
+    <string name="title_activity_navigation">Navigation</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="nav_profile">Profile</string>
+    <string name="nav_searchjob">Search Job</string>
+    <string name="nav_training">Training</string>
+    <string name="nav_package">Package</string>
+    <string name="nav_subscription">Subscription</string>
+    <string name="nav_recomend">Recommended Job</string>
+
+</resources>

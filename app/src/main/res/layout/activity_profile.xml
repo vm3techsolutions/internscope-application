@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Profile"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="40dp"
+        android:id="@+id/profiledit"
+        android:orientation="horizontal"
+        android:background="#F0F8FF"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+             <ImageView
+                android:layout_width="100dp"
+                android:layout_height="120dp"
+                android:id="@+id/profile_img"
+                android:src="@drawable/user_94"
+                />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/setImg"
+                android:text="Edit"
+                android:backgroundTint="@color/internscope"
+                />
+
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/srchapp"
+            android:text="@string/searches"
+            android:paddingTop="30dp"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginLeft="30dp"
+            />
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/rcrtactn"
+            android:text="@string/recruit"
+            android:paddingTop="30dp"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginLeft="20dp"
+            />
+
+    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/profiledesc"
+            android:layout_below="@+id/profiledit"
+            android:background="#F0F8FF"
+            android:paddingHorizontal="20dp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/profileName"
+                android:text="Profile Name"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                />
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:id="@+id/editpen"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/pencil"
+                />
+
+        </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/prfl_desc"
+        android:layout_below="@+id/profiledesc"
+        android:background="#F0F8FF"
+        android:text="@string/profileDescptn"
+        android:paddingHorizontal="19sp"
+        android:paddingBottom="30dp"
+        />
+
+
+
+
+</LinearLayout>

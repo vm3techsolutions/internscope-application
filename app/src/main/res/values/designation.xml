@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="desigskills">
+        <item>Web Developer</item>
+        <item>UI/UX Designer</item>
+        <item>Wordpress Developer</item>
+        <item>Digital Marketing</item>
+        <item>Java Developer</item>
+        <item>Python Developer</item>
+        <item>Software Developer</item>
+        <item>PHP Developer</item>
+    </string-array>
+
+    <string-array name="Location">
+        <item>Pune</item>
+        <item>Mumbai</item>
+        <item>Nagpur</item>
+        <item>Nashik</item>
+        <item>Navi Mumbai</item>
+        <item>Thane</item>
+        <item>Palghar</item>
+        <item>Pimpri-Chinchwad</item>
+    </string-array>
+</resources>

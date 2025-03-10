@@ -1,0 +1,19 @@
+
+n
+>app/src/main/java/com/example/internscopeapp/MainActivity.java,0\e\0ea9c511699a280f1e9680969c19ef202653861e
+g
+7app/src/main/java/com/example/internscopeapp/Login.java,7\a\7aa44ef39c758ba373979aaa3b9187011cfbf8c6
+l
+<app/src/main/java/com/example/internscopeapp/forgotPass.java,5\a\5ad22217c2465d1ade695db27eda64dfb5c8c62b
+h
+8app/src/main/java/com/example/internscopeapp/SignUp.java,f\f\ff675851ab2a3712bddade69de55f43746ab6409
+h
+8app/src/main/java/com/example/internscopeapp/Verify.java,c\1\c19d4c1429bc7f5ee4d73e8fe79d78575dfe4ebd
+g
+7app/src/main/java/com/example/internscopeapp/Alert.java,9\a\9adb5f94e9987207fde4779a2350d0d2b0c4dcbc
+f
+6app/src/main/java/com/example/internscopeapp/Home.java,0\c\0c42f249a23fc0fd76bc1489fe82051c2218bf7e
+P
+ app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
+€
+Papp/src/androidTest/java/com/example/internscopeapp/ExampleInstrumentedTest.java,0\a\0a9ef5ef7dd98b39e8e1b3c643562d91e7125acd

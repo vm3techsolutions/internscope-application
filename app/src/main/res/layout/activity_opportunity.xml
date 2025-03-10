@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Opportunity"
+    android:background="@color/white"
+    >
+
+    <LinearLayout
+        android:id="@+id/menubar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#F0F8FF"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:layout_marginTop="40dp">
+
+        <ImageView
+            android:id="@+id/toggler_menu"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_gravity="left"
+            android:clickable="true"
+            android:src="@drawable/menu" />
+
+        <Space
+            android:layout_width="270dp"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:id="@+id/notify"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/notification"
+            android:layout_gravity="right"
+            />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/coursepage"
+        android:text="@string/opportunity"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:padding="15dp"
+        android:layout_below="@+id/menubar"
+        android:gravity="center"
+        />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/dropmenu1"
+        android:layout_below="@+id/coursepage"
+        android:layout_marginHorizontal="50dp"
+        android:padding="20dp"
+        android:background="@drawable/all_shadow"
+        />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/dropmenu2"
+        android:layout_below="@+id/dropmenu1"
+        android:layout_marginHorizontal="50dp"
+        android:padding="20dp"
+        android:background="@drawable/all_shadow"
+        android:layout_marginVertical="15dp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dropmenu2"
+        android:gravity="center"
+        android:id="@+id/radiobtn"
+        >
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/radgrp"
+            android:orientation="horizontal"
+            >
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/radio1"
+            android:paddingHorizontal="15dp"
+            android:text="Internship"
+            android:textSize="18sp"
+           />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/radio2"
+            android:paddingHorizontal="15dp"
+            android:text="Jobs"
+            android:textSize="18sp"
+            />
+
+        </RadioGroup>
+
+    </LinearLayout>
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/jobSearch"
+        android:text="Search"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:paddingHorizontal="25dp"
+        android:backgroundTint="@color/internscope"
+        android:layout_below="@+id/radiobtn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        />
+
+</RelativeLayout>

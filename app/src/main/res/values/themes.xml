@@ -1,0 +1,19 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.InternscopeApp" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+         <item name="colorPrimary">@color/internscope</item>
+        <item name="colorSecondary">@color/yellow_shade</item>
+    </style>
+
+    <style name="Theme.InternscopeApp" parent="Base.Theme.InternscopeApp" />
+
+    <style name="Theme.InternscopeApp.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.InternscopeApp.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.InternscopeApp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+</resources>

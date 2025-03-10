@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Packages"
+    android:background="#FFFFFF">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="POST A JOB"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="40dp"
+        android:textAppearance="@anim/nav_default_enter_anim"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:textFontWeight="900"
+        android:layout_marginBottom="20dp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/plain_border"
+        android:layout_margin="10dp"
+        android:backgroundTint="#122B6566"
+        android:paddingBottom="20dp"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@color/internscope"
+            android:padding="20dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Choose Package"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textAlignment="textStart"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/postJobButton"
+                android:text="Listing Details"
+                android:backgroundTint="@color/yellow_shade"
+                android:textSize="16sp"/>
+        </LinearLayout>
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/package_select"
+            android:layout_marginTop="20dp"
+            android:paddingHorizontal="15dp"
+            >
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/packof1"
+                android:text="1 Job Listing Package \n ₹300.00 for 1 featured job listed for 365 days"
+                />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/packof2"
+                android:layout_marginTop="10dp"
+                android:text="2 Job Listing Package \n ₹600.00 for 2 featured job listed for 365 days"
+                />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/packof3"
+                android:layout_marginTop="10dp"
+                android:text="3 Job Listing Package \n ₹900.00 for 3 featured job listed for 365 days"
+                />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/packof4"
+                android:layout_marginTop="10dp"
+                android:text="4 Job Listing Package \n ₹1200.00 for 4 featured job listed for 365 days"
+                />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/packof5"
+                android:layout_marginTop="10dp"
+                android:text="5 Job Listing Package \n ₹1500.00 for 5 featured job listed for 365 days"
+                />
+
+
+
+        </RadioGroup>
+
+
+
+
+    </LinearLayout>
+
+</LinearLayout>
