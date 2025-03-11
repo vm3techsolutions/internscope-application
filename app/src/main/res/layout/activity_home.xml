@@ -160,20 +160,26 @@
                 android:textStyle="normal" />
         </LinearLayout>
 
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
         <LinearLayout
             android:id="@+id/status2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/cv_resumes"
             android:orientation="horizontal"
-            android:paddingVertical="10dp">
+            android:paddingVertical="10dp"
+            >
 
             <androidx.cardview.widget.CardView
-                android:layout_width="120dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="5dp"
                 app:cardElevation="6dp"
-                app:cardUseCompatPadding="true">
+                app:cardUseCompatPadding="true"
+                android:layout_gravity="center">
 
                 <LinearLayout
                     android:id="@+id/ProfileCom"
@@ -204,7 +210,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:layout_width="120dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="5dp"
                 app:cardElevation="6dp"
@@ -239,7 +245,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:layout_width="120dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="5dp"
                 app:cardElevation="6dp"
@@ -275,6 +281,7 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
         </LinearLayout>
+        </HorizontalScrollView>
 
 
 
@@ -302,7 +309,7 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/internscope"
                 android:text="View All"
-                android:textSize="16sp" />
+                android:textSize="16sp"/>
         </LinearLayout>
 
 
@@ -311,8 +318,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:background="@color/design_default_color_background"
+            android:paddingBottom="10dp"
             >
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -322,21 +332,21 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_margin="10dp"
                     android:elevation="15dp"
                     app:cardCornerRadius="6dp">
 
                     <LinearLayout
                         android:id="@+id/job1"
-                        android:layout_width="185dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:orientation="vertical"
-                        android:paddingVertical="0dp">
+                        android:orientation="horizontal"
+                        android:paddingVertical="10dp">
 
                         <ImageView
                             android:id="@+id/cmpnylg1"
-                            android:layout_width="185dp"
+                            android:layout_width="150dp"
                             android:layout_height="76dp"
                             android:contentDescription="@string/logo"
                             android:src="@drawable/flower" />
@@ -346,55 +356,54 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:orientation="vertical">
+                            android:orientation="vertical"
+                            android:paddingVertical="20dp"
+                            android:paddingRight="10dp">
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="@string/course"
-                                android:textSize="18sp"
+                                android:textSize="16sp"
                                 android:textStyle="bold" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="@string/course_name"
-                                android:textSize="18sp"
-                                android:textStyle="bold" />
+                                android:textSize="16sp"
+                                android:textStyle="normal" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:accessibilityTraversalAfter="@id/cmplogo"
                                 android:text="@string/course_price"
-                                android:textSize="18sp"
-                                android:textStyle="bold" />
+                                android:textSize="15sp"
+                                android:textStyle="normal" />
                         </LinearLayout>
 
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
-
                 <androidx.cardview.widget.CardView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_margin="10dp"
                     android:elevation="15dp"
-                    app:cardCornerRadius="6dp"
-                    >
+                    app:cardCornerRadius="6dp">
 
                     <LinearLayout
-                        android:id="@+id/job2"
-                        android:layout_width="185dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:orientation="vertical"
-                        android:paddingVertical="0dp">
+                        android:orientation="horizontal"
+                        android:paddingVertical="10dp">
 
                         <ImageView
                             android:id="@+id/cmpnylg2"
-                            android:layout_width="200dp"
-                            android:layout_height="80dp"
+                            android:layout_width="150dp"
+                            android:layout_height="76dp"
                             android:contentDescription="@string/logo"
                             android:src="@drawable/flower" />
 
@@ -403,61 +412,54 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:orientation="vertical">
+                            android:orientation="vertical"
+                            android:paddingVertical="20dp"
+                            android:paddingRight="10dp">
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="@string/course"
-                                android:textSize="18sp"
+                                android:textSize="16sp"
                                 android:textStyle="bold" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="@string/course_name"
-                                android:textSize="18sp"
-                                android:textStyle="bold" />
+                                android:textSize="16sp"
+                                android:textStyle="normal" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:accessibilityTraversalAfter="@id/cmplogo"
                                 android:text="@string/course_price"
-                                android:textSize="18sp"
-                                android:textStyle="bold" />
-
+                                android:textSize="15sp"
+                                android:textStyle="normal" />
                         </LinearLayout>
 
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
                 <androidx.cardview.widget.CardView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_margin="10dp"
                     android:elevation="15dp"
                     app:cardCornerRadius="6dp">
 
                     <LinearLayout
-                        android:id="@+id/job3"
-                        android:layout_width="185dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:orientation="vertical"
-                        android:paddingVertical="0dp">
+                        android:orientation="horizontal"
+                        android:paddingVertical="10dp">
 
                         <ImageView
                             android:id="@+id/cmpnylg3"
-                            android:layout_width="200dp"
-                            android:layout_height="80dp"
+                            android:layout_width="150dp"
+                            android:layout_height="76dp"
                             android:contentDescription="@string/logo"
                             android:src="@drawable/flower" />
 
@@ -466,54 +468,54 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:orientation="vertical">
+                            android:orientation="vertical"
+                            android:paddingVertical="20dp"
+                            android:paddingRight="10dp">
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="@string/course"
-                                android:textSize="18sp"
+                                android:textSize="16sp"
                                 android:textStyle="bold" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="@string/course_name"
-                                android:textSize="18sp"
-                                android:textStyle="bold" />
+                                android:textSize="16sp"
+                                android:textStyle="normal" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:accessibilityTraversalAfter="@id/cmplogo"
                                 android:text="@string/course_price"
-                                android:textSize="18sp"
-                                android:textStyle="bold" />
+                                android:textSize="15sp"
+                                android:textStyle="normal" />
                         </LinearLayout>
 
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
-
                 <androidx.cardview.widget.CardView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_margin="10dp"
                     android:elevation="15dp"
                     app:cardCornerRadius="6dp">
 
                     <LinearLayout
-                        android:id="@+id/job4"
-                        android:layout_width="185dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:orientation="vertical"
-                        android:paddingVertical="0dp">
+                        android:orientation="horizontal"
+                        android:paddingVertical="10dp">
 
                         <ImageView
                             android:id="@+id/cmpnylg4"
-                            android:layout_width="200dp"
-                            android:layout_height="80dp"
+                            android:layout_width="150dp"
+                            android:layout_height="76dp"
                             android:contentDescription="@string/logo"
                             android:src="@drawable/flower" />
 
@@ -522,97 +524,80 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:orientation="vertical">
+                            android:orientation="vertical"
+                            android:paddingVertical="20dp"
+                            android:paddingRight="10dp">
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="@string/course"
-                                android:textSize="18sp"
+                                android:textSize="16sp"
                                 android:textStyle="bold" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="@string/course_name"
-                                android:textSize="18sp"
-                                android:textStyle="bold" />
+                                android:textSize="16sp"
+                                android:textStyle="normal" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:accessibilityTraversalAfter="@id/cmplogo"
                                 android:text="@string/course_price"
-                                android:textSize="18sp"
-                                android:textStyle="bold" />
-
+                                android:textSize="15sp"
+                                android:textStyle="normal" />
                         </LinearLayout>
 
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
-            </LinearLayout>
 
 
+             </LinearLayout>
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/morejobs"
-                android:text="View More"
-                android:backgroundTint="@color/internscope"
-                android:layout_gravity="center"
-                />
+            </HorizontalScrollView>
 
         </LinearLayout>
 
 
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/regemp"
-            android:gravity="center"
-            android:orientation="horizontal"
-            >
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/emplyreg"
-                android:text="@string/emplreg"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:layout_marginBottom="20dp"
-                android:textColor="@color/internscope"
-                android:paddingHorizontal="70dp"
-                />
-
-
             <androidx.cardview.widget.CardView
                 android:id="@+id/emprg"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:elevation="10dp"
-                android:padding="20dp"
                 app:cardCornerRadius="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/emplyreg"
+                    android:text="@string/emplreg"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="20dp"
+                    android:textColor="@color/internscope"
+                    android:textAlignment="center"
+                    android:paddingTop="10dp"
+                    />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:layout_marginTop="45dp"
+                    android:paddingBottom="10dp">
 
                     <LinearLayout
                         android:id="@+id/jobdesc1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:paddingHorizontal="15dp"
-                        android:paddingLeft="15dp">
+                        android:orientation="horizontal">
 
                         <ImageView
                             android:id="@+id/intern1"
@@ -636,8 +621,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:orientation="horizontal"
-                        android:paddingHorizontal="20dp">
+                        android:orientation="horizontal">
 
                         <ImageView
                             android:id="@+id/intern2"
@@ -657,12 +641,10 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/jobdesc3"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:orientation="horizontal"
-                        android:paddingHorizontal="20dp">
+                        android:orientation="horizontal">
 
                         <ImageView
                             android:id="@+id/intern3"
@@ -686,8 +668,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:orientation="horizontal"
-                        android:paddingHorizontal="20dp">
+                        android:orientation="horizontal">
 
                         <ImageView
                             android:id="@+id/intern4"
@@ -711,7 +692,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:paddingLeft="30dp">
+                        android:paddingLeft="20dp">
 
                         <Button
                             android:id="@+id/signinbtn"
@@ -720,17 +701,15 @@
                             android:layout_marginTop="30dp"
                             android:backgroundTint="@color/internscope"
                             android:paddingHorizontal="20dp"
-                            android:text="Sign In" />
-
-                        <Space
-                            android:layout_width="40dp"
-                            android:layout_height="wrap_content" />
+                            android:text="Sign In"
+                            android:layout_gravity="center"/>
 
                         <ImageView
                             android:id="@+id/signInimg"
-                            android:layout_width="240dp"
-                            android:layout_height="120dp"
-                            android:src="@drawable/signin" />
+                            android:layout_width="match_parent"
+                            android:layout_height="130dp"
+                            android:src="@drawable/signin"
+                            android:layout_weight="1"/>
 
                     </LinearLayout>
 
@@ -738,14 +717,11 @@
 
             </androidx.cardview.widget.CardView>
 
-        </RelativeLayout>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/coursection"
-            android:orientation="horizontal"
-            >
+            android:orientation="horizontal">
 
             <TextView
             android:layout_width="wrap_content"

@@ -42,7 +42,6 @@ public class Home extends AppCompatActivity {
 
         signin = findViewById(R.id.signinbtn);
         viewjob = findViewById(R.id.viewjob);
-        morejob = findViewById(R.id.morejobs);
         viewjob2 = findViewById(R.id.viewjob2);
 
         // ✅ Prevent NullPointerException by checking if buttons exist before using them
@@ -60,12 +59,6 @@ public class Home extends AppCompatActivity {
             });
         }
 
-        if (morejob != null) {
-            morejob.setOnClickListener(v -> {
-                Intent jobOpportunity = new Intent(Home.this, Opportunity.class);
-                startActivity(jobOpportunity);
-            });
-        }
 
         if (viewjob2 != null) {
             viewjob2.setOnClickListener(v -> {
