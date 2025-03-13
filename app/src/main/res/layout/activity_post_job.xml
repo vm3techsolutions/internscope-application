@@ -7,7 +7,192 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PostJob">
+    tools:context=".PostJob"
+    android:background="@color/white">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center_horizontal"
+            android:padding="20dp">
+
+            <!-- Header -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Post A Job"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="22sp"
+                android:gravity="center"
+                android:paddingBottom="16dp"/>
+
+            <!-- Form Container -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp"
+                android:background="@drawable/plain_border"
+                android:layout_margin="10dp"
+                android:elevation="4dp">
+
+                <!-- Job Information Title -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Job Information"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:paddingBottom="12dp"/>
+
+                <!-- Job Title -->
+                <EditText
+                    android:id="@+id/job_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Job Title*"
+                    android:inputType="text"
+                    android:padding="12dp"
+                    android:background="@drawable/input_border"
+                    android:layout_marginBottom="12dp"/>
+
+                <!-- Job Category -->
+                <Spinner
+                    android:id="@+id/job_category"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/input_border"
+                    android:padding="8dp"
+                    android:layout_marginBottom="12dp"/>
+
+                <!-- Vacancies -->
+                <EditText
+                    android:id="@+id/vacancies"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Vacancies*"
+                    android:inputType="number"
+                    android:padding="12dp"
+                    android:background="@drawable/input_border"
+                    android:layout_marginBottom="12dp"/>
+
+                <!-- Salary Options -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Budget/Salary*"
+                    android:textStyle="bold"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"/>
+
+                <RadioGroup
+                    android:id="@+id/salary_options"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginBottom="12dp">
+                    <RadioButton
+                        android:id="@+id/fixed_salary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Fixed Salary" />
+                    <RadioButton
+                        android:id="@+id/salary_range"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Salary Range" />
+                    <RadioButton
+                        android:id="@+id/negotiable"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Negotiable"
+                        android:checked="true"/>
+                </RadioGroup>
+
+                <!-- Job Type -->
+                <Spinner
+                    android:id="@+id/job_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/input_border"
+                    android:padding="8dp"
+                    android:layout_marginBottom="12dp"/>
+
+                <!-- Experience Level -->
+                <EditText
+                    android:id="@+id/experience_level"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Experience Level*"
+                    android:padding="12dp"
+                    android:background="@drawable/input_border"
+                    android:layout_marginBottom="12dp"/>
+
+                <!-- Job Tag -->
+                <EditText
+                    android:id="@+id/job_tag"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Job Tag*"
+                    android:padding="12dp"
+                    android:background="@drawable/input_border"
+                    android:layout_marginBottom="12dp"/>
+
+                <!-- Deadline -->
+                <EditText
+                    android:id="@+id/deadline"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Deadline*"
+                    android:focusable="false"
+                    android:clickable="true"
+                    android:padding="12dp"
+                    android:background="@drawable/input_border"
+                    android:layout_marginBottom="12dp"/>
+
+                <!-- Job Description -->
+                <EditText
+                    android:id="@+id/job_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:hint="Job Description*"
+                    android:gravity="top"
+                    android:inputType="textMultiLine"
+                    android:padding="12dp"
+                    android:background="@drawable/input_border"
+                    android:layout_marginBottom="12dp"/>
+
+                <!-- Terms & Conditions -->
+                <CheckBox
+                    android:id="@+id/terms_conditions"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="I accept the company terms and conditions."
+                    android:layout_marginBottom="16dp"/>
+
+                <!-- Submit Button -->
+                <Button
+                    android:id="@+id/post_job"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Post Now"
+                    android:backgroundTint="@color/yellow_shade"
+                    android:textColor="@color/white"
+                    android:padding="12dp"
+                    android:layout_gravity="center"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>

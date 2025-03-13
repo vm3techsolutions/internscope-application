@@ -59,6 +59,7 @@ dependencies {
     implementation (libs.material.v190)
     implementation (libs.google.material.v1100)
     implementation (libs.appcompat.v161)
+    implementation(libs.mysql.connector.java)
 
 }
 
