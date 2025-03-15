@@ -2,107 +2,79 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Profile"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#FFFFFF">
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingVertical="40dp"
-        android:id="@+id/profiledit"
-        android:orientation="horizontal"
-        android:background="#F0F8FF"
-        >
+        android:orientation="vertical"
+        android:background="@color/internscope"
+        android:layout_gravity="center"
+        android:padding="20dp">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+    <!-- Profile Image -->
+    <ImageView
+        android:id="@+id/profileImage"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/user_94"
+        android:scaleType="centerCrop"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/circle_background" />
 
-             <ImageView
-                android:layout_width="100dp"
-                android:layout_height="120dp"
-                android:id="@+id/profile_img"
-                android:src="@drawable/user_94"
-                />
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/setImg"
-                android:text="Edit"
-                android:backgroundTint="@color/internscope"
-                />
-
-
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/srchapp"
-            android:text="@string/searches"
-            android:paddingTop="30dp"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_marginLeft="30dp"
-            />
-
-        <TextView
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/rcrtactn"
-            android:text="@string/recruit"
-            android:paddingTop="30dp"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_marginLeft="20dp"
-            />
-
-    </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:id="@+id/profiledesc"
-            android:layout_below="@+id/profiledit"
-            android:background="#F0F8FF"
-            android:paddingHorizontal="20dp"
-            >
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/profileName"
-                android:text="Profile Name"
-                android:textStyle="bold"
-                android:textSize="18sp"
-                />
-
-            <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:id="@+id/editpen"
-                android:layout_marginLeft="10dp"
-                android:src="@drawable/pencil"
-                />
-
-        </LinearLayout>
-
+    <!-- Name -->
     <TextView
+        android:id="@+id/tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="KETAKI POGADE"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/yellow_shade"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        />
+
+    <!-- Job Title -->
+    <TextView
+        android:id="@+id/tvJobTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Team Lead, VM3 Tech Solutions"
+        android:textSize="14sp"
+        android:textColor="#FFFFFF"
+        android:layout_gravity="center"
+        android:layout_marginTop="4dp" />
+
+    <!-- Description -->
+    <TextView
+        android:id="@+id/tvDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/prfl_desc"
-        android:layout_below="@+id/profiledesc"
-        android:background="#F0F8FF"
-        android:text="@string/profileDescptn"
-        android:paddingHorizontal="19sp"
-        android:paddingBottom="30dp"
-        />
+        android:text="Completed BE in ETC. Looking for a job in web designing having good knowledge of HTML5, CSS, Bootstrap..."
+        android:textSize="12sp"
+        android:textColor="#FFF"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:paddingHorizontal="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_gravity="center"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/editprofile"
+            android:text="Edit Profile"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/yellow_shade"
+            android:layout_marginTop="20dp"/>
+
+    </LinearLayout>
+
 
 
 

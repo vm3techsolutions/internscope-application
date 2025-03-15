@@ -40,9 +40,9 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:padding="20dp"
-                android:background="@drawable/plain_border"
-                android:layout_margin="10dp"
-                android:elevation="4dp">
+                android:background="@drawable/gradient_bg"
+                android:elevation="4dp"
+                >
 
                 <!-- Job Information Title -->
                 <TextView
@@ -59,19 +59,24 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Job Title*"
+                    android:textSize="14sp"
                     android:inputType="text"
                     android:padding="12dp"
-                    android:background="@drawable/input_border"
-                    android:layout_marginBottom="12dp"/>
+                    android:background="@drawable/all_shadow"
+                    android:drawableStart="@android:drawable/ic_menu_edit"
+                    android:tint="@color/yellow_shade"
+                    android:layout_marginBottom="12dp"
+                    />
 
                 <!-- Job Category -->
                 <Spinner
                     android:id="@+id/job_category"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/input_border"
-                    android:padding="8dp"
-                    android:layout_marginBottom="12dp"/>
+                    android:background="@drawable/all_shadow"
+                    android:padding="12dp"
+                    android:layout_marginBottom="12dp"
+                    />
 
                 <!-- Vacancies -->
                 <EditText
@@ -79,9 +84,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Vacancies*"
+                    android:textSize="14sp"
                     android:inputType="number"
                     android:padding="12dp"
-                    android:background="@drawable/input_border"
+                    android:background="@drawable/all_shadow"
+                    android:drawableStart="@android:drawable/ic_menu_edit"
+                    android:tint="@color/yellow_shade"
                     android:layout_marginBottom="12dp"/>
 
                 <!-- Salary Options -->
@@ -91,7 +99,8 @@
                     android:text="Budget/Salary*"
                     android:textStyle="bold"
                     android:paddingTop="8dp"
-                    android:paddingBottom="8dp"/>
+                    android:paddingBottom="8dp"
+                    android:textColor="@color/white"/>
 
                 <RadioGroup
                     android:id="@+id/salary_options"
@@ -103,17 +112,20 @@
                         android:id="@+id/fixed_salary"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Fixed Salary" />
+                        android:text="Fixed Salary"
+                        android:textColor="@color/white"/>
                     <RadioButton
                         android:id="@+id/salary_range"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Salary Range" />
+                        android:text="Salary Range"
+                        android:textColor="@color/white"/>
                     <RadioButton
                         android:id="@+id/negotiable"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Negotiable"
+                        android:textColor="@color/white"
                         android:checked="true"/>
                 </RadioGroup>
 
@@ -122,8 +134,8 @@
                     android:id="@+id/job_type"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/input_border"
-                    android:padding="8dp"
+                    android:background="@drawable/all_shadow"
+                    android:padding="12dp"
                     android:layout_marginBottom="12dp"/>
 
                 <!-- Experience Level -->
@@ -132,8 +144,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Experience Level*"
+                    android:textSize="14sp"
                     android:padding="12dp"
-                    android:background="@drawable/input_border"
+                    android:background="@drawable/all_shadow"
+                    android:drawableStart="@android:drawable/ic_menu_edit"
+                    android:tint="@color/yellow_shade"
                     android:layout_marginBottom="12dp"/>
 
                 <!-- Job Tag -->
@@ -142,8 +157,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Job Tag*"
+                    android:textSize="14sp"
                     android:padding="12dp"
-                    android:background="@drawable/input_border"
+                    android:background="@drawable/all_shadow"
+                    android:drawableStart="@android:drawable/ic_menu_edit"
+                    android:tint="@color/yellow_shade"
                     android:layout_marginBottom="12dp"/>
 
                 <!-- Deadline -->
@@ -152,10 +170,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Deadline*"
+                    android:textSize="14sp"
                     android:focusable="false"
                     android:clickable="true"
                     android:padding="12dp"
-                    android:background="@drawable/input_border"
+                    android:background="@drawable/all_shadow"
+                    android:drawableStart="@android:drawable/ic_menu_edit"
+                    android:tint="@color/yellow_shade"
                     android:layout_marginBottom="12dp"/>
 
                 <!-- Job Description -->
@@ -164,10 +185,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
                     android:hint="Job Description*"
+                    android:textSize="14sp"
                     android:gravity="top"
                     android:inputType="textMultiLine"
                     android:padding="12dp"
-                    android:background="@drawable/input_border"
+                    android:background="@drawable/all_shadow"
                     android:layout_marginBottom="12dp"/>
 
                 <!-- Terms & Conditions -->
@@ -176,7 +198,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="I accept the company terms and conditions."
-                    android:layout_marginBottom="16dp"/>
+                    android:layout_marginBottom="15dp"
+                    android:textColor="@color/white"
+                    android:shadowColor="@color/yellow_shade"/>
 
                 <!-- Submit Button -->
                 <Button

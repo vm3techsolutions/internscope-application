@@ -1,5 +1,6 @@
 package com.example.internscopeapp;
 
+import android.app.DatePickerDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,6 +9,7 @@ import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.util.Calendar;
 
 public class PostJob extends AppCompatActivity {
 
@@ -17,6 +19,8 @@ public class PostJob extends AppCompatActivity {
     private CheckBox termsConditions;
     private Button postJobButton;
     private ConnectionClass connectionClass;
+    Calendar calendar;
+    DatePickerDialog datePickerDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +42,24 @@ public class PostJob extends AppCompatActivity {
         postJobButton = findViewById(R.id.post_job);
 
         connectionClass = new ConnectionClass(); // Initialize DB connection
+
+
+        //code for date picker on deadline foe field
+        calendar = Calendar.getInstance();
+
+        deadline.setOnClickListener(v -> {
+            int year = calendar.get(Calendar.YEAR);
+            int month = calendar.get(Calendar.MONTH);
+            int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+            datePickerDialog = new DatePickerDialog(this, (view, year1, month1, dayOfMonth) -> {
+                // Format date as "DD-MM-YYYY"
+                String formattedDate = String.format("%02d-%02d-%d", dayOfMonth, month1 + 1, year1);
+                deadline.setText(formattedDate);
+            }, year, month, day);
+
+            datePickerDialog.show();
+        });
 
         // Set up Job Category options
         String[] categories = {"UI/UX Designer", "Front-End Developer", "Next.js", "Laravel Developer"};
