@@ -50,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
 
         auth = FirebaseAuth.getInstance();
 
+
+
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.web_client_id))
                         .requestEmail().build();
@@ -65,14 +67,19 @@ public class MainActivity extends AppCompatActivity {
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                SessionManager sessionManager = new SessionManager(MainActivity.this); // Ensure context is passed properly
 
                 Intent intent;
-
-                intent = new Intent(MainActivity.this, Login.class);
-
+                if (sessionManager.isLoggedIn()) {
+                    intent = new Intent(MainActivity.this, Home.class);
+                } else {
+                    intent = new Intent(MainActivity.this, Login.class);
+                }
                 startActivity(intent);
             }
         });
+
+
 
 
     }
@@ -109,6 +116,23 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+                            // Get Google user details
+                            String userId = auth.getCurrentUser().getUid();
+                            String userName = auth.getCurrentUser().getDisplayName();
+                            String userEmail = auth.getCurrentUser().getEmail();
+                            String userProfileImage = auth.getCurrentUser().getPhotoUrl().toString();
+
+                            // Save user data in SQLite Database
+                            UserDatabseHelper dbHelper = new UserDatabseHelper(MainActivity.this);
+                            boolean isInserted = dbHelper.insertGoogleUser(userId, userName, userEmail, userProfileImage);
+
+                            if (isInserted) {
+                                Toast.makeText(MainActivity.this, "User Data Saved!", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(MainActivity.this, "Failed to Save User Data!", Toast.LENGTH_SHORT).show();
+                            }
+
+                            // Redirect to Home
                             Intent intent = new Intent(MainActivity.this, Home.class);
                             startActivity(intent);
                             finish();
@@ -118,5 +142,6 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
     }
+
 
 }

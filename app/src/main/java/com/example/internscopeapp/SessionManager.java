@@ -9,11 +9,16 @@ public class SessionManager {
     private static final String PREF_NAME = "LoginSession";
     private static final String KEY_USERNAME = "username";
     private static final String KEY_IS_LOGGED_IN = "isLoggedIn";
+    private Context context;
 
     public SessionManager(Context context) {
-        sharedPreferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+        if (context == null) {
+            throw new IllegalArgumentException("Context cannot be null"); // Prevent crashes
+        }
+        sharedPreferences = context.getApplicationContext().getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
     }
+
 
     public void saveLoginSession(String username) {
         editor.putString(KEY_USERNAME, username);
@@ -25,9 +30,11 @@ public class SessionManager {
         return sharedPreferences.getBoolean(KEY_IS_LOGGED_IN, false);
     }
 
+
     public String getUsername() {
-        return sharedPreferences.getString(KEY_USERNAME, null);
+        return sharedPreferences.getString("username", ""); // Return empty string if null
     }
+
 
     public void logout() {
         editor.clear();

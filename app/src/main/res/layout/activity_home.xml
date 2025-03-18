@@ -76,7 +76,7 @@
                         android:padding="5dp">
 
                         <ImageView
-                            android:id="@+id/prof"
+                            android:id="@+id/profile_img"
                             android:layout_width="45dp"
                             android:layout_height="45dp"
                             android:padding="0dp"

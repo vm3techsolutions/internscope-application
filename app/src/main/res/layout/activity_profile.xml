@@ -17,17 +17,37 @@
         android:padding="20dp">
 
     <!-- Profile Image -->
-    <ImageView
-        android:id="@+id/profileImage"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:src="@drawable/user_94"
-        android:scaleType="centerCrop"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/circle_background" />
+        <androidx.cardview.widget.CardView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:radius="100dp"
+            app:cardElevation="10dp"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/internscope"
+            app:cardCornerRadius="100dp">
 
-    <!-- Name -->
+            <ImageView
+                android:id="@+id/profile_img"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/user_94"
+                android:background="@drawable/course_bg"/>
+        </androidx.cardview.widget.CardView>
+
+        <ImageButton
+            android:id="@+id/setImg"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@android:drawable/ic_menu_camera"
+            android:backgroundTint="@color/internscope"
+            android:layout_gravity="center"
+            android:contentDescription="Set Profile Image"
+            app:tint="@color/yellow_shade" />
+
+
+
+        <!-- Name -->
     <TextView
         android:id="@+id/tvName"
         android:layout_width="wrap_content"
@@ -37,7 +57,6 @@
         android:textStyle="bold"
         android:textColor="@color/yellow_shade"
         android:layout_gravity="center"
-        android:layout_marginTop="8dp"
         />
 
     <!-- Job Title -->
@@ -64,6 +83,7 @@
         android:paddingHorizontal="16dp"
         android:layout_marginTop="8dp"
         android:layout_gravity="center"/>
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
