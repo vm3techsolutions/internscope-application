@@ -66,6 +66,9 @@ dependencies {
     implementation (libs.picasso)
     implementation (libs.flexbox)
     implementation (libs.checkout)
+    implementation (libs.glide)
+    annotationProcessor (libs.compiler)
+
 
 
 

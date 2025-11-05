@@ -2,6 +2,7 @@ package com.example.internscopeapp;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 public class SessionManager {
 
@@ -14,6 +15,9 @@ public class SessionManager {
     private static final String KEY_TOKEN = "token";
     private static final String KEY_IS_LOGGED_IN = "isLoggedIn";
     private static final String KEY_USER_TYPE = "user_type"; // 👈 NEW (student / company)
+
+
+
 
     private static SessionManager instance;
     private final SharedPreferences sharedPreferences;
@@ -51,6 +55,7 @@ public class SessionManager {
         editor.apply();
     }
 
+
     // Check if user is logged in
     public boolean isLoggedIn() {
         return sharedPreferences.getBoolean(KEY_IS_LOGGED_IN, false);
@@ -80,6 +85,7 @@ public class SessionManager {
         return sharedPreferences.getString(KEY_USER_TYPE, ""); // 👈 default type
     }
 
+    public String getUserRole() { return getUserType(); }
     // Logout user
     public void logout() {
         editor.clear();

@@ -54,38 +54,21 @@ public interface ApiService {
     @GET("api/company/myprofile/{company_id}")
     Call<CompanyProfileModel> getCompanyProfile(@Path("company_id") int company_id);
 
-    @Multipart
-    @POST("api/company/myprofile")
-    Call<Void> updateCompanyProfile(
-            @Header("Authorization") String token,
-            @Part("company_name") RequestBody companyName,
-            @Part("company_type") RequestBody companyType,
-            @Part("company_size") RequestBody companySize,
-            @Part("email") RequestBody email,
-            @Part("phone") RequestBody phone,
-            @Part("location") RequestBody location,
-            @Part("state") RequestBody state,
-            @Part("website") RequestBody website,
-            @Part("linkedin") RequestBody linkedin,
-            @Part("kyc_method") RequestBody kycMethod,
-            @Part("certificate_number") RequestBody certificateNumber,
-            @Part("about") RequestBody about,
-            @Part MultipartBody.Part certificateFile
-    );
-
-
-
     @POST("api/company/getSignedUrl")
     Call<SignedUrlResponse> getSignedUrl(
             @Header("Authorization") String token,
-            @Body Map<String, String> body
-    );
+            @Body FileRequestBody body);
+
 
     @POST("api/company/myprofile")
-    Call<Void> postCompanyProfile(
+    Call<Void> updateCompanyProfileJson(
             @Header("Authorization") String token,
-            @Body Map<String, String> body
+            @Body RequestBody body
     );
+
+    @GET("api/company/myprofile")
+    Call<CompanyProfileResponse> getCompanyProfile(
+            @Header("Authorization") String token);
 
 
     // ================= JOBS =================
@@ -134,9 +117,6 @@ public interface ApiService {
             @Body JsonObject body
     );
 
-    //@GET("api/user/applied")
-    //Call<List<AppliedJobResponse>> getAppliedJobs();
-   // Call<List<AppliedJobResponse>> getAppliedJobs(@Header("Authorization") String token);
 
     @GET("api/user/job/applied")
     Call<List<AppliedJobResponse>> getAppliedJobs(@Header("Authorization") String token);

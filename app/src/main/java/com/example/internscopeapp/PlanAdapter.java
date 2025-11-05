@@ -39,6 +39,19 @@ public class PlanAdapter extends RecyclerView.Adapter<PlanAdapter.PlanViewHolder
     public void onBindViewHolder(@NonNull PlanViewHolder holder, int position) {
         Plan plan = planList.get(position);
 
+        // Set badge text based on user_type
+        if (plan.getUserType() != null) {
+            if (plan.getUserType().equalsIgnoreCase("employer")) {
+                holder.tvPlanType.setText("Company Plan");
+                holder.tvPlanType.setBackgroundResource(R.drawable.badge_background);
+            } else {
+                holder.tvPlanType.setText("User Plan");
+                holder.tvPlanType.setBackgroundResource(R.drawable.badge_background);
+            }
+        } else {
+            holder.tvPlanType.setText("Unknown");
+        }
+
         holder.tvPlanName.setText(plan.getName());
         holder.tvPlanPrice.setText("₹" + plan.getPrice());
         holder.tvPlanDuration.setText(plan.getDurationDays() + " Days");
@@ -54,7 +67,7 @@ public class PlanAdapter extends RecyclerView.Adapter<PlanAdapter.PlanViewHolder
     }
 
     public static class PlanViewHolder extends RecyclerView.ViewHolder {
-        TextView tvPlanName, tvPlanPrice, tvPlanDuration, tvPlanDescription, tvJobLimit;
+        TextView tvPlanName, tvPlanPrice, tvPlanDuration, tvPlanDescription, tvJobLimit, tvPlanType;;
         Button btnBuyNow;
 
         public PlanViewHolder(@NonNull View itemView) {
@@ -64,6 +77,7 @@ public class PlanAdapter extends RecyclerView.Adapter<PlanAdapter.PlanViewHolder
             tvPlanDuration = itemView.findViewById(R.id.tvDuration);
             tvPlanDescription = itemView.findViewById(R.id.tvDescription);
             tvJobLimit = itemView.findViewById(R.id.tvJobLimit);
+            tvPlanType = itemView.findViewById(R.id.tvPlanType);
             btnBuyNow = itemView.findViewById(R.id.btnBuyNow);
         }
     }

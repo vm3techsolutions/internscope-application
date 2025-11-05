@@ -3,10 +3,14 @@ package com.example.internscopeapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.*;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.gson.JsonObject;
+import com.bumptech.glide.Glide;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -15,87 +19,108 @@ import retrofit2.Response;
 public class CompanyProfile extends AppCompatActivity {
 
     private ImageView companyLogo;
-    private TextView tvCompanyName, tvIndustry, tvWebsite, tvEmail, tvPhone,
-            tvDescription, tvAddress, tvCity, tvState, tvCountry;
+    private TextView tvCompanyName, tvCompanyType, tvAboutCompany, tvCompanyEmail, tvCompanyPhone,
+            tvWebsite, tvCompanyAddress, tvCompanyState, tvCompanyLinkedIn, tvCompanyTwitter,
+            tvKycMethod, tvCertificateNumber, tvCertificateFileUrl;
     private Button btnEditCompanyProfile;
 
-    private SessionManager sessionManager;
     private ApiService apiService;
+    private SessionManager sessionManager;
+    private static final String TAG = "CompanyProfileActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_company_profile);
 
-        //sessionManager = new SessionManager(this);
-       // apiService = ApiClient.getClient(this).create(ApiService.class);
+        apiService = ApiClient.getClient(this).create(ApiService.class);
+        sessionManager = new SessionManager(this);
 
-//        // ✅ Initialize Views
-//        companyLogo = findViewById(R.id.company_logo);
-//        tvCompanyName = findViewById(R.id.tvCompanyName);
-//        tvIndustry = findViewById(R.id.tvIndustry);
-//        tvWebsite = findViewById(R.id.tvWebsite);
-//        tvEmail = findViewById(R.id.tvEmail);
-//        tvPhone = findViewById(R.id.tvPhone);
-//        tvDescription = findViewById(R.id.tvDescription);
-//        tvAddress = findViewById(R.id.tvCompanyAddress);
-//        tvState = findViewById(R.id.tvCompanyState);
-
+        // Initialize Views (make sure IDs match your XML)
+        companyLogo = findViewById(R.id.company_logo);
+        tvCompanyName = findViewById(R.id.tvCompanyName);
+        tvCompanyType = findViewById(R.id.tvCompanyType);
+        tvAboutCompany = findViewById(R.id.tvAboutCompany);
+        tvCompanyEmail = findViewById(R.id.tvCompanyEmail);
+        tvCompanyPhone = findViewById(R.id.tvCompanyPhone);
+        tvWebsite = findViewById(R.id.tvWebsite);
+        tvCompanyAddress = findViewById(R.id.tvCompanyAddress);
+        tvCompanyState = findViewById(R.id.tvCompanyState);
+        tvCompanyLinkedIn = findViewById(R.id.tvCompanyLinkedIn);
+        tvCompanyTwitter = findViewById(R.id.tvCompanyTwitter);
+        tvKycMethod = findViewById(R.id.tvKycMethod);
+        tvCertificateNumber = findViewById(R.id.tvCertificateNumber);
+        tvCertificateFileUrl = findViewById(R.id.tvCertificateFileUrl);
         btnEditCompanyProfile = findViewById(R.id.btnEditCompanyProfile);
 
-//        companyLogo.setImageResource(R.drawable.user_94); // default logo
-//
-//        String token = sessionManager.getToken();
-//        int companyId = sessionManager.getUserId(); // assuming companyId stored as userId
-//
-//        if (token != null && !token.isEmpty() && companyId > 0) {
-//            fetchCompanyProfile(token, companyId);
-//        } else {
-//            Toast.makeText(this, "Please log in again.", Toast.LENGTH_SHORT).show();
-//        }
-
-        // ✅ Redirect to CompanyEditProfile
         btnEditCompanyProfile.setOnClickListener(v -> {
-            Intent intent = new Intent(CompanyProfile.this, CompanyEditProfile.class);
+            Intent intent = new Intent(this, CompanyEditProfile.class);
             startActivity(intent);
         });
+
+        fetchCompanyProfile();
+    }
+
+    private void fetchCompanyProfile() {
+        String token = sessionManager.getToken();
+        if (token == null) {
+            Toast.makeText(this, "Session expired. Please login again.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        Call<CompanyProfileResponse> call = apiService.getCompanyProfile("Bearer " + token);
+        call.enqueue(new Callback<CompanyProfileResponse>() {
+            @Override
+            public void onResponse(Call<CompanyProfileResponse> call, Response<CompanyProfileResponse> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    CompanyProfileResponse profile = response.body();
+                    populateProfile(profile);
+                } else {
+                    Toast.makeText(CompanyProfile.this, "Failed to fetch profile", Toast.LENGTH_SHORT).show();
+                    Log.e(TAG, "Error code: " + response.code());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<CompanyProfileResponse> call, Throwable t) {
+                Toast.makeText(CompanyProfile.this, "Network Error: " + t.getMessage(), Toast.LENGTH_LONG).show();
+                Log.e(TAG, "Failure: " + t.getMessage());
+            }
+        });
+    }
+
+    private void populateProfile(CompanyProfileResponse profile) {
+        // ✅ Company Info
+        tvCompanyName.setText(nonNull(profile.getCompanyName()));
+        tvCompanyType.setText(nonNull(profile.getCompanyType()) + " | " +
+                nonNull(profile.getCompanySize()) + " Employees");
+        tvAboutCompany.setText(nonNull(profile.getDescription()));
+
+        // ✅ Contact Info
+        tvCompanyEmail.setText("📧 " + nonNull(profile.getEmail()));
+        tvCompanyPhone.setText("📞 " + nonNull(profile.getPhoneNumber()));
+        tvWebsite.setText("🌐 " + nonNull(profile.getWebsite()));
+        tvCompanyAddress.setText("📍 " + nonNull(profile.getLocation()));
+        tvCompanyState.setText("🌏 " + nonNull(profile.getNationState()));
+        tvCompanyLinkedIn.setText("🔗 " + nonNull(profile.getLinkedin()));
+        tvCompanyTwitter.setText("🐦 " + nonNull(profile.getTwitter()));
+
+        // ✅ KYC Info
+        tvKycMethod.setText(nonNull(profile.getKycMethod()));
+        tvCertificateNumber.setText(nonNull(profile.getCertificateNumber()));
+        tvCertificateFileUrl.setText("📎 " + nonNull(profile.getCertificateFileUrl()));
+
+        // ✅ Load company logo or certificate image (optional)
+        if (profile.getCertificateFileUrl() != null && !profile.getCertificateFileUrl().isEmpty()) {
+            Glide.with(this)
+                    .load(profile.getCertificateFileUrl())
+                    .placeholder(R.drawable.user_94)
+                    .error(R.drawable.user_94)
+                    .into(companyLogo);
+        }
+    }
+
+    private String nonNull(String value) {
+        return value != null && !value.isEmpty() ? value : "N/A";
     }
 }
-
-    // ✅ Fetch company info dynamically from backend
-//    private void fetchCompanyProfile(String token, int companyId) {
-//        apiService.getCompanyProfile("Bearer " + token, companyId).enqueue(new Callback<JsonObject>() {
-//            @Override
-//            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
-//                if (response.isSuccessful() && response.body() != null) {
-//                    JsonObject company = response.body();
-//
-//                    tvCompanyName.setText(safeText(company.get("company_name").getAsString()));
-//                    tvIndustry.setText(safeText(company.get("industry").getAsString()));
-//                    tvWebsite.setText(safeText(company.get("website").getAsString()));
-//                    tvEmail.setText(safeText(company.get("email").getAsString()));
-//                    tvPhone.setText(safeText(company.get("phone").getAsString()));
-//                    tvDescription.setText(safeText(company.get("description").getAsString()));
-//                    tvAddress.setText(safeText(company.get("address").getAsString()));
-//                    tvCity.setText(safeText(company.get("city").getAsString()));
-//                    tvState.setText(safeText(company.get("state").getAsString()));
-//                    tvCountry.setText(safeText(company.get("country").getAsString()));
-//
-//                } else {
-//                    Toast.makeText(CompanyProfile.this, "Failed to load company profile", Toast.LENGTH_SHORT).show();
-//                    Log.e("CompanyProfile", "Response code: " + response.code());
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<JsonObject> call, Throwable t) {
-//                Toast.makeText(CompanyProfile.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//    }
-//
-//    // ✅ Safe text helper
-//    private String safeText(String text) {
-//        return (text != null && !text.trim().isEmpty()) ? text : "N/A";
-//    }
-//}

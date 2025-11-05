@@ -14,7 +14,6 @@ import com.google.android.material.textfield.TextInputEditText;
 import java.io.File;
 
 import okhttp3.MediaType;
-import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -46,6 +45,7 @@ public class CompanyEditProfile extends AppCompatActivity {
         apiService = ApiClient.getClient(this).create(ApiService.class);
 
         initViews();
+        loadCompanyProfile();
 
         btnUploadCertificate.setOnClickListener(v -> openFilePicker());
         btnUpdate.setOnClickListener(v -> {
@@ -109,87 +109,151 @@ public class CompanyEditProfile extends AppCompatActivity {
 
     private void uploadCompanyProfile() {
         String token = sessionManager.getToken();
-
         if (token == null) {
             Toast.makeText(this, "Session expired. Please login again.", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        String companyName = etCompanyName.getText().toString().trim();
-        String companyType = spCompanyType.getSelectedItem() != null ? spCompanyType.getSelectedItem().toString() : "";
-        String companySize = spCompanySize.getSelectedItem() != null ? spCompanySize.getSelectedItem().toString() : "";
-        String email = etEmail.getText().toString().trim();
-        String location = etLocation.getText().toString().trim();
-        String state = etState.getText().toString().trim();
-        String website = etWebsite.getText().toString().trim();
-        String phone = etPhone.getText().toString().trim();
-        String linkedin = etLinkedIn.getText().toString().trim();
-        String certificateNumber = etCertificateNumber.getText().toString().trim();
-        String about = etAboutCompany.getText().toString().trim();
+        if (selectedFileUri != null) {
+            uploadFileToS3(token); // Upload certificate first
+        } else {
+            sendProfileData(token, null); // No file selected
+        }
+    }
 
-        int selectedKycId = rgKycMethod.getCheckedRadioButtonId();
-        String kycMethod = "None";
-        if (selectedKycId == rbGST.getId()) kycMethod = "GST Certificate";
-        else if (selectedKycId == rbCOI.getId()) kycMethod = "Certificate of Incorporation";
+    private void uploadFileToS3(String token) {
+        String filePath = FileUtils.getPath(this, selectedFileUri);
+        if (filePath == null) {
+            Toast.makeText(this, "Invalid file path", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
-        // Convert to RequestBody
-        RequestBody companyNamePart = RequestBody.create(MediaType.parse("text/plain"), companyName);
-        RequestBody companyTypePart = RequestBody.create(MediaType.parse("text/plain"), companyType);
-        RequestBody companySizePart = RequestBody.create(MediaType.parse("text/plain"), companySize);
-        RequestBody emailPart = RequestBody.create(MediaType.parse("text/plain"), email);
-        RequestBody phonePart = RequestBody.create(MediaType.parse("text/plain"), phone);
-        RequestBody locationPart = RequestBody.create(MediaType.parse("text/plain"), location);
-        RequestBody statePart = RequestBody.create(MediaType.parse("text/plain"), state);
-        RequestBody websitePart = RequestBody.create(MediaType.parse("text/plain"), website);
-        RequestBody linkedinPart = RequestBody.create(MediaType.parse("text/plain"), linkedin);
-        RequestBody kycPart = RequestBody.create(MediaType.parse("text/plain"), kycMethod);
-        RequestBody certNoPart = RequestBody.create(MediaType.parse("text/plain"), certificateNumber);
-        RequestBody aboutPart = RequestBody.create(MediaType.parse("text/plain"), about);
+        File file = new File(filePath);
+        String mimeType = getContentResolver().getType(selectedFileUri);
 
-        MultipartBody.Part filePart = null;
-//        if (selectedFileUri != null) {
-//            String filePath = FileUtils.getPath(this, selectedFileUri);
-//            if (filePath != null) {
-//                File file = new File(filePath);
-//                RequestBody requestFile = RequestBody.create(MediaType.parse("application/octet-stream"), file);
-//                filePart = MultipartBody.Part.createFormData("certificate_file", file.getName(), requestFile);
-//            }
-//        }
-
-        // Retrofit call (✅ no OkHttp client manually)
-        Call<Void> call = apiService.updateCompanyProfile(
-                "Bearer " + token,
-                companyNamePart,
-                companyTypePart,
-                companySizePart,
-                emailPart,
-                phonePart,
-                locationPart,
-                statePart,
-                websitePart,
-                linkedinPart,
-                kycPart,
-                certNoPart,
-                aboutPart,
-                filePart
-        );
-
-        call.enqueue(new Callback<Void>() {
+        FileRequestBody fileBody = new FileRequestBody(file.getName(), mimeType);
+        apiService.getSignedUrl("Bearer " + token, fileBody).enqueue(new Callback<SignedUrlResponse>() {
             @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
-                Log.d(TAG, "Response code: " + response.code());
-                if (response.isSuccessful()) {
-                    Toast.makeText(CompanyEditProfile.this, "Profile updated successfully", Toast.LENGTH_SHORT).show();
-                    finish();
+            public void onResponse(Call<SignedUrlResponse> call, Response<SignedUrlResponse> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    String signedUrl = response.body().getSignedUrl();
+                    String fileUrl = response.body().getFileUrl();
+                    Log.d(TAG, "Signed URL: " + signedUrl);
+
+                    new Thread(() -> {
+                        try {
+                            okhttp3.OkHttpClient client = new okhttp3.OkHttpClient();
+                            okhttp3.RequestBody requestBody = okhttp3.RequestBody.create(
+                                    okhttp3.MediaType.parse(mimeType),
+                                    file
+                            );
+
+                            okhttp3.Request request = new okhttp3.Request.Builder()
+                                    .url(signedUrl)
+                                    .put(requestBody)
+                                    .build();
+
+                            okhttp3.Response s3Response = client.newCall(request).execute();
+                            if (s3Response.isSuccessful()) {
+                                runOnUiThread(() -> {
+                                    Toast.makeText(CompanyEditProfile.this, "File uploaded successfully", Toast.LENGTH_SHORT).show();
+                                    sendProfileData(token, fileUrl);
+                                });
+                            } else {
+                                runOnUiThread(() -> Toast.makeText(CompanyEditProfile.this, "S3 upload failed", Toast.LENGTH_SHORT).show());
+                            }
+                        } catch (Exception e) {
+                            runOnUiThread(() -> Toast.makeText(CompanyEditProfile.this, "Upload error: " + e.getMessage(), Toast.LENGTH_LONG).show());
+                        }
+                    }).start();
                 } else {
-                    Toast.makeText(CompanyEditProfile.this, "Failed to update (" + response.code() + ")", Toast.LENGTH_LONG).show();
+                    Toast.makeText(CompanyEditProfile.this, "Failed to get signed URL", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
-            public void onFailure(Call<Void> call, Throwable t) {
-                Log.e(TAG, "Upload failed", t);
+            public void onFailure(Call<SignedUrlResponse> call, Throwable t) {
                 Toast.makeText(CompanyEditProfile.this, "Error: " + t.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    private void sendProfileData(String token, @Nullable String uploadedFileUrl) {
+        try {
+            org.json.JSONObject jsonObject = new org.json.JSONObject();
+            jsonObject.put("company_name", etCompanyName.getText().toString().trim());
+            jsonObject.put("company_type", spCompanyType.getSelectedItem() != null ? spCompanyType.getSelectedItem().toString() : "");
+            jsonObject.put("company_size", spCompanySize.getSelectedItem() != null ? spCompanySize.getSelectedItem().toString() : "");
+            jsonObject.put("email", etEmail.getText().toString().trim());
+            jsonObject.put("phone_number", etPhone.getText().toString().trim());
+            jsonObject.put("location", etLocation.getText().toString().trim());
+            jsonObject.put("nation_state", etState.getText().toString().trim());
+            jsonObject.put("website", etWebsite.getText().toString().trim());
+            jsonObject.put("linkedin", etLinkedIn.getText().toString().trim());
+            jsonObject.put("certificate_number", etCertificateNumber.getText().toString().trim());
+            jsonObject.put("description", etAboutCompany.getText().toString().trim());
+
+            int selectedKycId = rgKycMethod.getCheckedRadioButtonId();
+            String kycMethod = "None";
+            if (selectedKycId == rbGST.getId()) kycMethod = "GST Certificate";
+            else if (selectedKycId == rbCOI.getId()) kycMethod = "Certificate of Incorporation";
+            jsonObject.put("kyc_method", kycMethod);
+
+            jsonObject.put("certificate_file_url", uploadedFileUrl != null ? uploadedFileUrl : "");
+
+            RequestBody requestBody = RequestBody.create(
+                    MediaType.parse("application/json; charset=utf-8"),
+                    jsonObject.toString()
+            );
+
+            Call<Void> call = apiService.updateCompanyProfileJson("Bearer " + token, requestBody);
+            call.enqueue(new Callback<Void>() {
+                @Override
+                public void onResponse(Call<Void> call, Response<Void> response) {
+                    if (response.isSuccessful()) {
+                        Toast.makeText(CompanyEditProfile.this, "Profile updated successfully", Toast.LENGTH_SHORT).show();
+                        finish();
+                    } else {
+                        Toast.makeText(CompanyEditProfile.this, "Failed to update (" + response.code() + ")", Toast.LENGTH_LONG).show();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<Void> call, Throwable t) {
+                    Toast.makeText(CompanyEditProfile.this, "Error: " + t.getMessage(), Toast.LENGTH_LONG).show();
+                }
+            });
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(this, "Error preparing data", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void loadCompanyProfile() {
+        String token = "Bearer " + sessionManager.getToken();
+        apiService.getCompanyProfile(token).enqueue(new Callback<CompanyProfileResponse>() {
+            @Override
+            public void onResponse(Call<CompanyProfileResponse> call, Response<CompanyProfileResponse> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    CompanyProfileResponse company = response.body();
+                    etCompanyName.setText(company.getCompanyName());
+                    etEmail.setText(company.getEmail());
+                    etLocation.setText(company.getLocation());
+                    etState.setText(company.getNationState());
+                    etWebsite.setText(company.getWebsite());
+                    etPhone.setText(company.getPhoneNumber());
+                    etLinkedIn.setText(company.getLinkedin());
+                    etCertificateNumber.setText(company.getCertificateNumber());
+                    etAboutCompany.setText(company.getDescription());
+                } else {
+                    Toast.makeText(CompanyEditProfile.this, "Failed to load company profile", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<CompanyProfileResponse> call, Throwable t) {
+                Toast.makeText(CompanyEditProfile.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

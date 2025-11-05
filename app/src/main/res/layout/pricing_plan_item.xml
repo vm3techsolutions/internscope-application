@@ -22,7 +22,7 @@
             android:background="@drawable/badge_background"
             android:paddingHorizontal="12dp"
             android:paddingVertical="4dp"
-            android:text="USER"
+            android:text=""
             android:textColor="@android:color/white"
             android:textStyle="bold"
             android:textSize="12sp" />

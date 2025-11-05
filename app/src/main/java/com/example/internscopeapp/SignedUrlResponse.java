@@ -1,11 +1,11 @@
 package com.example.internscopeapp;
 
+// SignedUrlResponse.java
 public class SignedUrlResponse {
-    private String uploadUrl;
+    private String signedUrl;
     private String fileUrl;
-    private String s3Key;
 
-    public String getUploadUrl() { return uploadUrl; }
+    public String getSignedUrl() { return signedUrl; }
     public String getFileUrl() { return fileUrl; }
-    public String getS3Key() { return s3Key; }
 }
+
