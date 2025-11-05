@@ -60,6 +60,15 @@ dependencies {
     implementation (libs.google.material.v1100)
     implementation (libs.appcompat.v161)
     implementation(libs.mysql.connector.java)
+    implementation (libs.retrofit)
+    implementation (libs.converter.gson)
+    implementation (libs.logging.interceptor)
+    implementation (libs.picasso)
+    implementation (libs.flexbox)
+    implementation (libs.checkout)
+
+
+
 
 }
 

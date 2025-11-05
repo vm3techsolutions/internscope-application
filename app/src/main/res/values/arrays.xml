@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="company_types">
+        <item>Select Company Category</item>
+        <item>Information Technology (IT) / Software</item>
+        <item>Manufacturing</item>
+        <item>Healthcare / Medical</item>
+        <item>Finance / Banking / Insurance</item>
+        <item>Education / EdTech</item>
+        <item>Retail / E-Commerce</item>
+        <item>Telecommunications</item>
+        <item>Travel &amp; Tourism</item>
+        <item>Construction / Infrastructure</item>
+        <item>Logistics / Transportation</item>
+        <item>Hospitality / Travel / Tourism</item>
+        <item>Media / Entertainment</item>
+        <item>Automobile / Auto Ancillary</item>
+        <item>Pharmaceutical / Biotech</item>
+        <item>Real Estate</item>
+        <item>Legal / Law</item>
+        <item>Agriculture / AgriTech</item>
+        <item>Food &amp; Beverage / FMCG</item>
+        <item>Textile / Apparel / Fashion</item>
+        <item>Oil / Gas / Energy</item>
+        <item>Electronics / Electricals</item>
+        <item>Advertising / Marketing / PR</item>
+        <item>Back office / Admin</item>
+        <item>Others</item>
+    </string-array>
+
+    <string-array name="company_size">
+        <item>Select</item>
+        <item>15-50</item>
+        <item>51-100</item>
+        <item>Above 100</item>
+    </string-array>
+</resources>

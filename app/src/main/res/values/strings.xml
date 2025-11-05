@@ -6,7 +6,7 @@
     <string name="forgot_pass">Fill in your email we will send a code to reset your password</string>
     <string name="alerts">Stay updated with the latest alerts! Allow notification from <b><span style="color:#2b6566">Intern</span>
     <span style="color:#efbf44">scope</span></b></string>
-    <string name="Google_login">Continue with Google</string>
+    <string name="Google_login">Employer Login</string>
     <string name="email_login">Continue with Username</string>
     <string name="dontacc">Dont have an account ? SignUp</string>
     <string name="verifications">We have sent you a verification code to your email</string>

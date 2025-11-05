@@ -1,41 +1,101 @@
+//package com.example.internscopeapp;
+//
+//import android.content.Intent;
+//import android.os.Bundle;
+//import android.view.View;
+//import android.widget.Button;
+//import android.widget.Toast;
+//
+//import androidx.activity.EdgeToEdge;
+//import androidx.appcompat.app.AppCompatActivity;
+//
+//import com.google.android.gms.auth.api.signin.GoogleSignIn;
+//import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+//import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+//import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+//import com.google.android.gms.common.api.ApiException;
+//import com.google.android.gms.tasks.Task;
+//
+//public class MainActivity extends AppCompatActivity {
+//
+//    private static final int RC_SIGN_IN = 9001;
+//    private GoogleSignInClient googleSignInClient;
+//
+//    Button glogin, emailLogin;
+//
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        EdgeToEdge.enable(this);
+//        setContentView(R.layout.activity_main);
+//
+//        glogin = findViewById(R.id.companyLogin);
+//        emailLogin = findViewById(R.id.emailLogin);
+//
+//        // Configure Google Sign-In
+//        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+//                .requestEmail()
+//                .build();
+//
+//        googleSignInClient = GoogleSignIn.getClient(this, gso);
+//
+//        // Google Login Button
+//        glogin.setOnClickListener(view -> signInWithGoogle());
+//
+//        // Email Login Button → open Login activity directly
+//        emailLogin.setOnClickListener(view -> {
+//            startActivity(new Intent(MainActivity.this, Login.class));
+//        });
+//    }
+//
+//    // Start Google Sign-In intent
+//    private void signInWithGoogle() {
+//        Intent signInIntent = googleSignInClient.getSignInIntent();
+//        startActivityForResult(signInIntent, RC_SIGN_IN);
+//    }
+//
+//    // Handle Google Sign-In result
+//    @Override
+//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//
+//        if (requestCode == RC_SIGN_IN) {
+//            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+//            try {
+//                GoogleSignInAccount account = task.getResult(ApiException.class);
+//
+//                if (account != null) {
+//                    String userName = account.getDisplayName();
+//                    String userEmail = account.getEmail();
+//                    String userProfileImage = account.getPhotoUrl() != null ? account.getPhotoUrl().toString() : "";
+//
+//                    Toast.makeText(this, "Google Sign-In Success: " + userEmail, Toast.LENGTH_LONG).show();
+//
+//                    // TODO: Send this data to your backend API if needed
+//
+//                    // Redirect to Home
+//                    startActivity(new Intent(MainActivity.this, Home.class));
+//                    finish();
+//                }
+//            } catch (ApiException e) {
+//                Toast.makeText(this, "Google Sign-In Failed: " + e.getMessage(), Toast.LENGTH_LONG).show();
+//            }
+//        }
+//    }
+//}
+
 package com.example.internscopeapp;
 
 import android.content.Intent;
-
-
 import android.os.Bundle;
-
-import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.auth.api.signin.GoogleSignInClient;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthCredential;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.GoogleAuthProvider;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final int RC_SIGN_IN = 9001;
-    private GoogleSignInClient googleSignInClient;
-    private FirebaseAuth auth;
-
-    Button glogin;
+    Button emailLogin, companyLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,105 +103,23 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
+        // Initialize buttons
+        emailLogin = findViewById(R.id.emailLogin);
+        companyLogin = findViewById(R.id.companyLogin);
 
-        glogin = findViewById(R.id.gmailLogin);
-
-        Button btn2 = (Button) findViewById(R.id.emailLogin);
-
-        auth = FirebaseAuth.getInstance();
-
-
-
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.web_client_id))
-                        .requestEmail().build();
-        googleSignInClient = GoogleSignIn.getClient(this, gso);
-
-        glogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                signIn();
-            }
+        // Candidate Login
+        emailLogin.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, Login.class);
+            intent.putExtra("userType", "user");
+            startActivity(intent);
         });
 
-        btn2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SessionManager sessionManager = new SessionManager(MainActivity.this); // Ensure context is passed properly
-
-                Intent intent;
-                if (sessionManager.isLoggedIn()) {
-                    intent = new Intent(MainActivity.this, Home.class);
-                } else {
-                    intent = new Intent(MainActivity.this, Login.class);
-                }
-                startActivity(intent);
-            }
+        // Company Login
+        companyLogin.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, Company_login.class);
+            intent.putExtra("userType", "company");
+            startActivity(intent);
         });
-
-
-
-
     }
-
-    private void signIn() {
-        Intent signInIntent = googleSignInClient.getSignInIntent();
-        startActivityForResult(signInIntent, RC_SIGN_IN);
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == RC_SIGN_IN) {
-            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-            try {
-                GoogleSignInAccount account = task.getResult(ApiException.class);
-                //firebaseAuth(account.getIdToken());
-                if (account != null && account.getIdToken() != null) {
-                    firebaseAuth(account.getIdToken());
-                } else {
-                    Toast.makeText(this, "Google Sign-In Failed: Null Token", Toast.LENGTH_LONG).show();
-                }
-            } catch (ApiException e) {
-                Toast.makeText(this, "Login failed: " + e.getMessage(), Toast.LENGTH_LONG).show();
-            }
-        }
-    }
-
-    private void firebaseAuth(String idToken) {
-        AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
-        auth.signInWithCredential(credential)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Get Google user details
-                            String userId = auth.getCurrentUser().getUid();
-                            String userName = auth.getCurrentUser().getDisplayName();
-                            String userEmail = auth.getCurrentUser().getEmail();
-                            String userProfileImage = auth.getCurrentUser().getPhotoUrl().toString();
-
-                            // Save user data in SQLite Database
-                            UserDatabseHelper dbHelper = new UserDatabseHelper(MainActivity.this);
-                            boolean isInserted = dbHelper.insertGoogleUser(userId, userName, userEmail, userProfileImage);
-
-                            if (isInserted) {
-                                Toast.makeText(MainActivity.this, "User Data Saved!", Toast.LENGTH_SHORT).show();
-                            } else {
-                                Toast.makeText(MainActivity.this, "Failed to Save User Data!", Toast.LENGTH_SHORT).show();
-                            }
-
-                            // Redirect to Home
-                            Intent intent = new Intent(MainActivity.this, Home.class);
-                            startActivity(intent);
-                            finish();
-                        } else {
-                            Toast.makeText(MainActivity.this, "Authentication Failed", Toast.LENGTH_LONG).show();
-                        }
-                    }
-                });
-    }
-
-
 }
+

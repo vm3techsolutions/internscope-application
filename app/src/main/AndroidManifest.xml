@@ -24,9 +24,40 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.InternscopeApp"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".editprofiles"
+            android:name=".UserDashboard"
+            android:exported="false" />
+        <activity
+            android:name=".CompanyDashboard"
+            android:exported="false" />
+        <activity
+            android:name=".CompanyEditProfile"
+            android:exported="false" />
+        <activity
+            android:name=".CompanyProfile"
+            android:exported="false" />
+        <activity
+            android:name=".CompanySignup"
+            android:exported="false" />
+        <activity
+            android:name=".Company_login"
+            android:exported="false" />
+        <activity
+            android:name=".CheckoutActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PaymentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PaymentSuccessActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PaymentFailedActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EditProfiles"
             android:exported="false" />
         <!--
         <activity
@@ -51,6 +82,12 @@
             android:name=".Jobs"
             android:exported="false" />
         <activity
+            android:name=".JobDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ApplyJobActivity"
+            android:exported="false" />
+        <activity
             android:name=".Opportunity"
             android:exported="false" />
         <activity
@@ -67,13 +104,15 @@
             android:exported="false" />
         <activity
             android:name=".SignUp"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".forgotPass"
             android:exported="false" />
         <activity
             android:name=".Login"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -83,6 +122,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.razorpay.CheckoutActivity" />
 
         <meta-data
             android:name="com.google.android.gms.auth.api.credentials.WorkerImpl.signin.api.key"

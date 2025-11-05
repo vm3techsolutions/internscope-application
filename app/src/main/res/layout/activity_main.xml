@@ -75,16 +75,17 @@
         android:textStyle="bold"
         android:paddingHorizontal="30dp"
         android:layout_gravity="center_horizontal"
+        android:textAlignment="center"
         />
 
 
     <Button
-        android:id="@+id/gmailLogin"
+        android:id="@+id/companyLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:backgroundTint="@color/yellow_shade"
-        android:text="@string/Google_login"
+        android:text="Company Login"
         android:textColor="@color/white"
         android:textSize="18sp"
         app:cornerRadius="10dp"
@@ -98,7 +99,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:backgroundTint="@color/internscope"
-        android:text="Continue with Email"
+        android:text="Candidate Login"
         android:textColor="@color/white"
         android:textSize="18sp"
         app:cornerRadius="10dp"

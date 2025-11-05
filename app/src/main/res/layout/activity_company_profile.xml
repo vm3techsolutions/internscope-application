@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/internscope"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:gravity="center_horizontal">
+
+        <!-- Company Logo -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            app:cardCornerRadius="65dp"
+            app:cardElevation="10dp"
+            android:layout_marginTop="32dp"
+            android:foreground="?attr/selectableItemBackgroundBorderless">
+
+            <ImageView
+                android:id="@+id/company_logo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/user_94" />
+        </androidx.cardview.widget.CardView>
+
+        <!-- Company Name -->
+        <TextView
+            android:id="@+id/tvCompanyName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TechCorp Pvt Ltd"
+            android:textColor="@color/yellow_shade"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"
+            android:gravity="center" />
+
+        <!-- Industry -->
+        <TextView
+            android:id="@+id/tvIndustry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Information Technology"
+            android:textColor="#E0E0E0"
+            android:textSize="15sp"
+            android:layout_marginTop="6dp"
+            android:gravity="center" />
+
+        <!-- About Company -->
+        <TextView
+            android:id="@+id/tvAboutCompany"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Innovating future-ready solutions for businesses across the globe."
+            android:textColor="#DADADA"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:paddingHorizontal="24dp"
+            android:lineSpacingExtra="4dp"
+            android:maxLines="3" />
+
+        <!-- Info Card -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="6dp"
+            android:backgroundTint="#FFFFFF">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="18dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Company Information"
+                    android:textStyle="bold"
+                    android:textColor="@color/yellow_shade"
+                    android:textSize="16sp"
+                    android:layout_marginBottom="12dp"
+                    android:letterSpacing="0.02" />
+
+                <!-- Email -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Email"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/internscope"/>
+
+                <TextView
+                    android:id="@+id/tvCompanyEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="📧 info@techcorp.com"
+                    android:textColor="#111827"
+                    android:textSize="15sp"
+                    android:layout_marginBottom="6dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp" />
+
+                <!-- Phone -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Phone"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/internscope"/>
+
+                <TextView
+                    android:id="@+id/tvCompanyPhone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="📞 +91 9876543210"
+                    android:textColor="#111827"
+                    android:textSize="15sp"
+                    android:layout_marginBottom="6dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp" />
+
+                <!-- Website -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Website"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/internscope"/>
+
+                <TextView
+                    android:id="@+id/tvWebsite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🌐 www.techcorp.com"
+                    android:textColor="#111827"
+                    android:textSize="15sp"
+                    android:layout_marginBottom="6dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp" />
+
+                <!-- Address -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Address"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/internscope"/>
+
+                <TextView
+                    android:id="@+id/tvCompanyAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="📍 Hinjewadi, Pune, India"
+                    android:textColor="#111827"
+                    android:textSize="15sp"
+                    android:layout_marginBottom="6dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp" />
+
+                <!-- State / Nation -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="State / Nation"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/internscope"/>
+
+                <TextView
+                    android:id="@+id/tvCompanyState"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🌏 Maharashtra, India"
+                    android:textColor="#111827"
+                    android:textSize="15sp"
+                    android:layout_marginBottom="6dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp" />
+
+                <!-- Founded Year -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Founded Year"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/internscope"/>
+
+                <TextView
+                    android:id="@+id/tvFoundedYear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🏢 Established: 2015"
+                    android:textColor="#111827"
+                    android:textSize="15sp"
+                    android:layout_marginBottom="6dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp" />
+
+                <!-- LinkedIn -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="LinkedIn"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/internscope"/>
+
+                <TextView
+                    android:id="@+id/tvCompanyLinkedIn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🔗 linkedin.com/company/techcorp"
+                    android:textColor="#111827"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Edit Button -->
+        <Button
+            android:id="@+id/btnEditCompanyProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Edit Company Profile"
+            android:textStyle="bold"
+            android:layout_marginTop="28dp"
+            android:backgroundTint="@color/yellow_shade"
+            android:textColor="@color/black"
+            android:paddingHorizontal="28dp"
+            android:paddingVertical="12dp"
+            android:elevation="6dp"
+            android:letterSpacing="0.05" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="40dp" />
+
+    </LinearLayout>
+</ScrollView>

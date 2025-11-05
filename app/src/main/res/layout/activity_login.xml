@@ -1,154 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/main"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Login"
     android:background="@color/white">
 
-    <ImageView
-        android:id="@+id/user_img"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:src="@drawable/team"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="100dp"
-        />
-
     <LinearLayout
-        android:id="@+id/username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/user_img"
-        android:paddingHorizontal="20dp"
-        android:background="@drawable/shadow"
-        android:layout_marginHorizontal="20dp"
-        android:orientation="horizontal"
-        android:paddingBottom="10dp"
-        >
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:gravity="center_horizontal">
 
+        <!-- Logo -->
         <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/user1"
-            />
-        <EditText
+            android:id="@+id/login_logo"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:layout_margin="10dp"
-            android:hint="Username/userEmail"
-            />
-    </LinearLayout>
+            android:layout_height="120dp"
+            android:src="@drawable/internscopelogo"
+            android:layout_marginTop="60dp"
+            android:layout_marginBottom="30dp"/>
 
-    <LinearLayout
-        android:id="@+id/passwrd"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/username"
-        android:paddingHorizontal="20dp"
-        android:background="@drawable/shadow"
-        android:layout_marginHorizontal="20dp"
-        android:orientation="horizontal"
-        android:layout_marginTop="20dp"
-        android:paddingBottom="10dp"
-        >
-
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/key"
-            />
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/userPass"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:layout_margin="10dp"
-            android:hint="Password"
-            android:inputType="textPassword"
-            />
-
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="20dp"
-            android:background="#282626"
-            android:backgroundTint="@color/material_dynamic_neutral20"
-            android:src="@android:drawable/ic_menu_view"
-            />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/remember"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/passwrd"
-        android:orientation="horizontal"
-        android:layout_marginTop="20dp"
-        android:paddingHorizontal="10dp">
-
-        <CheckBox
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="30dp"
-            android:clickable="true"
-            />
+        <!-- Title -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Remember me"
-            android:textSize="18dp"
-            android:textStyle="bold"/>
+            android:text="Candidate Login"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:layout_marginBottom="32dp" />
 
+        <!-- Email -->
+        <EditText
+            android:id="@+id/userEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            android:padding="15dp"
+            android:background="@drawable/shadow"
+            android:textSize="16sp"
+            android:inputType="textEmailAddress"
+            android:layout_marginBottom="15dp"/>
+
+        <!-- Password -->
+        <EditText
+            android:id="@+id/userPass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            android:padding="15dp"
+            android:background="@drawable/shadow"
+            android:textSize="16sp"
+            android:inputType="textPassword"
+            android:layout_marginBottom="15dp"/>
+
+        <!-- Forgot Password -->
         <TextView
             android:id="@+id/forgot_pass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Forgot Password?"
+            android:textColor="#0D0D0D"
+            android:textSize="14sp"
             android:gravity="end"
-            android:textColor="@color/design_default_color_secondary_variant"
-            android:textStyle="bold"
-            android:layout_marginEnd="10dp"
-            android:textSize="18dp"
+            android:layout_marginBottom="20dp"
             android:clickable="true"/>
+
+        <!-- Buttons Container -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
+            <!-- Login Button -->
+            <Button
+                android:id="@+id/loginbtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/internscope"
+                android:textColor="@color/white"
+                android:text="Login"
+                android:textSize="18sp"
+                android:layout_marginTop="10dp"/>
+
+            <!-- Signup Button -->
+            <Button
+                android:id="@+id/signup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/yellow_shade"
+                android:textColor="@color/white"
+                android:text="Sign Up"
+                android:textSize="18sp"
+                android:layout_marginTop="15dp"/>
+
+        </LinearLayout>
+
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/signup"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Don't have an account?SignUp"
-        android:layout_below="@+id/remember"
-        android:layout_marginHorizontal="30dp"
-        android:paddingHorizontal="20dp"
-        android:paddingTop="10dp"
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:clickable="true"
-        />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/signup"
-       android:layout_gravity="center_horizontal"
-        android:text="Login"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        android:paddingHorizontal="40dp"
-        android:shadowRadius="@integer/material_motion_duration_long_1"
-        android:textColor="@color/white"
-        android:backgroundTint="@color/internscope"
-        android:paddingVertical="10dp"
-        android:layout_marginTop="20dp"
-        android:id="@+id/loginbtn"
-        />
-</LinearLayout>
+</ScrollView>

@@ -1,102 +1,313 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#FFFFFF">
-
+    android:background="@color/internscope"
+    android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="@color/internscope"
-        android:layout_gravity="center"
-        android:padding="20dp">
+        android:padding="24dp"
+        android:gravity="center_horizontal">
 
-    <!-- Profile Image -->
+        <!-- Profile Image -->
         <androidx.cardview.widget.CardView
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:radius="100dp"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            app:cardCornerRadius="65dp"
             app:cardElevation="10dp"
-            android:layout_gravity="center"
-            android:backgroundTint="@color/internscope"
-            app:cardCornerRadius="100dp">
+            android:layout_marginTop="32dp"
+            android:foreground="?attr/selectableItemBackgroundBorderless">
 
             <ImageView
                 android:id="@+id/profile_img"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
-                android:src="@drawable/user_94"
-                android:background="@drawable/course_bg"/>
+                android:src="@drawable/user_94" />
         </androidx.cardview.widget.CardView>
 
-        <ImageButton
-            android:id="@+id/setImg"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@android:drawable/ic_menu_camera"
-            android:backgroundTint="@color/internscope"
-            android:layout_gravity="center"
-            android:contentDescription="Set Profile Image"
-            app:tint="@color/yellow_shade" />
-
-
-
-        <!-- Name -->
-    <TextView
-        android:id="@+id/tvName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="KETAKI POGADE"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:textColor="@color/yellow_shade"
-        android:layout_gravity="center"
-        />
-
-    <!-- Job Title -->
-    <TextView
-        android:id="@+id/tvJobTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Team Lead, VM3 Tech Solutions"
-        android:textSize="14sp"
-        android:textColor="#FFFFFF"
-        android:layout_gravity="center"
-        android:layout_marginTop="4dp" />
-
-    <!-- Description -->
-    <TextView
-        android:id="@+id/tvDescription"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Completed BE in ETC. Looking for a job in web designing having good knowledge of HTML5, CSS, Bootstrap..."
-        android:textSize="12sp"
-        android:textColor="#FFF"
-        android:maxLines="2"
-        android:ellipsize="end"
-        android:paddingHorizontal="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_gravity="center"/>
-
-        <Button
+        <!-- Name & Role -->
+        <TextView
+            android:id="@+id/tvFirstName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="First Name"
+            android:textColor="@color/yellow_shade"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/tvLastName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Last Name"
+            android:textColor="@color/yellow_shade"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_marginTop="2dp"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/tvDesignation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="UI/UX Designer"
+            android:textColor="#E0E0E0"
+            android:textSize="15sp"
+            android:layout_marginTop="6dp"
+            android:gravity="center" />
+
+        <!-- Description -->
+        <TextView
+            android:id="@+id/tvDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Passionate about design and technology. Looking for creative opportunities to grow."
+            android:textColor="#DADADA"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:paddingHorizontal="24dp"
+            android:lineSpacingExtra="4dp"
+            android:maxLines="3" />
+
+        <!-- Info Card -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="6dp"
+            android:backgroundTint="#FFFFFF">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="18dp">
+
+                <!-- Contact Header -->
+                <TextView
+                    android:id="@+id/contact"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Contact Information"
+                    android:textStyle="bold"
+                    android:textColor="@color/yellow_shade"
+                    android:textSize="16sp"
+                    android:layout_marginBottom="12dp"
+                    android:letterSpacing="0.02" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Email"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/internscope"/>
+
+                <TextView
+                    android:id="@+id/tvEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="📧 Email: example@mail.com"
+                    android:textColor="#111827"
+                    android:textSize="15sp"
+                    android:layout_marginBottom="6dp" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Phone"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/internscope"/>
+
+                <TextView
+                    android:id="@+id/tvPhone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="📱 Phone: +91 9876543210"
+                    android:textColor="#111827"
+                    android:textSize="15sp"
+                    android:layout_marginBottom="6dp" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Address"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/internscope"/>
+
+                <TextView
+                    android:id="@+id/tvCurrentLocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="📍 Location: Pune, India"
+                    android:textColor="#111827"
+                    android:textSize="15sp"
+                    android:layout_marginBottom="6dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="State"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/internscope"/>
+
+                <TextView
+                    android:id="@+id/tvNationState"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🌏 Nation/State: Maharashtra, India"
+                    android:textColor="#111827"
+                    android:textSize="15sp"
+                    android:layout_marginBottom="6dp" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Current Job"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/internscope"/>
+
+                <TextView
+                    android:id="@+id/tvCurrentJob"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="💼 Current Job: Intern at TechCorp"
+                    android:textColor="#111827"
+                    android:textSize="15sp"
+                    android:layout_marginBottom="6dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Linkedin"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/internscope"/>
+
+                <TextView
+                    android:id="@+id/tvLinkedIn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🔗 LinkedIn: linkedin.com/in/example"
+                    android:textColor="#111827"
+                    android:textSize="15sp"
+                    android:layout_marginBottom="6dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Qualification"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/internscope"/>
+
+                <TextView
+                    android:id="@+id/tvQualification"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🎓 Qualification: B.Tech in Computer Science"
+                    android:textColor="#111827"
+                    android:textSize="15sp"
+                    android:layout_marginBottom="6dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Languages"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/internscope"/>
+
+                <TextView
+                    android:id="@+id/tvLanguage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🗣 Languages: English, Hindi"
+                    android:textColor="#111827"
+                    android:textSize="15sp"
+                    android:layout_marginBottom="6dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Gender"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/internscope"/>
+
+                <TextView
+                    android:id="@+id/tvGender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="⚧ Gender: Female"
+                    android:textColor="#111827"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Button -->
+        <Button
             android:id="@+id/editprofile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="Edit Profile"
-            android:layout_gravity="center"
+            android:textStyle="bold"
+            android:layout_marginTop="28dp"
             android:backgroundTint="@color/yellow_shade"
-            android:layout_marginTop="20dp"/>
+            android:textColor="@color/black"
+            android:paddingHorizontal="28dp"
+            android:paddingVertical="12dp"
+            android:elevation="6dp"
+            android:letterSpacing="0.05" />
+
+        <!-- Spacer -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="40dp" />
 
     </LinearLayout>
-
-
-
-
-
-</LinearLayout>
+</ScrollView>
