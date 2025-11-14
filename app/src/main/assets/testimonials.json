@@ -1,0 +1,157 @@
+[
+  {
+    "id": 1,
+    "image": "assets/images/Testimonials/Feedback-icon-Shravani.jpeg",
+    "quoteIcon": "assets/images/icon/feedback-quoat1.svg",
+    "feedback1": "Internscope made my internship search effortless as a recent graduate. Its user-friendly platform helped me find the right opportunity, and I quickly landed an internship that boosted my skills and confidence.",
+    "author": "Shravani Joshi",
+    "role": "UI/UX Designer",
+    "rating": 5
+  },
+  {
+    "id": 2,
+    "image": "assets/images/Testimonials/Feedback-icon-Devyani.jpeg",
+    "quoteIcon": "assets/images/icon/feedback-quoat1.svg",
+    "feedback1": "Internscope helped me start my journey as a WordPress developer intern, providing valuable mentorship and hands-on experience. That growth led me to my current role as a software developer. It's a great platform for freshers seeking career opportunities!",
+    "author": "Devyani Anandgaonkar",
+    "role": "Software Developer",
+    "rating": 5
+  },
+  {
+    "id": 3,
+    "image": "assets/images/Testimonials/Feedback-icon-Rutik.jpg",
+    "quoteIcon": "assets/images/icon/feedback-quoat1.svg",
+    "feedback1": "Internscope played a crucial role in helping me advance my career. It provided access to great job opportunities, real-time updates, and a seamless application process. Through this platform, I was able to secure a role that matched my skills and career goals effortlessly!",
+    "author": "Rutik Gaikwad",
+    "role": "Backend Developer",
+    "rating": 5.0
+  },
+  {
+    "id": 4,
+    "image": "assets/images/Testimonials/Feedback-icon-Amit-Joshi.jpg",
+    "quoteIcon": "assets/images/icon/feedback-quoat1.svg",
+    "feedback1": "After a long break preparing for competitive exams, finding a job felt nearly impossible. Internscope connected me with the right opportunity, helping me restart my career. Today, I'm proud to be part of the leadership team at a reputed IT company. Grateful to Internscope for being the turning point in my journey.",
+    "author": "Amit Joshi",
+    "role": "DevOps Engineer",
+    "rating": 5.0
+  },
+  {
+    "id": 5,
+    "image": "assets/images/Testimonials/Feedback-icon-SwapnaliMam.jpeg",
+    "quoteIcon": "assets/images/icon/feedback-quoat1.svg",
+    "feedback1": "After my maternity break, I struggled to find the right job. But after registering on InternScope, I restarted my career as an intern. Today, I lead a UI-UX design team! Thanks a ton, InternScope, for this incredible opportunity!",
+    "author": "Swapnali Rajwade",
+    "role": "UI/UX Designer",
+    "rating": 5.0
+  },
+  {
+    "id": 6,
+    "image": "/assets/images/bg/author2.png",
+    "quoteIcon": "assets/images/icon/feedback-quoat1.svg",
+    "feedback1": "Internscope is a must-try for anyone searching for a job. It provides access to the best opportunities and ensures you find roles that align with your goals",
+    "author": "Dipika Wankhade",
+    "role": "React Developer",
+    "rating": 5
+  },
+  {
+    "id": 7,
+    "image": "assets/images/Testimonials/Feedback-icon-Shilpak-Joshi.jpg",
+    "quoteIcon": "assets/images/icon/feedback-quoat1.svg",
+    "feedback1": "Internscope has been a fantastic platform for discovering the best internship opportunities. The work environment it connects interns to is both nurturing and innovative",
+    "author": "Shilpak Joshi",
+    "role": "Devops Engineer",
+    "rating": 5
+  },
+  {
+    "id": 8,
+    "image": "assets/images/Testimonials/Feedback-icon-Abhijeet-Joshi.jpg",
+    "quoteIcon": "assets/images/icon/feedback-quoat1.svg",
+    "feedback1": "As a recent graduate with little experience, Internscope helped me bridge the gap and find my first real job. The process was smooth, and the opportunities were perfectly tailored for freshers.",
+    "author": "Abhijeet Joshi",
+    "role": "Dot Net Developer",
+    "rating": 4.5
+  },
+  {
+    "id": 9,
+    "image": "/assets/images/bg/author2.png",
+    "quoteIcon": "assets/images/icon/feedback-quoat1.svg",
+    "feedback1": "Starting a career can be challenging, but Internscope makes it simple and rewarding. The platform connects job seekers with roles perfectly suited for those in the early stages of their professional journey",
+    "author": "Shivani Patil",
+    "role": "UI/UX Engineer",
+    "rating": 5
+  },
+  {
+    "id": 10,
+    "image": "assets/images/Testimonials/Feedback-icon-Ketaki-Pogade.jpg",
+    "quoteIcon": "assets/images/icon/feedback-quoat1.svg",
+    "feedback1": "After taking a long break in my career, I faced many challenges in finding the right job that would offer me a platform to rebuild my skills and regain confidence. That’s when I discovered Internscope. The platform not only made my job search easier but also connected me with opportunities that matched my profile and goals.",
+    "author": "Ketaki Pogade",
+    "role": "Full Stack Developer",
+    "rating": 5
+  },
+  {
+    "id": 11,
+    "image": "assets/images/Testimonials/Feedback-icon-Pooja-Raut.jpg",
+    "quoteIcon": "assets/images/icon/feedback-quoat1.svg",
+    "feedback1": "I'm truly grateful to Internscope for giving me a wonderful opportunity at a crucial point in my journey. Their supportive environment helped me regain confidence and grow both technically and personally, empowering me to move forward in my career.",
+    "author": "Pooja Raut",
+    "role": "Full Stack Developer",
+    "rating": 5
+  },
+  {
+    "id": 12,
+    "image": "assets/images/Testimonials/Feedback-icon-Vishal-Bhange.jpg",
+    "quoteIcon": "assets/images/icon/feedback-quoat1.svg",
+    "feedback1": "After completing my degree, I took web development classes but couldn't find a job right away. However, Interscope gave me my first opportunity as a web developer, which became the turning point of my career. Thanks to Interscope, I got a supportive team to work with and proper career guidance. I feel proud that my professional journey started here.",
+    "author": "Vishal Bhange",
+    "role": "Front End Developer",
+    "rating": 5
+  },
+  {
+    "id": 13,
+    "image": "assets/images/Testimonials/Feedback-icon-Anushka-Tade.jpg",
+    "quoteIcon": "assets/images/icon/feedback-quoat1.svg",
+    "feedback1": "After taking a career break, I was unsure how to step back into the professional world. Interscope became the perfect platform to restart my journey. It offered me access to relevant internship opportunities that helped me rebuild my confidence, update my skills, and gain hands-on experience. Thanks to Interscope, I was able to smoothly transition back into my career with clarity and purpose. It truly opened doors I thought were closed.",
+    "author": "Anushka Tade",
+    "role": "HR and Finance Executive",
+    "rating": 5
+  },
+  {
+    "id": 14,
+    "image": "assets/images/Testimonials/Feedback-icon-Reshma-Divekar.jpg",
+    "quoteIcon": "assets/images/icon/feedback-quoat1.svg",
+    "feedback1": "After graduating and completing a Web Design course, Internscope played a crucial role in helping me land my first job. I started as a WordPress Developer, and over time, I took on greater responsibilities — first leading operations for the digital team and now managing the technical team's operations. Internscope provided me with the right platform to grow professionally, and I’m truly grateful for the career support they offered.",
+    "author": "Reshma Divekar",
+    "role": "Operation Incharge",
+    "rating": 5
+  },
+  {
+    "id": 15,
+    "image": "assets/images/Testimonials/Feedback-icon-Lokeshwari-Sahu.jpg",
+    "quoteIcon": "assets/images/icon/feedback-quoat1.svg",
+    "feedback1": "My experience with Internscope has been truly transformative. Through their platform, I secured an internship that eventually led to valuable job opportunities. I was fortunate to receive guidance from skilled leaders who were genuinely invested in my growth. Their mentorship helped me build confidence and develop professionally. I’m incredibly grateful to Internscope for serving as the bridge to such meaningful and career-shaping opportunities.",
+    "author": "Lokeshwari Sahu",
+    "role": "Business Development Representative",
+    "rating": 5
+  },
+  {
+    "id": 16,
+    "image": "assets/images/Testimonials/Feedback-icon-Komal-Gorde.jpg",
+    "quoteIcon": "assets/images/icon/feedback-quoat1.svg",
+    "feedback1": "After taking a break for maternity, I was unsure how to restart my career. Internscope gave me the perfect platform to rebuild my confidence through a meaningful internship. The experience helped me update my skills, connect with professionals, and transition smoothly back into the workforce. I'm grateful to Internscope — the internship I found here eventually led to a full-time job opportunity. Truly a career relaunch partner!",
+    "author": "Komal Gorde",
+    "role": "Digital Marketer",
+    "rating": 5
+  },
+  {
+    "id": 17,
+    "image": "assets/images/Testimonials/Feedback-icon-khushi-nahar.jpg",
+    "quoteIcon": "assets/images/icon/feedback-quoat1.svg",
+    "feedback1": "I, Khushi Nahar, am currently pursuing a Company Secretary (CS). I decided to do an internship for a few months and I got to know about Interscope, wherein I found a great company that is helping me build my future, learning new things and providing a wonderful experience as well. I was very confused about joining and which company to start with which company, but internscope helped me to get a great exposure to the corporate world and a lot of experience as well. I would like to thank Interscope for this wonderful journey and highly recommend you to trust Internscope as a next step to upgrade your career.",
+    "author": "Khushi Nahar",
+    "role": "Company Secretary (CS) intern",
+    "rating": 5
+  }
+
+
+]

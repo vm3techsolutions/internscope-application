@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     id("com.google.gms.google-services")
+    alias(libs.plugins.kotlin.android)
 }
 
 android {
@@ -17,7 +18,6 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
-
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -27,51 +27,62 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+
     buildFeatures {
         viewBinding = true
     }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
 }
 
-dependencies {
 
+dependencies {
+    // Core Android & Jetpack
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
     implementation(libs.navigation.fragment)
     implementation(libs.navigation.ui)
+    implementation(libs.recyclerview)
+    implementation(libs.flexbox)
+    implementation(libs.glide)
+    implementation(libs.picasso)
+
+    // Firebase
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.auth.v2300)
+    implementation(libs.firebase.analytics)
     implementation(libs.firebase.database)
-    implementation(libs.lifecycle.livedata.ktx)
-    implementation(libs.lifecycle.viewmodel.ktx)
+    implementation(libs.play.services.auth.v2111)
+
+    // Networking
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+    implementation(libs.logging.interceptor)
+
+    // Database
+    implementation(libs.mysql.connector.java)
+    implementation(libs.core.ktx)
+    implementation(libs.swiperefreshlayout)
+
+    // Annotation processor
+    annotationProcessor(libs.compiler)
+
+    // PhonePe Intent SDK
+    implementation("phonepe.intentsdk.android.release:IntentSDK:5.2.0")
+
+
+
+
+    // Unit Testing
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
-    implementation(libs.firebase.auth.v2300)
-    implementation(libs.play.services.auth.v2111)
-    implementation(platform(libs.firebase.bom))
-    implementation(libs.firebase.analytics)
-    implementation (libs.gms.play.services.auth)
-    implementation (libs.drawerlayout)
-    implementation (libs.material.v190)
-    implementation (libs.google.material.v1100)
-    implementation (libs.appcompat.v161)
-    implementation(libs.mysql.connector.java)
-    implementation (libs.retrofit)
-    implementation (libs.converter.gson)
-    implementation (libs.logging.interceptor)
-    implementation (libs.picasso)
-    implementation (libs.flexbox)
-    implementation (libs.checkout)
-    implementation (libs.glide)
-    annotationProcessor (libs.compiler)
-
-
-
-
-
 }
-

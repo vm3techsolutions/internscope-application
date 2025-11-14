@@ -1,130 +1,380 @@
+//package com.example.internscopeapp;
+//
+//import android.app.DatePickerDialog;
+//import android.os.Bundle;
+//import android.view.View;
+//import android.widget.*;
+//import androidx.appcompat.app.AppCompatActivity;
+//
+//import java.util.Arrays;
+//import java.util.Calendar;
+//import java.util.List;
+//
+//import retrofit2.Call;
+//import retrofit2.Callback;
+//import retrofit2.Response;
+//import retrofit2.Retrofit;
+//import retrofit2.converter.gson.GsonConverterFactory;
+//
+//public class PostJob extends AppCompatActivity {
+//
+//    private EditText editJobTitle, editLocation, editQualification, editMinSalary, editMaxSalary,
+//            editSkills, editDeadline, editDescription;
+//    private Spinner spinnerIndustry, spinnerJobType;
+//    private Button btnSubmitJob;
+//    private CheckBox checkboxTerms;
+//
+//    private ApiService apiService;
+//    private SessionManager sessionManager;
+//
+//    private String selectedIndustry = "";
+//    private String selectedJobType = "";
+//
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.activity_post_job);
+//
+//        sessionManager = SessionManager.getInstance(this);
+//        String token = sessionManager.getToken();
+//
+//        initViews();
+//        setupSpinners();
+//        setupRetrofit();
+//
+//        // Date picker
+//        editDeadline.setOnClickListener(v -> showDatePickerDialog());
+//
+//        // Submit button
+//        btnSubmitJob.setOnClickListener(v -> submitJobPost(token));
+//    }
+//
+//    private void initViews() {
+//        editJobTitle = findViewById(R.id.editJobTitle);
+//        editLocation = findViewById(R.id.editLocation);
+//        editQualification = findViewById(R.id.editQualification);
+//        editMinSalary = findViewById(R.id.editMinSalary);
+//        editMaxSalary = findViewById(R.id.editMaxSalary);
+//        editSkills = findViewById(R.id.editSkills);
+//        editDeadline = findViewById(R.id.editDeadline);
+//        editDescription = findViewById(R.id.editDescription);
+//        spinnerIndustry = findViewById(R.id.spinnerIndustry);
+//        spinnerJobType = findViewById(R.id.spinnerJobType);
+//        checkboxTerms = findViewById(R.id.checkboxTerms);
+//        btnSubmitJob = findViewById(R.id.btnSubmitJob);
+//    }
+//
+//    private void setupSpinners() {
+//        // Industry
+//        ArrayAdapter<CharSequence> industryAdapter = ArrayAdapter.createFromResource(
+//                this,
+//                R.array.company_types,
+//                android.R.layout.simple_spinner_item
+//        );
+//        industryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        spinnerIndustry.setAdapter(industryAdapter);
+//
+//        spinnerIndustry.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+//                selectedIndustry = adapterView.getItemAtPosition(i).toString();
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> adapterView) {}
+//        });
+//
+//        // Job Type
+//        ArrayAdapter<String> jobTypeAdapter = new ArrayAdapter<>(
+//                this,
+//                android.R.layout.simple_spinner_item,
+//                new String[]{"Select Job Type", "Full Time", "Part Time", "Internship"}
+//        );
+//        jobTypeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        spinnerJobType.setAdapter(jobTypeAdapter);
+//
+//        spinnerJobType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+//                selectedJobType = adapterView.getItemAtPosition(i).toString();
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> adapterView) {}
+//        });
+//    }
+//
+//    private void setupRetrofit() {
+//        Retrofit retrofit = new Retrofit.Builder()
+//                .baseUrl("http://192.168.0.104:4000/api/") // Local backend URL
+//                .addConverterFactory(GsonConverterFactory.create())
+//                .build();
+//        apiService = retrofit.create(ApiService.class);
+//    }
+//
+//    private void showDatePickerDialog() {
+//        final Calendar calendar = Calendar.getInstance();
+//        new DatePickerDialog(this, (view, y, m, d) -> {
+//            editDeadline.setText(String.format("%04d-%02d-%02d", y, m + 1, d));
+//        }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
+//    }
+//
+//    private void submitJobPost(String token) {
+//        // Read input
+//        String jobTitle = editJobTitle.getText().toString().trim();
+//        String location = editLocation.getText().toString().trim();
+//        String qualification = editQualification.getText().toString().trim();
+//        String minSalary = editMinSalary.getText().toString().trim();
+//        String maxSalary = editMaxSalary.getText().toString().trim();
+//        String skills = editSkills.getText().toString().trim();
+//        String deadline = editDeadline.getText().toString().trim();
+//        String description = editDescription.getText().toString().trim();
+//        boolean termsAccepted = checkboxTerms.isChecked();
+//
+//        // Validate
+//        if (jobTitle.isEmpty() || location.isEmpty() || qualification.isEmpty()
+//                || minSalary.isEmpty() || maxSalary.isEmpty() || skills.isEmpty()
+//                || description.isEmpty() || selectedIndustry.equals("Select Company Category")
+//                || selectedJobType.equals("Select Job Type")) {
+//            Toast.makeText(this, "Please fill all required fields", Toast.LENGTH_SHORT).show();
+//            return;
+//        }
+//
+//        if (!termsAccepted) {
+//            Toast.makeText(this, "Please accept terms and conditions", Toast.LENGTH_SHORT).show();
+//            return;
+//        }
+//
+//        // Convert skills to list
+//        List<String> jobTags = Arrays.asList(skills.split(",\\s*"));
+//
+//        // Build request
+//        JobPostRequest jobPost = new JobPostRequest(
+//                //sessionManager.getUserId(), // Pass company_id from session
+//                0,
+//                jobTitle,
+//                selectedIndustry,
+//                location,
+//                qualification,
+//                Integer.parseInt(minSalary),
+//                Integer.parseInt(maxSalary),
+//                "rangePrice",
+//                selectedJobType,
+//                jobTags,
+//                deadline,
+//                description,
+//                termsAccepted
+//        );
+//
+//        // Call API
+//        apiService.createJobPost("Bearer " + token, jobPost).enqueue(new Callback<UpdateResponse>() {
+//            @Override
+//            public void onResponse(Call<UpdateResponse> call, Response<UpdateResponse> response) {
+//                if (response.isSuccessful() && response.body() != null) {
+//                    Toast.makeText(PostJob.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+//                    finish();
+//                } else {
+//                    Toast.makeText(PostJob.this, "Failed: " + response.code(), Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<UpdateResponse> call, Throwable t) {
+//                Toast.makeText(PostJob.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//    }
+//}
+
 package com.example.internscopeapp;
 
 import android.app.DatePickerDialog;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.*;
-import androidx.activity.EdgeToEdge;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
+
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class PostJob extends AppCompatActivity {
 
-    private EditText jobTitle, vacancies, experienceLevel, jobTag, deadline, jobDescription;
-    private Spinner jobCategory, jobType;
-    private RadioGroup salaryOptions;
-    private CheckBox termsConditions;
-    private Button postJobButton;
-    private ConnectionClass connectionClass;
-    Calendar calendar;
-    DatePickerDialog datePickerDialog;
+    private EditText editJobTitle, editLocation, editQualification, editMinSalary, editMaxSalary, editSkills, editDeadline, editDescription;
+    private Spinner spinnerIndustry, spinnerJobType;
+    private Button btnSubmitJob;
+    private CheckBox checkboxTerms;
+
+    private ApiService apiService;
+    private SessionManager sessionManager;
+
+    private String selectedIndustry, selectedJobType;
+    private int companyId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_post_job);
 
-        // Initialize views
-        jobTitle = findViewById(R.id.job_title);
-        vacancies = findViewById(R.id.vacancies);
-        experienceLevel = findViewById(R.id.experience_level);
-        jobTag = findViewById(R.id.job_tag);
-        deadline = findViewById(R.id.deadline);
-        jobDescription = findViewById(R.id.job_description);
-        jobCategory = findViewById(R.id.job_category);
-        jobType = findViewById(R.id.job_type);
-        salaryOptions = findViewById(R.id.salary_options);
-        termsConditions = findViewById(R.id.terms_conditions);
-        postJobButton = findViewById(R.id.post_job);
+        // Initialize SessionManager
+        sessionManager = SessionManager.getInstance(this);
+        int userId = sessionManager.getUserId();
+        String token = sessionManager.getActiveToken();
 
-        connectionClass = new ConnectionClass(); // Initialize DB connection
+        // Use companyId same as userId
+        companyId = userId;
 
+        // Initialize Views
+        editJobTitle = findViewById(R.id.editJobTitle);
+        editLocation = findViewById(R.id.editLocation);
+        editQualification = findViewById(R.id.editQualification);
+        editMinSalary = findViewById(R.id.editMinSalary);
+        editMaxSalary = findViewById(R.id.editMaxSalary);
+        editSkills = findViewById(R.id.editSkills);
+        editDeadline = findViewById(R.id.editDeadline);
+        editDescription = findViewById(R.id.editDescription);
+        spinnerIndustry = findViewById(R.id.spinnerIndustry);
+        spinnerJobType = findViewById(R.id.spinnerJobType);
+        checkboxTerms = findViewById(R.id.checkboxTerms);
+        btnSubmitJob = findViewById(R.id.btnSubmitJob);
 
-        //code for date picker on deadline foe field
-        calendar = Calendar.getInstance();
+        // Retrofit Setup - ✅ Correct base URL (with trailing slash)
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://192.168.0.104:4000/api/") // correct base URL
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
 
-        deadline.setOnClickListener(v -> {
-            int year = calendar.get(Calendar.YEAR);
-            int month = calendar.get(Calendar.MONTH);
-            int day = calendar.get(Calendar.DAY_OF_MONTH);
+        apiService = retrofit.create(ApiService.class);
 
-            datePickerDialog = new DatePickerDialog(this, (view, year1, month1, dayOfMonth) -> {
-                // Format date as "DD-MM-YYYY"
-                String formattedDate = String.format("%02d-%02d-%d", dayOfMonth, month1 + 1, year1);
-                deadline.setText(formattedDate);
-            }, year, month, day);
-
-            datePickerDialog.show();
-        });
-
-        // Set up Job Category options
-        String[] categories = {"UI/UX Designer", "Front-End Developer", "Next.js", "Laravel Developer"};
-        ArrayAdapter<String> categoryAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, categories);
-        jobCategory.setAdapter(categoryAdapter);
-
-        // Set up Job Type options
-        String[] jobTypes = {"Full Time", "Part Time"};
-        ArrayAdapter<String> jobTypeAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, jobTypes);
-        jobType.setAdapter(jobTypeAdapter);
-
-        // Handle button click
-        postJobButton.setOnClickListener(v -> {
-            if (termsConditions.isChecked()) {
-                new SubmitJobTask().execute();
-            } else {
-                Toast.makeText(PostJob.this, "Please accept the terms & conditions.", Toast.LENGTH_SHORT).show();
+        // Load Industry Spinner
+        ArrayAdapter<CharSequence> industryAdapter = ArrayAdapter.createFromResource(
+                this,
+                R.array.company_types,
+                android.R.layout.simple_spinner_item
+        );
+        industryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerIndustry.setAdapter(industryAdapter);
+        spinnerIndustry.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                selectedIndustry = adapterView.getItemAtPosition(i).toString();
             }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {}
         });
+
+        // Load Job Type Spinner
+        ArrayAdapter<String> jobTypeAdapter = new ArrayAdapter<>(
+                this,
+                android.R.layout.simple_spinner_item,
+                new String[]{"Select Job Type", "Full Time", "Part Time", "Internship"}
+        );
+        jobTypeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerJobType.setAdapter(jobTypeAdapter);
+        spinnerJobType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                selectedJobType = adapterView.getItemAtPosition(i).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {}
+        });
+
+        // Date Picker
+        editDeadline.setOnClickListener(v -> showDatePickerDialog());
+
+        // Submit Button
+        btnSubmitJob.setOnClickListener(v -> submitJobPost(token));
     }
 
-    // AsyncTask to Insert Data into MySQL
-    private class SubmitJobTask extends AsyncTask<Void, Void, String> {
-        @Override
-        protected String doInBackground(Void... voids) {
-            try {
-                Connection conn = connectionClass.conn(); // Get database connection
-                if (conn == null) {
-                    return "Database connection failed!";
+    private void showDatePickerDialog() {
+        final Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+        DatePickerDialog dialog = new DatePickerDialog(PostJob.this, (DatePicker view, int y, int m, int d) -> {
+            String date = y + "-" + (m + 1) + "-" + d; // yyyy-MM-dd
+            editDeadline.setText(date);
+        }, year, month, day);
+        dialog.show();
+    }
+
+    private void submitJobPost(String token) {
+        String jobTitle = editJobTitle.getText().toString().trim();
+        String location = editLocation.getText().toString().trim();
+        String qualification = editQualification.getText().toString().trim();
+        String minSalary = editMinSalary.getText().toString().trim();
+        String maxSalary = editMaxSalary.getText().toString().trim();
+        String skills = editSkills.getText().toString().trim();
+        String deadline = editDeadline.getText().toString().trim();
+        String description = editDescription.getText().toString().trim();
+        boolean termsAccepted = checkboxTerms.isChecked();
+
+        if (jobTitle.isEmpty() || location.isEmpty() || qualification.isEmpty() ||
+                minSalary.isEmpty() || maxSalary.isEmpty() || skills.isEmpty() ||
+                description.isEmpty() || selectedIndustry.equals("Select Company Category")) {
+            Toast.makeText(this, "Please fill all required fields", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (!termsAccepted) {
+            Toast.makeText(this, "Please accept terms and conditions", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Convert skills to List<String>
+        List<String> jobTags = Arrays.asList(skills.split(",\\s*"));
+
+        // Create JobPostRequest
+        JobPostRequest jobPost = new JobPostRequest(
+                companyId,           // ✅ include company_id
+                jobTitle,
+                selectedIndustry,
+                location,
+                qualification,
+                Integer.parseInt(minSalary),
+                Integer.parseInt(maxSalary),
+                "rangePrice",
+                selectedJobType,
+                jobTags,
+                deadline,
+                description,
+                termsAccepted
+        );
+
+        // Call API
+        apiService.createJobPost("Bearer " + token, jobPost).enqueue(new Callback<UpdateResponse>() {
+            @Override
+            public void onResponse(Call<UpdateResponse> call, Response<UpdateResponse> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    Toast.makeText(PostJob.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                    finish();
+                } else {
+                    Toast.makeText(PostJob.this, "You have reached your job posting limit.", Toast.LENGTH_SHORT).show();
                 }
-
-                // Get selected salary option
-                int selectedSalaryId = salaryOptions.getCheckedRadioButtonId();
-                String salaryOption = selectedSalaryId != -1 ? ((RadioButton) findViewById(selectedSalaryId)).getText().toString() : "Not Specified";
-
-                // SQL Query
-                String query = "INSERT INTO post_job (job_title, job_category, vacancies, salary_option, job_type, experience_level, job_tag, deadline, job_description, terms_accepted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-                PreparedStatement stmt = conn.prepareStatement(query);
-
-                // Bind Parameters
-                stmt.setString(1, jobTitle.getText().toString());
-                stmt.setString(2, jobCategory.getSelectedItem().toString());
-                stmt.setInt(3, Integer.parseInt(vacancies.getText().toString()));
-                stmt.setString(4, salaryOption);
-                stmt.setString(5, jobType.getSelectedItem().toString());
-                stmt.setString(6, experienceLevel.getText().toString());
-                stmt.setString(7, jobTag.getText().toString());
-                stmt.setString(8, deadline.getText().toString());
-                stmt.setString(9, jobDescription.getText().toString());
-                stmt.setBoolean(10, true); // Since terms are checked
-
-                int rowsInserted = stmt.executeUpdate();
-                stmt.close();
-                conn.close();
-
-                return rowsInserted > 0 ? "Job Posted Successfully!" : "Failed to post job!";
-            } catch (Exception e) {
-                Log.e("DB_ERROR", "Error: " + e.getMessage());
-                return "Error: " + e.getMessage();
             }
-        }
 
-        @Override
-        protected void onPostExecute(String result) {
-            Toast.makeText(PostJob.this, result, Toast.LENGTH_LONG).show();
-        }
+            @Override
+            public void onFailure(Call<UpdateResponse> call, Throwable t) {
+                Toast.makeText(PostJob.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

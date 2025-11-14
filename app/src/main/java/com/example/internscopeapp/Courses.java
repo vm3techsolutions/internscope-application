@@ -17,7 +17,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class Courses extends AppCompatActivity {
+public class Courses extends BaseActivity {
 
     private SessionManager sessionManager;
     private RecyclerView recyclerView;
@@ -32,7 +32,7 @@ public class Courses extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_courses);
 
-        sessionManager = new SessionManager(this);
+        sessionManager = SessionManager.getInstance(this);
         apiService = ApiClient.getClient(this).create(ApiService.class);
 
         recyclerView = findViewById(R.id.recyclerApplications);
@@ -40,7 +40,9 @@ public class Courses extends AppCompatActivity {
         adapter = new ApplicationAdapter(applicationList);
         recyclerView.setAdapter(adapter);
 
-        String token = sessionManager.getToken();
+        setupDrawer();
+
+        String token = sessionManager.getActiveToken();
         int userId = sessionManager.getUserId();
         if (token != null && !token.isEmpty() && userId > 0) {
             fetchAppliedJobs(token, userId);

@@ -23,7 +23,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/forgot_pass"
+        android:text="Enter Your Registered Email-Id to send reset link"
         android:textStyle="bold"
         android:textSize="18sp"
         android:padding="10dp"
@@ -34,6 +34,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/emailInput"
         android:ems="15"
         android:layout_gravity="center"
         android:hint="Email"
@@ -48,13 +49,26 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:backgroundTint="@color/internscope"
+        android:backgroundTint="@color/yellow_shade"
         android:text="Send Code"
         android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
         android:layout_marginTop="10dp"
         android:layout_marginVertical="20dp"
+        />
+
+    <Button
+        android:id="@+id/backLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:backgroundTint="#00FF6F00"
+        android:text="Back to login"
+        android:textColor="@color/internscope"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginVertical="10dp"
         />
 
 

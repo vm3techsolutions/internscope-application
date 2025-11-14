@@ -88,10 +88,18 @@ package com.example.internscopeapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.Map;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -120,6 +128,28 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra("userType", "company");
             startActivity(intent);
         });
+
+//        ApiService apiService = ApiClient.getClient(this).create(ApiService.class);
+//        apiService.testConnection().enqueue(new Callback<Map<String, String>>() {
+//            @Override
+//            public void onResponse(Call<Map<String, String>> call, Response<Map<String, String>> response) {
+//                if (response.isSuccessful()) {
+//                    Log.d("Connection", "✅ Server Connected: " + response.body());
+//                    Toast.makeText(MainActivity.this, "✅ Connected to Live Server", Toast.LENGTH_SHORT).show();
+//                } else {
+//                    Log.e("Connection", "⚠️ Server reachable, but invalid response: " + response.code());
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<Map<String, String>> call, Throwable t) {
+//                Log.e("Connection", "❌ Connection failed: " + t.getMessage());
+//                Toast.makeText(MainActivity.this, "❌ Connection failed", Toast.LENGTH_SHORT).show();
+//            }
+//        });
     }
+
+
+
 }
 

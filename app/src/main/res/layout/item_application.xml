@@ -8,8 +8,20 @@
     android:layout_margin="8dp"
     app:cardCornerRadius="8dp"
     app:cardElevation="4dp"
-    android:backgroundTint="#22C5C4C4"
+    android:backgroundTint="#22FFFFFF"
     android:foreground="?attr/selectableItemBackground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:src="@drawable/appicon"
+            android:layout_gravity="center_vertical"
+            android:padding="10dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,7 +37,7 @@
             android:text="Job Title"
             android:textSize="16sp"
             android:textStyle="bold"
-            android:textColor="@color/yellow_shade" />
+            android:textColor="@color/black" />
 
         <!-- Company Name -->
         <TextView
@@ -82,6 +94,8 @@
                 android:textSize="14sp"
                 android:textColor="@color/yellow_shade"/>
         </LinearLayout>
+
+    </LinearLayout>
 
     </LinearLayout>
 

@@ -10,7 +10,9 @@
     <ImageView
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:src="@drawable/check"/>
+        android:src="?android:attr/textCheckMark"
+        android:background="@drawable/circle_bg_success"
+        />
 
     <!-- Success Message -->
     <TextView
@@ -36,5 +38,5 @@
         android:padding="12dp"
         android:textStyle="bold"
         android:layout_marginHorizontal="24dp"
-        android:background="@drawable/rounded_button_green" />
+        android:background="@color/yellow_shade" />
 </LinearLayout>

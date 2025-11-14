@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="#FFFFFF">
+
+    <LinearLayout
+        android:id="@+id/jobEditLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:layout_marginVertical="30dp">
+
+        <!-- Section Title -->
+        <TextView
+            android:id="@+id/sectionTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Edit Job Information"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textColor="#222222"
+            android:paddingBottom="12dp" />
+
+        <!-- Job Title -->
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp">
+            <TextView
+                android:text="Job Title*"
+                android:textColor="#444"
+                android:textSize="14sp"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"/>
+            <EditText
+                android:id="@+id/editJobTitle"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:hint="Senior UI/UX Engineer"
+                android:drawableStart="@android:drawable/ic_menu_edit"
+                android:paddingStart="10dp"
+                android:background="@drawable/spinner_background"/>
+        </LinearLayout>
+
+        <!-- Industry -->
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp">
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:text="Industry*"
+                android:textColor="#444"
+                android:textSize="14sp"/>
+            <Spinner
+                android:id="@+id/spinnerIndustry"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@drawable/spinner_background"/>
+        </LinearLayout>
+
+        <!-- Location -->
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp">
+            <TextView
+                android:text="Location*"
+                android:textColor="#444"
+                android:textSize="14sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <EditText
+                android:id="@+id/editLocation"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:hint="e.g. Mumbai, India"
+                android:drawableStart="@android:drawable/ic_menu_mylocation"
+                android:paddingStart="10dp"
+                android:background="@drawable/spinner_background"/>
+        </LinearLayout>
+
+        <!-- Qualification -->
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp">
+            <TextView
+                android:text="Qualification*"
+                android:textColor="#444"
+                android:textSize="14sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <EditText
+                android:id="@+id/editQualification"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:hint="Bachelor Degree in CSE"
+                android:drawableStart="@android:drawable/ic_input_get"
+                android:paddingStart="10dp"
+                android:background="@drawable/edittext_background"/>
+        </LinearLayout>
+
+        <!-- Salary Range -->
+        <TextView
+            android:text="Salary Range*"
+            android:textColor="#444"
+            android:textSize="14sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="4dp" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="2"
+            android:paddingBottom="10dp">
+            <EditText
+                android:id="@+id/editMinSalary"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:hint="Min Salary"
+                android:inputType="number"
+                android:background="@drawable/edittext_background"
+                android:paddingStart="10dp" />
+            <View
+                android:layout_width="8dp"
+                android:layout_height="match_parent" />
+            <EditText
+                android:id="@+id/editMaxSalary"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:hint="Max Salary"
+                android:inputType="number"
+                android:background="@drawable/edittext_background"
+                android:paddingStart="10dp" />
+        </LinearLayout>
+
+        <!-- Employment Type -->
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp">
+            <TextView
+                android:text="Employment Type*"
+                android:textColor="#444"
+                android:textSize="14sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <Spinner
+                android:id="@+id/spinnerJobType"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@drawable/spinner_background"/>
+        </LinearLayout>
+
+        <!-- Skills Required -->
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp">
+            <TextView
+                android:text="Skills Required*"
+                android:textColor="#444"
+                android:textSize="14sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <EditText
+                android:id="@+id/editSkills"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:hint="Type skills (e.g. React, Kotlin)"
+                android:drawableStart="@android:drawable/ic_menu_agenda"
+                android:paddingStart="10dp"
+                android:background="@drawable/edittext_background"/>
+        </LinearLayout>
+
+        <!-- Deadline -->
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp">
+            <TextView
+                android:text="Deadline*"
+                android:textColor="#444"
+                android:textSize="14sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <EditText
+                android:id="@+id/editDeadline"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:hint="Select Date"
+                android:focusable="false"
+                android:drawableStart="@android:drawable/ic_menu_month"
+                android:background="@drawable/edittext_background"
+                android:paddingStart="10dp"/>
+        </LinearLayout>
+
+        <!-- Job Description -->
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="Job Description*"
+                android:textColor="#444"
+                android:textSize="14sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <EditText
+                android:id="@+id/editDescription"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:gravity="top"
+                android:hint="Write detailed job description"
+                android:background="@drawable/edittext_background"
+                android:padding="10dp"
+                android:inputType="textMultiLine" />
+        </LinearLayout>
+
+        <!-- Submit Button -->
+        <Button
+            android:id="@+id/btnUpdateJob"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Update Job"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="@color/yellow_shade"
+            android:padding="12dp"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+            android:fontFamily="sans-serif-medium"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"/>
+
+    </LinearLayout>
+</ScrollView>

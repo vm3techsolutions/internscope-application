@@ -67,7 +67,7 @@ public class SignUp extends AppCompatActivity {
                     UserResponse res = response.body();
                     if (res.isSuccess()) {
                         Toast.makeText(SignUp.this, res.getMessage(), Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(SignUp.this, Verify.class));
+                        startActivity(new Intent(SignUp.this, Login.class));
                         finish();
                     } else {
                         Toast.makeText(SignUp.this, "Failed: " + res.getMessage(), Toast.LENGTH_SHORT).show();

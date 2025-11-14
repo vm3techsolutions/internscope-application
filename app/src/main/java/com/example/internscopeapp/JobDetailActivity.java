@@ -52,14 +52,21 @@ public class JobDetailActivity extends AppCompatActivity {
         btnApplyNow = findViewById(R.id.btnApplyNow);
 
         // --- Set button listener once ---
+//        btnApplyNow.setOnClickListener(v -> {
+//            if (job != null && btnApplyNow.isEnabled()) {
+//                Intent intent = new Intent(JobDetailActivity.this, ApplyJobActivity.class);
+//                intent.putExtra("job_id", job.getJobId());
+//                intent.putExtra("company_id", job.getCompanyId());
+//                startActivityForResult(intent, APPLY_JOB_REQUEST);
+//            }
+//        });
+
         btnApplyNow.setOnClickListener(v -> {
             if (job != null && btnApplyNow.isEnabled()) {
-                Intent intent = new Intent(JobDetailActivity.this, ApplyJobActivity.class);
-                intent.putExtra("job_id", job.getJobId());
-                intent.putExtra("company_id", job.getCompanyId());
-                startActivityForResult(intent, APPLY_JOB_REQUEST);
+                applyJobDirectly(job.getJobId(), job.getCompanyId());
             }
         });
+
 
 
         // --- Get job ID from intent ---
@@ -185,7 +192,7 @@ public class JobDetailActivity extends AppCompatActivity {
 
     private void checkIfApplied(int jobId) {
         ApiService apiService = ApiClient.getClient(this).create(ApiService.class);
-        String token = SessionManager.getInstance(this).getToken(); // however you store it
+        String token = SessionManager.getInstance(this).getActiveToken(); // however you store it
 
         Call<List<AppliedJobResponse>> call = apiService.getAppliedJobs("Bearer " + token);
 
@@ -232,4 +239,44 @@ public class JobDetailActivity extends AppCompatActivity {
             }
         }
     }
+
+    private void applyJobDirectly(int jobId, int companyId) {
+        progressBar.setVisibility(android.view.View.VISIBLE);
+
+        ApiService apiService = ApiClient.getClient(this).create(ApiService.class);
+        String token = SessionManager.getInstance(this).getActiveToken();
+
+        // Your saved resume URL (from user profile)
+        String resumeUrl = SessionManager.getInstance(this).getResumeUrl();
+
+        Call<GenericResponse> call = apiService.applyJob(
+                "Bearer " + token,
+                jobId,
+                new ApplyJobRequest(resumeUrl, companyId)
+        );
+
+        call.enqueue(new Callback<GenericResponse>() {
+            @Override
+            public void onResponse(Call<GenericResponse> call, Response<GenericResponse> response) {
+                progressBar.setVisibility(android.view.View.GONE);
+
+                if (response.isSuccessful()) {
+                    Toast.makeText(JobDetailActivity.this, "Applied Successfully!", Toast.LENGTH_SHORT).show();
+                    btnApplyNow.setText("Applied");
+                    btnApplyNow.setEnabled(false);
+                } else {
+                    Toast.makeText(JobDetailActivity.this, "Already Applied", Toast.LENGTH_SHORT).show();
+                    btnApplyNow.setText("Applied");
+                    btnApplyNow.setEnabled(false);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<GenericResponse> call, Throwable t) {
+                progressBar.setVisibility(android.view.View.GONE);
+                Toast.makeText(JobDetailActivity.this, "Failed: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
 }

@@ -100,8 +100,8 @@ public class ApplyJobActivity extends AppCompatActivity {
 
         try {
             SessionManager sessionManager = new SessionManager(this);
-            String token = sessionManager.getToken();
-            String fullNameStr = sessionManager.getUserFullName();
+            String token = sessionManager.getActiveToken();
+            String fullNameStr = sessionManager.getFullName();
             String emailStr = sessionManager.getEmail();
 
             if (fullNameStr == null || emailStr == null) {

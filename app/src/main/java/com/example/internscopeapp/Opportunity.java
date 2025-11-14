@@ -2,77 +2,146 @@ package com.example.internscopeapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.Spinner;
+import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-public class Opportunity extends AppCompatActivity {
+import com.google.android.material.button.MaterialButton;
 
-    private Spinner spin1,spin2;
-    Button searchbtn;
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+public class Opportunity extends BaseActivity {
+
+    private RecyclerView recyclerJobs;
+    private CompanyJobAdapter jobAdapter;
+    private List<CompanyJobModel> jobList = new ArrayList<>();
+
+    private MaterialButton btnCreateJob, btnSearch;
+    private EditText etSearchJob;
+
+    private SessionManager sessionManager;
+    private ApiService apiService; // Retrofit interface
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_opportunity);
 
-        spin1 = findViewById(R.id.dropmenu1);
-        spin2 = findViewById(R.id.dropmenu2);
+        recyclerJobs = findViewById(R.id.recyclerJobs);
+        btnCreateJob = findViewById(R.id.btnCreateJob);
+        btnSearch = findViewById(R.id.btnSearch);
+        etSearchJob = findViewById(R.id.etSearchJob);
 
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.desigskills, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        recyclerJobs.setLayoutManager(new LinearLayoutManager(this));
 
-        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this, R.array.Location, android.R.layout.simple_spinner_item);
-        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        sessionManager = new SessionManager(this);
+        apiService = ApiClient.getClient(this).create(ApiService.class);
 
-        spin1.setAdapter(adapter);
-        spin1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+         setupDrawer();
+
+        // Set up adapter
+        jobAdapter = new CompanyJobAdapter(this, jobList, new CompanyJobAdapter.OnItemClickListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String selecteditem = parent.getItemAtPosition(position).toString();
-                Toast.makeText(Opportunity.this, "Slected" + selecteditem, Toast.LENGTH_SHORT).show();
+            public void onViewClick(CompanyJobModel job) {
+                Intent intent = new Intent(Opportunity.this, JobDetailActivity.class);
+                intent.putExtra("job_id", job.getId());
+                startActivity(intent);
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
+            public void onEditClick(CompanyJobModel job) {
+                Intent intent = new Intent(Opportunity.this, EditJobActivity.class);
+                intent.putExtra("job_id", job.getId());
+                startActivity(intent);
             }
         });
 
-       spin2.setAdapter(adapter2);
-       spin2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-           @Override
-           public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-               String selecteditem2 = parent.getItemAtPosition(position).toString();
-               Toast.makeText(Opportunity.this, "Slected" + selecteditem2, Toast.LENGTH_SHORT).show();
-           }
+        recyclerJobs.setAdapter(jobAdapter);
 
-           @Override
-           public void onNothingSelected(AdapterView<?> parent) {
+        // Fetch jobs from API
+        fetchCompanyJobs();
 
-           }
-       });
+        // Add new job button
+        btnCreateJob.setOnClickListener(v -> {
+            Intent intent = new Intent(Opportunity.this, PostJob.class);
+            startActivity(intent);
+        });
 
-       searchbtn = findViewById(R.id.jobSearch);
+        // Search jobs by title
+        btnSearch.setOnClickListener(v -> {
+            String query = etSearchJob.getText().toString().trim();
+            if (!query.isEmpty()) {
+                searchJobs(query);
+            } else {
+                fetchCompanyJobs(); // Reload all jobs
+            }
+        });
+    }
 
-       searchbtn.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               Intent intent = new Intent(Opportunity.this, Jobs.class);
-               startActivity(intent);
-           }
-       });
+    private void fetchCompanyJobs() {
+        int companyId = sessionManager.getUserId(); // assuming user_id is stored here
+        String token = sessionManager.getActiveToken();
 
+        Log.d("API_JOB_DEBUG", "Fetching jobs for company ID: " + companyId);
 
+        Call<List<CompanyJobModel>> call = apiService.getJobsByCompany("Bearer " + token, companyId);
+        call.enqueue(new Callback<List<CompanyJobModel>>() {
+            @Override
+            public void onResponse(Call<List<CompanyJobModel>> call, Response<List<CompanyJobModel>> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    jobList.clear();
+                    jobList.addAll(response.body());
+                    jobAdapter.notifyDataSetChanged();
+                } else {
+                    Toast.makeText(Opportunity.this, "No jobs found", Toast.LENGTH_SHORT).show();
+                }
+            }
 
+            @Override
+            public void onFailure(Call<List<CompanyJobModel>> call, Throwable t) {
+                Toast.makeText(Opportunity.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Log.e("API_JOB_ERROR", "Fetch failed", t);
+            }
+        });
+    }
+
+    private void searchJobs(String query) {
+        List<CompanyJobModel> filteredList = new ArrayList<>();
+        for (CompanyJobModel job : jobList) {
+            if (job.getTitle().toLowerCase().contains(query.toLowerCase())) {
+                filteredList.add(job);
+            }
+        }
+        jobAdapter = new CompanyJobAdapter(this, filteredList, jobAdapterListener());
+        recyclerJobs.setAdapter(jobAdapter);
+    }
+
+    private CompanyJobAdapter.OnItemClickListener jobAdapterListener() {
+        return new CompanyJobAdapter.OnItemClickListener() {
+            @Override
+            public void onViewClick(CompanyJobModel job) {
+                Intent intent = new Intent(Opportunity.this, JobDetailActivity.class);
+                intent.putExtra("job_id", job.getId());
+                startActivity(intent);
+            }
+
+            @Override
+            public void onEditClick(CompanyJobModel job) {
+                Intent intent = new Intent(Opportunity.this, EditJobActivity.class);
+                intent.putExtra("job_id", job.getId());
+                startActivity(intent);
+            }
+        };
     }
 }

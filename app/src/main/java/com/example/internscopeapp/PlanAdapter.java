@@ -81,4 +81,6 @@ public class PlanAdapter extends RecyclerView.Adapter<PlanAdapter.PlanViewHolder
             btnBuyNow = itemView.findViewById(R.id.btnBuyNow);
         }
     }
+
+
 }

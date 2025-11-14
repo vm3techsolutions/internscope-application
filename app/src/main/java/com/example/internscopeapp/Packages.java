@@ -28,20 +28,13 @@ public class Packages extends AppCompatActivity {
         setContentView(R.layout.activity_subscription);
 
         recyclerView = findViewById(R.id.rvPlans);
-        recyclerView.setLayoutManager(
-                new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        );
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
         apiService = ApiClient.getClient(this).create(ApiService.class);
         sessionManager = SessionManager.getInstance(this);
 
         String userType = sessionManager.getUserType();
-
-// Debug log to confirm what we actually got
         Log.d("API_PLAN_DEBUG", "Logged-in user type: " + userType);
-
-// Now call API or filter plan list
-       // fetchPlans(userType);
 
         fetchPlans();
     }
@@ -53,25 +46,19 @@ public class Packages extends AppCompatActivity {
                 if (response.isSuccessful() && response.body() != null) {
                     List<Plan> plans = response.body();
 
-                    SessionManager sessionManager = new SessionManager(Packages.this);
                     String userType = sessionManager.getUserType();
+                    Log.d("API_PLAN_DEBUG", "User type from session: " + userType);
 
-                    Log.d("API_PLAN_DEBUG", "Logged-in user type: " + userType);
-
-                    List<Plan> filteredPlans;
+                    List<Plan> filteredPlans = new ArrayList<>();
 
                     if ("company".equalsIgnoreCase(userType)) {
-                        // For company role, only show plan with ID = 3
-                        filteredPlans = new java.util.ArrayList<>();
                         for (Plan plan : plans) {
-                            if (plan.getId() == 3) {
+                            if (plan.getId() == 3) { // show only employer plan
                                 filteredPlans.add(plan);
                                 break;
                             }
                         }
                     } else {
-                        // For normal user, show user-type plans
-                        filteredPlans = new java.util.ArrayList<>();
                         for (Plan plan : plans) {
                             if ("user".equalsIgnoreCase(plan.getUserType())) {
                                 filteredPlans.add(plan);
@@ -81,85 +68,56 @@ public class Packages extends AppCompatActivity {
 
                     if (!filteredPlans.isEmpty()) {
                         PlanAdapter adapter = new PlanAdapter(Packages.this, filteredPlans, plan -> {
-                            Intent intent = new Intent(Packages.this, CheckoutActivity.class);
-                            intent.putExtra("plan_id", plan.getId());
-                            intent.putExtra("plan_name", plan.getName());
-                            intent.putExtra("plan_price", plan.getPrice());
-                            intent.putExtra("plan_duration", plan.getDurationDays());
-                            intent.putExtra("plan_description", plan.getDescription());
-                            startActivity(intent);
+                            String token = "Bearer " + sessionManager.getActiveToken();
+                            int userId = sessionManager.getUserId();
+                           // String userType = sessionManager.getUserType();
+
+                            AddCartRequest request = new AddCartRequest(userId, plan.getId(), 1);
+
+                            Call<ApiResponse> callApi;
+                            if ("company".equalsIgnoreCase(userType)) {
+                                callApi = apiService.addCompanyCart(token, request);
+                            } else {
+                                callApi = apiService.addToCart(token, request);
+                            }
+
+                            callApi.enqueue(new Callback<ApiResponse>() {
+                                @Override
+                                public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
+                                    if (response.isSuccessful() && response.body() != null) {
+                                        Toast.makeText(Packages.this, "Plan added to cart!", Toast.LENGTH_SHORT).show();
+                                        startActivity(new Intent(Packages.this, CartActivity.class));
+                                    } else {
+                                        Toast.makeText(Packages.this, "Failed to add to cart", Toast.LENGTH_SHORT).show();
+                                        Log.e("API_PLAN_DEBUG", "Add to cart failed: " + response.code());
+                                    }
+                                }
+
+                                @Override
+                                public void onFailure(Call<ApiResponse> call, Throwable t) {
+                                    Toast.makeText(Packages.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                                    Log.e("API_PLAN_DEBUG", "API error: " + t.getMessage());
+                                }
+                            });
                         });
+
+                        // ✅ Important: Attach adapter to RecyclerView
                         recyclerView.setAdapter(adapter);
+
                     } else {
-                        Toast.makeText(Packages.this, "No plans available for this user type", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Packages.this, "No plans available.", Toast.LENGTH_SHORT).show();
                     }
+
                 } else {
-                    Toast.makeText(Packages.this, "Failed to load plans", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Packages.this, "Failed to fetch plans", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<List<Plan>> call, Throwable t) {
-                t.printStackTrace();
                 Toast.makeText(Packages.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Log.e("API_PLAN_DEBUG", "Fetch plans error: " + t.getMessage());
             }
         });
     }
-
-
-//    private void fetchPlans() {
-//        apiService.getPlans().enqueue(new Callback<List<Plan>>() {
-//            @Override
-//            public void onResponse(Call<List<Plan>> call, Response<List<Plan>> response) {
-//                if (response.isSuccessful() && response.body() != null) {
-//                    List<Plan> allPlans = response.body();
-////                    for (Plan plan : allPlans) {
-////                        android.util.Log.d("API_PLAN_DEBUG",
-////                                "Plan: " + plan.getName() + " | Type: " + plan.getUserType());
-////                    }
-//
-//                    // Get logged-in user type (user or employer)
-//                    String userType = sessionManager.getUserType();
-//                    if (userType == null || userType.isEmpty()) {
-//                        Toast.makeText(Packages.this, "User type not found in session", Toast.LENGTH_SHORT).show();
-//                        return;
-//                    }
-//
-//                    // Filter plans based on user type
-//                    List<Plan> filteredPlans = new ArrayList<>();
-//                    for (Plan plan : allPlans) {
-//                        if (plan.getUserType() != null &&
-//                                plan.getUserType().equalsIgnoreCase(userType)) {
-//                            filteredPlans.add(plan);
-//                        }
-//                    }
-//
-//                    if (filteredPlans.isEmpty()) {
-//                        Toast.makeText(Packages.this, "No plans found for your account type", Toast.LENGTH_SHORT).show();
-//                        return;
-//                    }
-//
-//                    // Set filtered plans to adapter
-//                    PlanAdapter adapter = new PlanAdapter(Packages.this, filteredPlans, plan -> {
-//                        Intent intent = new Intent(Packages.this, CheckoutActivity.class);
-//                        intent.putExtra("plan_id", plan.getId());
-//                        intent.putExtra("plan_name", plan.getName());
-//                        intent.putExtra("plan_price", plan.getPrice());
-//                        intent.putExtra("plan_duration", plan.getDurationDays());
-//                        intent.putExtra("plan_description", plan.getDescription());
-//                        startActivity(intent);
-//                    });
-//                    recyclerView.setAdapter(adapter);
-//                } else {
-//                    Toast.makeText(Packages.this, "Failed to load plans", Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<List<Plan>> call, Throwable t) {
-//                t.printStackTrace();
-//                Toast.makeText(Packages.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//    }
 }

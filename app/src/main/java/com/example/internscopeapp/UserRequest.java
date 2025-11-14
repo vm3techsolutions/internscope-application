@@ -37,6 +37,9 @@ public class UserRequest {
     @SerializedName("language")
     private String language;
 
+    @SerializedName("resume")
+    private String resume;
+
     @SerializedName("gender")
     private String gender;
 
@@ -45,7 +48,7 @@ public class UserRequest {
 
     public UserRequest(String firstName, String lastName, String currentLocation, String nationState,
                        String phone, String email, String linkedin, String currentJobPlace,
-                       String designation, String qualification, String language,
+                       String designation, String qualification, String language, String resume,
                        String gender, String description) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -58,6 +61,7 @@ public class UserRequest {
         this.designation = designation;
         this.qualification = qualification;
         this.language = language;
+        this.resume = resume;
         this.gender = gender;
         this.description = description;
     }
@@ -74,6 +78,7 @@ public class UserRequest {
     public String getDesignation() { return designation; }
     public String getQualification() { return qualification; }
     public String getLanguage() { return language; }
+    public String getResume() { return resume; }
     public String getGender() { return gender; }
     public String getDescription() { return description; }
 }

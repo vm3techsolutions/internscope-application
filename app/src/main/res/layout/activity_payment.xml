@@ -1,66 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rootLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
     android:padding="24dp"
-    android:background="@android:color/white">
+    android:fillViewport="true">
 
-    <TextView
-        android:id="@+id/tvOrderSummary"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Plan: Yearly\nName: John Doe"
-        android:textSize="16sp"
-        android:textColor="#003366"
-        android:layout_marginBottom="16dp" />
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/tvAmount"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="₹0.00"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        android:textColor="#FF6F00"
-        android:gravity="center"
-        android:layout_marginBottom="20dp" />
+        <!-- Order Summary Title -->
+        <TextView
+            android:id="@+id/tvOrderTitle"
+            android:text="Order Summary"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"/>
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:visibility="gone"
-        android:layout_gravity="center" />
+        <!-- Plan Name -->
+        <TextView
+            android:id="@+id/tvPlanName"
+            android:text="Plan Name"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"/>
 
-    <TextView
-        android:id="@+id/tvStatus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textColor="#555"
-        android:layout_marginTop="12dp"
-        android:gravity="center" />
+        <!-- Plan Description -->
+        <TextView
+            android:id="@+id/tvPlanDesc"
+            android:text="Plan Description"
+            android:textSize="14sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"/>
 
-    <Button
-        android:id="@+id/btnPayNow"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Proceed to Pay"
-        android:layout_marginTop="24dp"
-        android:backgroundTint="#FF6F00"
-        android:textColor="@android:color/white" />
+        <!-- Subtotal -->
+        <TextView
+            android:id="@+id/tvSubtotal"
+            android:text="Subtotal: ₹0.00"
+            android:textSize="14sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"/>
 
-    <Button
-        android:id="@+id/btnGoHome"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Go to Home"
-        android:visibility="gone"
-        android:layout_marginTop="12dp"
-        android:backgroundTint="#003366"
-        android:textColor="@android:color/white" />
+        <!-- GST -->
+        <TextView
+            android:id="@+id/tvGst"
+            android:text="GST (18%): ₹0.00"
+            android:textSize="14sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"/>
 
-</LinearLayout>
+        <!-- Total -->
+        <TextView
+            android:id="@+id/tvTotal"
+            android:text="Total: ₹0.00"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"/>
+
+        <!-- ProgressBar (hidden initially) -->
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="24dp"/>
+
+        <!-- Proceed to Pay Button -->
+        <Button
+            android:id="@+id/payButton"
+            android:text="Proceed to Pay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FF6F00"
+            android:textColor="#FFFFFF"
+            android:textAllCaps="false"
+            android:padding="12dp"
+            android:layout_marginBottom="24dp"
+            android:fontFamily="sans-serif-medium"/>
+    </LinearLayout>
+</ScrollView>

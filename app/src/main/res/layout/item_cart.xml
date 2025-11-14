@@ -1,0 +1,123 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="12dp"
+    android:layout_marginBottom="10dp"
+    android:background="@drawable/bg_cart_card"
+    android:elevation="3dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="30dp"
+    android:layout_marginHorizontal="20dp">
+
+    <!-- Plan Name -->
+    <TextView
+        android:id="@+id/tvPlanName"
+        android:text="Plan Name"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:layout_marginBottom="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="1">
+
+        <TableRow>
+            <TextView android:text="Unit Price:" android:textColor="@color/internscope" />
+            <TextView android:id="@+id/tvUnitPrice" android:text="₹0.00" android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow>
+            <TextView android:text="Quantity:" android:textColor="@color/internscope" />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btnDecrease"
+                    android:src="@android:drawable/ic_delete"
+                    android:backgroundTintMode="multiply"
+                    android:backgroundTint="@color/internscope"
+                    android:contentDescription="Decrease"
+                    android:clickable="true"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvQuantity"
+                    android:text="1"
+                    android:textSize="18sp"
+                    android:layout_marginHorizontal="8dp"
+                    android:textStyle="bold"/>
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btnIncrease"
+                    android:src="@android:drawable/ic_menu_add"
+                    android:contentDescription="Increase"
+                    android:backgroundTint="@color/yellow_shade"
+                    android:paddingVertical="10dp"/>
+            </LinearLayout>
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Subtotal:"
+                android:textColor="@color/internscope" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvSubtotal"
+                android:text="₹0.00" android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="GST Breakdown:"
+                android:textColor="@color/internscope" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvGST"
+                android:text="CGST ₹0 | SGST ₹0 | IGST ₹0"
+                android:textSize="13sp" />
+        </TableRow>
+    </TableLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+    <!-- Remove Button -->
+    <Button
+        android:id="@+id/btnRemove"
+        android:text="Remove"
+        android:textColor="@android:color/white"
+        android:backgroundTint="@color/internscope"
+        android:textAllCaps="false"
+        android:layout_marginTop="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginHorizontal="20dp"/>
+
+
+    </LinearLayout>
+
+</LinearLayout>

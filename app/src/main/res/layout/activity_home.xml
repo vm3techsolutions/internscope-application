@@ -46,169 +46,38 @@
         >
 
 
-        <HorizontalScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <LinearLayout
-                android:id="@+id/status2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/cv_resumes"
-                android:orientation="horizontal"
-                android:paddingVertical="10dp"
-                >
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:cardCornerRadius="5dp"
-                    app:cardElevation="6dp"
-                    app:cardUseCompatPadding="true"
-                    android:layout_gravity="center">
-
-                    <LinearLayout
-                        android:id="@+id/ProfileCom"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="5dp">
-
-                        <ImageView
-                            android:id="@+id/profile_img"
-                            android:layout_width="45dp"
-                            android:layout_height="45dp"
-                            android:padding="0dp"
-                            android:src="@drawable/user_50" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:text="@string/profile"
-                            android:textSize="16sp"
-                            android:textStyle="normal" />
-
-
-                    </LinearLayout>
-
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:cardCornerRadius="5dp"
-                    app:cardElevation="6dp"
-                    app:cardUseCompatPadding="true">
-
-                    <LinearLayout
-                        android:id="@+id/search"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="5dp">
-
-                        <TextView
-                            android:id="@+id/sappear"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/all_shadow"
-                            android:padding="10dp"
-                            android:text="30"
-                            android:textColor="@color/yellow_shade"
-                            android:textSize="20sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:text="@string/searches"
-                            android:textSize="16sp"
-                            android:textStyle="normal" />
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:cardCornerRadius="5dp"
-                    app:cardElevation="6dp"
-                    app:cardUseCompatPadding="true">
-
-                    <LinearLayout
-                        android:id="@+id/profile"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="5dp">
-
-                        <TextView
-                            android:id="@+id/recact"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/all_shadow"
-                            android:paddingHorizontal="10dp"
-                            android:paddingVertical="5dp"
-                            android:text="3"
-                            android:textColor="@color/yellow_shade"
-                            android:textSize="20sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:text="@string/recruit"
-                            android:textSize="16sp"
-                            android:textStyle="normal" />
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-            </LinearLayout>
-        </HorizontalScrollView>
-        
-       <!-- <HorizontalScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"> </HorizontalScrollView>-->
-            
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_gravity="center_horizontal"
-                android:layout_margin="5dp">
+                android:layout_gravity="center_horizontal">
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:cardCornerRadius="10dp"
                     android:background="@drawable/gradient_bg"
-                    android:elevation="4dp"
-                    android:layout_margin="5dp">
+                    android:elevation="4dp">
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="180dp"
                         android:orientation="horizontal"
                         android:layout_gravity="center"
-                        android:background="@drawable/gradient_bg"
-                        android:paddingHorizontal="5dp">
+                        android:background="@drawable/banner_app"
+                        android:paddingHorizontal="0dp">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="To Choose Your Level \n Best  Dream Career."
-                            android:textSize="20sp"
+                            android:text="To Choose Your \n Level Best \n Dream Career."
+                            android:textSize="22sp"
                             android:textStyle="bold"
                             android:textColor="@color/yellow_shade"
-                            android:layout_gravity="center"/>
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:paddingLeft="20dp"/>
 
-                        <ImageView
-                            android:layout_width="150dp"
-                            android:layout_height="150dp"
-                            android:src="@drawable/laptop"/>
+
 
                     </LinearLayout>
 
@@ -217,7 +86,459 @@
 
             </LinearLayout>
 
+        <HorizontalScrollView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:background="#F0F0F0"
+            android:scrollbars="none">
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <!-- ITEM 1 -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="20dp">
+
+                    <ImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@drawable/circle_bg"
+                        android:padding="10dp"
+                        android:src="@drawable/jobseeker"
+                        app:tint="@color/yellow_shade" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Live Jobs"
+                        android:textColor="#002F5D"
+                        android:textSize="14sp"
+                        android:layout_marginTop="8dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="520+"
+                        android:textStyle="bold"
+                        android:textColor="#FF7A00"
+                        android:textSize="20sp"
+                        android:layout_marginTop="4dp"/>
+                </LinearLayout>
+
+                <!-- Divider -->
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="40dp"
+                    android:background="#D9D9D9"
+                    android:layout_marginHorizontal="12dp" />
+
+                <!-- ITEM 2 -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="20dp">
+
+                    <ImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@drawable/circle_bg"
+                        android:padding="10dp"
+                        android:src="@drawable/jobmenu"
+                        app:tint="@color/yellow_shade"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Companies"
+                        android:textColor="#002F5D"
+                        android:textSize="14sp"
+                        android:layout_marginTop="8dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="150+"
+                        android:textStyle="bold"
+                        android:textColor="#FF7A00"
+                        android:textSize="20sp"
+                        android:layout_marginTop="4dp"/>
+                </LinearLayout>
+
+                <!-- Divider -->
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="40dp"
+                    android:background="#D9D9D9"
+                    android:layout_marginHorizontal="12dp" />
+
+                <!-- ITEM 3 -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="20dp">
+
+                    <ImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@drawable/circle_bg"
+                        android:padding="10dp"
+                        android:src="@drawable/internship"
+                        app:tint="@color/yellow_shade"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Candidates"
+                        android:textColor="#002F5D"
+                        android:textSize="14sp"
+                        android:layout_marginTop="8dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1k+"
+                        android:textStyle="bold"
+                        android:textColor="#FF7A00"
+                        android:textSize="20sp"
+                        android:layout_marginTop="4dp"/>
+                </LinearLayout>
+
+                <!-- Divider -->
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="40dp"
+                    android:background="#D9D9D9"
+                    android:layout_marginHorizontal="12dp" />
+
+                <!-- ITEM 4 -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="20dp">
+
+                    <ImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@drawable/circle_bg"
+                        android:padding="10dp"
+                        android:src="@drawable/search"
+                        app:tint="@color/yellow_shade" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="New Jobs"
+                        android:textColor="#002F5D"
+                        android:textSize="14sp"
+                        android:layout_marginTop="8dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="105+"
+                        android:textStyle="bold"
+                        android:textColor="#FF7A00"
+                        android:textSize="20sp"
+                        android:layout_marginTop="4dp"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </HorizontalScrollView>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp"
+                android:gravity="center_horizontal">
+
+                <!-- Main Title -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Working Process"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:textColor="#002F5D"
+                    android:layout_marginTop="10dp"/>
+
+                <!-- Subtitle -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Follow these steps to achieve your career goals effectively."
+                    android:textColor="#555555"
+                    android:textSize="14sp"
+                    android:layout_marginTop="6dp"
+                    android:gravity="center"/>
+
+                <!-- Steps Row -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_marginTop="30dp">
+
+                    <!-- Step 1 -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:background="@drawable/step_circle"
+                            android:gravity="center"
+                            android:text="01"
+                            android:textSize="22sp"
+                            android:textStyle="bold"
+                            android:textColor="#002F5D"/>
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Account Create"
+                            android:textStyle="bold"
+                            android:textColor="#002F5D"
+                            android:textSize="14sp"
+                            android:layout_marginTop="12dp"/>
+
+                        <TextView
+                            android:layout_width="120dp"
+                            android:layout_height="wrap_content"
+                            android:text="To create your account be confident &amp; safely."
+                            android:textColor="#555555"
+                            android:textSize="12sp"
+                            android:gravity="center"
+                            android:layout_marginTop="4dp"/>
+                    </LinearLayout>
+
+                    <!-- Line -->
+                    <View
+                        android:layout_width="40dp"
+                        android:layout_height="2dp"
+                        android:background="#FF7A00"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginHorizontal="8dp" />
+
+                    <!-- Step 2 -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+
+                        <TextView
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:background="@drawable/step_circle"
+                            android:gravity="center"
+                            android:text="02"
+                            android:textSize="22sp"
+                            android:textStyle="bold"
+                            android:textColor="#002F5D"/>
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Upload Resume"
+                            android:textStyle="bold"
+                            android:textColor="#002F5D"
+                            android:textSize="14sp"
+                            android:layout_marginTop="12dp"/>
+
+                        <TextView
+                            android:layout_width="120dp"
+                            android:layout_height="wrap_content"
+                            android:text="To upload your resume be confident &amp; safely."
+                            android:textColor="#555555"
+                            android:textSize="12sp"
+                            android:gravity="center"
+                            android:layout_marginTop="4dp"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_marginTop="30dp">
+
+
+                    <!-- Step 3 -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+
+                        <TextView
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:background="@drawable/step_circle"
+                            android:gravity="center"
+                            android:text="03"
+                            android:textSize="22sp"
+                            android:textStyle="bold"
+                            android:textColor="#002F5D"/>
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Search Jobs"
+                            android:textStyle="bold"
+                            android:textColor="#002F5D"
+                            android:textSize="14sp"
+                            android:layout_marginTop="12dp"/>
+
+                        <TextView
+                            android:layout_width="120dp"
+                            android:layout_height="wrap_content"
+                            android:text="Find the perfect job that matches your skills."
+                            android:textColor="#555555"
+                            android:textSize="12sp"
+                            android:gravity="center"
+                            android:layout_marginTop="4dp"/>
+                    </LinearLayout>
+
+                    <!-- Line -->
+                    <View
+                        android:layout_width="40dp"
+                        android:layout_height="2dp"
+                        android:background="#FF7A00"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginHorizontal="8dp" />
+
+                    <!-- Step 4 -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+
+                        <TextView
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:background="@drawable/step_circle"
+                            android:gravity="center"
+                            android:text="04"
+                            android:textSize="22sp"
+                            android:textStyle="bold"
+                            android:textColor="#002F5D"/>
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Apply for Jobs"
+                            android:textStyle="bold"
+                            android:textColor="#002F5D"
+                            android:textSize="14sp"
+                            android:layout_marginTop="12dp"/>
+
+                        <TextView
+                            android:layout_width="120dp"
+                            android:layout_height="wrap_content"
+                            android:text="Submit your application with confidence &amp; ease."
+                            android:textColor="#555555"
+                            android:textSize="12sp"
+                            android:gravity="center"
+                            android:layout_marginTop="4dp"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:paddingHorizontal="10dp">
+
+            <!-- Title -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Trending Jobs Category"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="#002F5D"
+                android:layout_marginTop="10dp" />
+
+            <!-- Subtitle -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Choose your dream job and &amp; make future bright."
+                android:textSize="14sp"
+                android:textColor="#666"
+                android:layout_marginBottom="20dp" />
+
+            <!-- FIXED WIDTH GRID -->
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:id="@+id/categoryContainer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="20dp">
+
+                    <!-- Add 10 static items -->
+                    <include layout="@layout/category_static_item" android:id="@+id/c1" />
+                    <include layout="@layout/category_static_item" android:id="@+id/c2" />
+                    <include layout="@layout/category_static_item" android:id="@+id/c3" />
+                    <include layout="@layout/category_static_item" android:id="@+id/c4" />
+                    <include layout="@layout/category_static_item" android:id="@+id/c5" />
+                    <include layout="@layout/category_static_item" android:id="@+id/c6" />
+                    <include layout="@layout/category_static_item" android:id="@+id/c7" />
+                    <include layout="@layout/category_static_item" android:id="@+id/c8" />
+                    <include layout="@layout/category_static_item" android:id="@+id/c9" />
+                    <include layout="@layout/category_static_item" android:id="@+id/c10" />
+
+                </LinearLayout>
+
+            </HorizontalScrollView>
+
+        </LinearLayout>
+
+
+
+
+
+<!--Jobs Fetching section-->
         <LinearLayout
             android:id="@+id/jobs"
             android:layout_width="match_parent"
@@ -253,14 +574,7 @@
             android:orientation="vertical"
             android:paddingBottom="10dp"
             >
-<!--            <HorizontalScrollView-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content">-->
 
-<!--            <LinearLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="match_parent"-->
-<!--                android:orientation="horizontal">-->
 
                 <LinearLayout
                     android:id="@+id/jobscroll"
@@ -302,625 +616,651 @@
 
                 </LinearLayout>
 
+        </LinearLayout>
+
+
+<!--            <androidx.cardview.widget.CardView-->
+<!--                android:id="@+id/emprg"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginHorizontal="20dp"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:layout_marginBottom="10dp"-->
+<!--                android:elevation="10dp"-->
+<!--                app:cardCornerRadius="10dp">-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:id="@+id/emplyreg"-->
+<!--                    android:text="@string/emplreg"-->
+<!--                    android:textSize="20sp"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:layout_marginBottom="20dp"-->
+<!--                    android:textColor="@color/internscope"-->
+<!--                    android:textAlignment="center"-->
+<!--                    android:paddingTop="10dp"-->
+<!--                    />-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="vertical"-->
+<!--                    android:layout_marginTop="45dp"-->
+<!--                    android:paddingBottom="10dp">-->
+
+<!--                    <LinearLayout-->
+<!--                        android:id="@+id/jobdesc1"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:orientation="horizontal">-->
+
+<!--                        <ImageView-->
+<!--                            android:id="@+id/intern1"-->
+<!--                            android:layout_width="30dp"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:contentDescription="check description"-->
+<!--                            android:paddingHorizontal="5dp"-->
+<!--                            android:src="@drawable/check" />-->
+
+<!--                        <TextView-->
+<!--                            android:id="@+id/intern1desc"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="@string/publish"-->
+<!--                            android:textSize="14sp" />-->
+
+<!--                    </LinearLayout>-->
+
+<!--                    <LinearLayout-->
+<!--                        android:id="@+id/jobdesc2"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="5dp"-->
+<!--                        android:orientation="horizontal">-->
+
+<!--                        <ImageView-->
+<!--                            android:id="@+id/intern2"-->
+<!--                            android:layout_width="30dp"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:contentDescription="check description"-->
+<!--                            android:paddingHorizontal="5dp"-->
+<!--                            android:src="@drawable/check" />-->
+
+<!--                        <TextView-->
+<!--                            android:id="@+id/intern2desc"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="@string/talentpool"-->
+<!--                            android:textSize="14sp" />-->
+
+<!--                    </LinearLayout>-->
+
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="5dp"-->
+<!--                        android:orientation="horizontal">-->
+
+<!--                        <ImageView-->
+<!--                            android:id="@+id/intern3"-->
+<!--                            android:layout_width="30dp"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:contentDescription="check description"-->
+<!--                            android:paddingHorizontal="5dp"-->
+<!--                            android:src="@drawable/check" />-->
+
+<!--                        <TextView-->
+<!--                            android:id="@+id/intern3desc"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="@string/recruitment"-->
+<!--                            android:textSize="14sp" />-->
+
+<!--                    </LinearLayout>-->
+
+<!--                    <LinearLayout-->
+<!--                        android:id="@+id/jobdesc4"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="5dp"-->
+<!--                        android:orientation="horizontal">-->
+
+<!--                        <ImageView-->
+<!--                            android:id="@+id/intern4"-->
+<!--                            android:layout_width="30dp"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:contentDescription="check description"-->
+<!--                            android:paddingHorizontal="5dp"-->
+<!--                            android:src="@drawable/check" />-->
+
+<!--                        <TextView-->
+<!--                            android:id="@+id/intern4desc"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="@string/brand"-->
+<!--                            android:textSize="14sp" />-->
+
+<!--                    </LinearLayout>-->
+
+
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:orientation="horizontal"-->
+<!--                        android:paddingLeft="20dp">-->
+
+<!--                        <Button-->
+<!--                            android:id="@+id/signinbtn"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginTop="30dp"-->
+<!--                            android:backgroundTint="@color/internscope"-->
+<!--                            android:paddingHorizontal="20dp"-->
+<!--                            android:text="Sign In"-->
+<!--                            android:layout_gravity="center"/>-->
+
+<!--                        <ImageView-->
+<!--                            android:id="@+id/signInimg"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="130dp"-->
+<!--                            android:src="@drawable/signin"-->
+<!--                            android:layout_weight="1"/>-->
+
+<!--                    </LinearLayout>-->
+
+<!--                </LinearLayout>-->
+
+<!--            </androidx.cardview.widget.CardView>-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:id="@+id/coursection"-->
+<!--            android:orientation="horizontal">-->
+
+<!--            <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:id="@+id/coursectiontext"-->
+<!--            android:text="Courses you might like"-->
+<!--            android:textAlignment="textStart"-->
+<!--            android:textSize="20sp"-->
+<!--            android:textStyle="bold"-->
+<!--            android:paddingLeft="20dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:textColor="@color/yellow_shade"-->
+<!--            />-->
+
+<!--            <Button-->
+<!--                android:id="@+id/viewjob2"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:backgroundTint="@color/internscope"-->
+<!--                android:text="view all"-->
+<!--                android:textSize="16sp" />-->
+
+<!--        </LinearLayout>-->
+
+<!--        &lt;!&ndash;Courses Section&ndash;&gt;-->
+<!--        <LinearLayout-->
+<!--            android:id="@+id/course1"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="vertical"-->
+<!--            android:paddingBottom="10dp"-->
+<!--            >-->
+<!--            <HorizontalScrollView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content">-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="horizontal">-->
+
+<!--                    <androidx.cardview.widget.CardView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_margin="10dp"-->
+<!--                        android:elevation="15dp"-->
+<!--                        app:cardCornerRadius="6dp">-->
+
+<!--                        <LinearLayout-->
+<!--                            android:id="@+id/crs1"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:gravity="center"-->
+<!--                            android:orientation="horizontal"-->
+<!--                            android:paddingVertical="10dp"-->
+<!--                            android:background="@drawable/all_shadow">-->
+
+<!--                            <ImageView-->
+<!--                                android:layout_width="150dp"-->
+<!--                                android:layout_height="76dp"-->
+<!--                                android:contentDescription="@string/logo"-->
+<!--                                android:src="@drawable/flower" />-->
+
+<!--                            <LinearLayout-->
+<!--                                android:id="@+id/crs2"-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:gravity="center"-->
+<!--                                android:orientation="vertical"-->
+<!--                                android:paddingVertical="20dp"-->
+<!--                                android:paddingRight="10dp">-->
+
+<!--                                <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:text="@string/course"-->
+<!--                                    android:textSize="16sp"-->
+<!--                                    android:textStyle="bold" />-->
+
+<!--                                <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:text="@string/course_name"-->
+<!--                                    android:textSize="16sp"-->
+<!--                                    android:textStyle="normal" />-->
+
+
+<!--                            </LinearLayout>-->
+
+<!--                        </LinearLayout>-->
+
+<!--                    </androidx.cardview.widget.CardView>-->
+
+
+<!--                </LinearLayout>-->
+
 <!--            </HorizontalScrollView>-->
 
-        </LinearLayout>
-
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/emprg"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:elevation="10dp"
-                app:cardCornerRadius="10dp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/emplyreg"
-                    android:text="@string/emplreg"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:layout_marginBottom="20dp"
-                    android:textColor="@color/internscope"
-                    android:textAlignment="center"
-                    android:paddingTop="10dp"
-                    />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginTop="45dp"
-                    android:paddingBottom="10dp">
-
-                    <LinearLayout
-                        android:id="@+id/jobdesc1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:id="@+id/intern1"
-                            android:layout_width="30dp"
-                            android:layout_height="wrap_content"
-                            android:contentDescription="check description"
-                            android:paddingHorizontal="5dp"
-                            android:src="@drawable/check" />
-
-                        <TextView
-                            android:id="@+id/intern1desc"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/publish"
-                            android:textSize="14sp" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/jobdesc2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:id="@+id/intern2"
-                            android:layout_width="30dp"
-                            android:layout_height="wrap_content"
-                            android:contentDescription="check description"
-                            android:paddingHorizontal="5dp"
-                            android:src="@drawable/check" />
-
-                        <TextView
-                            android:id="@+id/intern2desc"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/talentpool"
-                            android:textSize="14sp" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:id="@+id/intern3"
-                            android:layout_width="30dp"
-                            android:layout_height="wrap_content"
-                            android:contentDescription="check description"
-                            android:paddingHorizontal="5dp"
-                            android:src="@drawable/check" />
-
-                        <TextView
-                            android:id="@+id/intern3desc"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/recruitment"
-                            android:textSize="14sp" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/jobdesc4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:id="@+id/intern4"
-                            android:layout_width="30dp"
-                            android:layout_height="wrap_content"
-                            android:contentDescription="check description"
-                            android:paddingHorizontal="5dp"
-                            android:src="@drawable/check" />
-
-                        <TextView
-                            android:id="@+id/intern4desc"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/brand"
-                            android:textSize="14sp" />
-
-                    </LinearLayout>
-
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:paddingLeft="20dp">
-
-                        <Button
-                            android:id="@+id/signinbtn"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="30dp"
-                            android:backgroundTint="@color/internscope"
-                            android:paddingHorizontal="20dp"
-                            android:text="Sign In"
-                            android:layout_gravity="center"/>
-
-                        <ImageView
-                            android:id="@+id/signInimg"
-                            android:layout_width="match_parent"
-                            android:layout_height="130dp"
-                            android:src="@drawable/signin"
-                            android:layout_weight="1"/>
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/coursection"
-            android:orientation="horizontal">
-
-            <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/coursectiontext"
-            android:text="Courses you might like"
-            android:textAlignment="textStart"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:paddingLeft="20dp"
-            android:layout_weight="1"
-            android:textColor="@color/yellow_shade"
-            />
-
-            <Button
-                android:id="@+id/viewjob2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/internscope"
-                android:text="view all"
-                android:textSize="16sp" />
-
-        </LinearLayout>
-
-        <!--Courses Section-->
-        <LinearLayout
-            android:id="@+id/course1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingBottom="10dp"
-            >
-            <HorizontalScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:elevation="15dp"
-                        app:cardCornerRadius="6dp">
-
-                        <LinearLayout
-                            android:id="@+id/crs1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:orientation="horizontal"
-                            android:paddingVertical="10dp"
-                            android:background="@drawable/all_shadow">
-
-                            <ImageView
-                                android:layout_width="150dp"
-                                android:layout_height="76dp"
-                                android:contentDescription="@string/logo"
-                                android:src="@drawable/flower" />
-
-                            <LinearLayout
-                                android:id="@+id/crs2"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:orientation="vertical"
-                                android:paddingVertical="20dp"
-                                android:paddingRight="10dp">
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="@string/course"
-                                    android:textSize="16sp"
-                                    android:textStyle="bold" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="@string/course_name"
-                                    android:textSize="16sp"
-                                    android:textStyle="normal" />
-
-
-                            </LinearLayout>
-
-                        </LinearLayout>
-
-                    </androidx.cardview.widget.CardView>
-
-
-                </LinearLayout>
-
-            </HorizontalScrollView>
-
-        </LinearLayout>
-
-        <!--Register For Training-->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/regtrain"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:layout_gravity="center"
-            >
-
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/empltrain"
-                android:text="@string/regtrain"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:layout_marginBottom="20dp"
-                android:textColor="@color/internscope"
-                android:gravity="center_horizontal"
-                />
-
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/emptrain"
-                android:layout_marginTop="10dp"
-                app:cardCornerRadius="10dp"
-                android:elevation="10dp"
-                android:padding="20dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginHorizontal="5dp"
-                >
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:paddingTop="10dp">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/coursedesc1"
-                        android:orientation="horizontal"
-                        android:paddingHorizontal="15dp"
-                        android:paddingLeft="15dp"
-                        >
-
-                        <ImageView
-                            android:layout_width="30dp"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/courseintern1"
-                            android:src="@drawable/check"
-                            android:contentDescription="check description"
-                            android:paddingHorizontal="5dp"
-                            />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/courseintern1desc"
-                            android:text="@string/industry"
-                            android:textSize="14sp"/>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/coursedesc2"
-                        android:orientation="horizontal"
-                        android:paddingHorizontal="20dp"
-                        android:layout_marginTop="5dp"
-                        >
-
-                        <ImageView
-                            android:layout_width="30dp"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/courseintern2"
-                            android:src="@drawable/check"
-                            android:contentDescription="check description"
-                            android:paddingHorizontal="5dp"
-                            />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/courseintern2desc"
-                            android:text="@string/growcareer"
-                            android:textSize="14sp"/>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/coursedesc3"
-                        android:orientation="horizontal"
-                        android:paddingHorizontal="20dp"
-                        android:layout_marginTop="5dp">
-
-                        <ImageView
-                            android:layout_width="30dp"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/courseintern3"
-                            android:src="@drawable/check"
-                            android:contentDescription="check description"
-                            android:paddingHorizontal="5dp"
-                            />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/courseintern3desc"
-                            android:text="@string/liveproject"
-                            android:textSize="14sp"/>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/coursedesc4"
-                        android:orientation="horizontal"
-                        android:paddingHorizontal="20dp"
-                        android:layout_marginTop="5dp">
-
-                        <ImageView
-                            android:layout_width="30dp"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/courseintern4"
-                            android:src="@drawable/check"
-                            android:contentDescription="check description"
-                            android:paddingHorizontal="5dp"
-                            />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/courseintern4desc"
-                            android:text="@string/appprocess"
-                            android:textSize="14sp"/>
-
-                    </LinearLayout>
-
-
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:paddingLeft="30dp"
-                        >
-
-                        <Button
-                            android:id="@+id/enrollbtn"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:backgroundTint="@color/internscope"
-                            android:text="Enroll Now"
-                            android:paddingHorizontal="20dp"
-                            android:layout_marginTop="30dp"
-                            />
-
-                        <Space
-                            android:layout_width="20dp"
-                            android:layout_height="wrap_content"/>
-
-                        <ImageView
-                            android:id="@+id/enrollmntimg"
-                            android:layout_width="220dp"
-                            android:layout_height="120dp"
-                            android:src="@drawable/enroll"
-                            />
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-        </LinearLayout>
-
-        <!--Recommend Job-->
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/jobready"
-            android:layout_marginTop="20dp"
-            >
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/jobcard"
-                android:elevation="10dp"
-                app:cardCornerRadius="10dp"
-                android:layout_marginBottom="20dp">
-                
-                
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:background="@drawable/gradient_bg">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/jobredysec"
-                android:orientation="horizontal"
-                android:layout_marginHorizontal="20dp"
-                >
-
-                <ImageView
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
-                    android:id="@+id/jobexam"
-                    android:src="@drawable/exampad"
-                    />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/beready"
-                    android:text="@string/beready"
-                    android:textStyle="bold"
-                    android:textSize="18sp"
-                    android:textColor="@color/yellow_shade"
-                    />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/readycontent"
-                        android:text="@string/testyourself"
-                        android:textSize="14sp"
-                        android:textAlignment="center"
-                        />
-
-                </LinearLayout>
-
-
-            </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/jobreadysec2"
-                    android:orientation="horizontal"
-                    android:layout_gravity="right"
-                    >
-
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/browse"
-                        android:text="Browse"
-                        android:backgroundTint="@color/yellow_shade"
-                        android:layout_marginRight="30dp"
-                        android:layout_marginTop="30dp"
-                        />
-                    
-                    <ImageView
-                        android:layout_width="120dp"
-                        android:layout_height="120dp"
-                        android:id="@+id/jobreadyimg"
-                        android:src="@drawable/pencilpng"
-                        />
-
-                  </LinearLayout>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-        </LinearLayout>
+<!--        </LinearLayout>-->
+
+<!--        &lt;!&ndash;Register For Training&ndash;&gt;-->
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:id="@+id/regtrain"-->
+<!--            android:gravity="center"-->
+<!--            android:orientation="vertical"-->
+<!--            android:layout_gravity="center"-->
+<!--            >-->
+
+
+<!--            <TextView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:id="@+id/empltrain"-->
+<!--                android:text="@string/regtrain"-->
+<!--                android:textSize="20sp"-->
+<!--                android:textStyle="bold"-->
+<!--                android:layout_marginBottom="20dp"-->
+<!--                android:textColor="@color/internscope"-->
+<!--                android:gravity="center_horizontal"-->
+<!--                />-->
+
+
+<!--            <androidx.cardview.widget.CardView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:id="@+id/emptrain"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                app:cardCornerRadius="10dp"-->
+<!--                android:elevation="10dp"-->
+<!--                android:padding="20dp"-->
+<!--                android:layout_marginBottom="10dp"-->
+<!--                android:layout_marginHorizontal="5dp"-->
+<!--                >-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="vertical"-->
+<!--                    android:paddingTop="10dp">-->
+
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:id="@+id/coursedesc1"-->
+<!--                        android:orientation="horizontal"-->
+<!--                        android:paddingHorizontal="15dp"-->
+<!--                        android:paddingLeft="15dp"-->
+<!--                        >-->
+
+<!--                        <ImageView-->
+<!--                            android:layout_width="30dp"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:id="@+id/courseintern1"-->
+<!--                            android:src="@drawable/check"-->
+<!--                            android:contentDescription="check description"-->
+<!--                            android:paddingHorizontal="5dp"-->
+<!--                            />-->
+
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:id="@+id/courseintern1desc"-->
+<!--                            android:text="@string/industry"-->
+<!--                            android:textSize="14sp"/>-->
+
+<!--                    </LinearLayout>-->
+
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:id="@+id/coursedesc2"-->
+<!--                        android:orientation="horizontal"-->
+<!--                        android:paddingHorizontal="20dp"-->
+<!--                        android:layout_marginTop="5dp"-->
+<!--                        >-->
+
+<!--                        <ImageView-->
+<!--                            android:layout_width="30dp"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:id="@+id/courseintern2"-->
+<!--                            android:src="@drawable/check"-->
+<!--                            android:contentDescription="check description"-->
+<!--                            android:paddingHorizontal="5dp"-->
+<!--                            />-->
+
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:id="@+id/courseintern2desc"-->
+<!--                            android:text="@string/growcareer"-->
+<!--                            android:textSize="14sp"/>-->
+
+<!--                    </LinearLayout>-->
+
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:id="@+id/coursedesc3"-->
+<!--                        android:orientation="horizontal"-->
+<!--                        android:paddingHorizontal="20dp"-->
+<!--                        android:layout_marginTop="5dp">-->
+
+<!--                        <ImageView-->
+<!--                            android:layout_width="30dp"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:id="@+id/courseintern3"-->
+<!--                            android:src="@drawable/check"-->
+<!--                            android:contentDescription="check description"-->
+<!--                            android:paddingHorizontal="5dp"-->
+<!--                            />-->
+
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:id="@+id/courseintern3desc"-->
+<!--                            android:text="@string/liveproject"-->
+<!--                            android:textSize="14sp"/>-->
+
+<!--                    </LinearLayout>-->
+
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:id="@+id/coursedesc4"-->
+<!--                        android:orientation="horizontal"-->
+<!--                        android:paddingHorizontal="20dp"-->
+<!--                        android:layout_marginTop="5dp">-->
+
+<!--                        <ImageView-->
+<!--                            android:layout_width="30dp"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:id="@+id/courseintern4"-->
+<!--                            android:src="@drawable/check"-->
+<!--                            android:contentDescription="check description"-->
+<!--                            android:paddingHorizontal="5dp"-->
+<!--                            />-->
+
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:id="@+id/courseintern4desc"-->
+<!--                            android:text="@string/appprocess"-->
+<!--                            android:textSize="14sp"/>-->
+
+<!--                    </LinearLayout>-->
+
+
+
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:orientation="horizontal"-->
+<!--                        android:paddingLeft="30dp"-->
+<!--                        >-->
+
+<!--                        <Button-->
+<!--                            android:id="@+id/enrollbtn"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:backgroundTint="@color/internscope"-->
+<!--                            android:text="Enroll Now"-->
+<!--                            android:paddingHorizontal="20dp"-->
+<!--                            android:layout_marginTop="30dp"-->
+<!--                            />-->
+
+<!--                        <Space-->
+<!--                            android:layout_width="20dp"-->
+<!--                            android:layout_height="wrap_content"/>-->
+
+<!--                        <ImageView-->
+<!--                            android:id="@+id/enrollmntimg"-->
+<!--                            android:layout_width="220dp"-->
+<!--                            android:layout_height="120dp"-->
+<!--                            android:src="@drawable/enroll"-->
+<!--                            />-->
+
+<!--                    </LinearLayout>-->
+
+<!--                </LinearLayout>-->
+
+<!--            </androidx.cardview.widget.CardView>-->
+
+<!--        </LinearLayout>-->
+
+<!--        &lt;!&ndash;Recommend Job&ndash;&gt;-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:id="@+id/jobready"-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            >-->
+
+<!--            <androidx.cardview.widget.CardView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:id="@+id/jobcard"-->
+<!--                android:elevation="10dp"-->
+<!--                app:cardCornerRadius="10dp"-->
+<!--                android:layout_marginBottom="20dp">-->
+<!--                -->
+<!--                -->
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="vertical"-->
+<!--                    android:background="@drawable/gradient_bg">-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:id="@+id/jobredysec"-->
+<!--                android:orientation="horizontal"-->
+<!--                android:layout_marginHorizontal="20dp"-->
+<!--                >-->
+
+<!--                <ImageView-->
+<!--                    android:layout_width="120dp"-->
+<!--                    android:layout_height="120dp"-->
+<!--                    android:id="@+id/jobexam"-->
+<!--                    android:src="@drawable/exampad"-->
+<!--                    />-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="vertical">-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:id="@+id/beready"-->
+<!--                    android:text="@string/beready"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:textSize="18sp"-->
+<!--                    android:textColor="@color/yellow_shade"-->
+<!--                    />-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:id="@+id/readycontent"-->
+<!--                        android:text="@string/testyourself"-->
+<!--                        android:textSize="14sp"-->
+<!--                        android:textAlignment="center"-->
+<!--                        />-->
+
+<!--                </LinearLayout>-->
+
+
+<!--            </LinearLayout>-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:id="@+id/jobreadysec2"-->
+<!--                    android:orientation="horizontal"-->
+<!--                    android:layout_gravity="right"-->
+<!--                    >-->
+
+<!--                    <Button-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:id="@+id/browse"-->
+<!--                        android:text="Browse"-->
+<!--                        android:backgroundTint="@color/yellow_shade"-->
+<!--                        android:layout_marginRight="30dp"-->
+<!--                        android:layout_marginTop="30dp"-->
+<!--                        />-->
+<!--                    -->
+<!--                    <ImageView-->
+<!--                        android:layout_width="120dp"-->
+<!--                        android:layout_height="120dp"-->
+<!--                        android:id="@+id/jobreadyimg"-->
+<!--                        android:src="@drawable/pencilpng"-->
+<!--                        />-->
+
+<!--                  </LinearLayout>-->
+<!--                </LinearLayout>-->
+<!--            </androidx.cardview.widget.CardView>-->
+
+<!--        </LinearLayout>-->
 
         <!--Testimonial Section-->
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:id="@+id/testimonial"-->
+<!--            android:orientation="vertical"-->
+<!--            android:layout_margin="10dp"-->
+<!--            >-->
+
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:id="@+id/review"-->
+<!--            android:text="Testimonials"-->
+<!--            android:textSize="20sp"-->
+<!--            android:textColor="@color/internscope"-->
+<!--            android:textStyle="bold"-->
+<!--            android:gravity="center"-->
+<!--            />-->
+
+<!--        <androidx.cardview.widget.CardView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:id="@+id/clienttest"-->
+<!--            android:elevation="10dp"-->
+<!--            app:cardCornerRadius="10dp"-->
+<!--            android:layout_margin="20dp"-->
+<!--            >-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="vertical"-->
+<!--                android:padding="20dp"-->
+<!--                android:id="@+id/clientdata"-->
+<!--                android:layout_gravity="center"-->
+<!--                >-->
+
+<!--                <ImageView-->
+<!--                    android:layout_width="70dp"-->
+<!--                    android:layout_height="70dp"-->
+<!--                    android:id="@+id/clientimg"-->
+<!--                    android:src="@drawable/user_94"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    />-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:id="@+id/clientname"-->
+<!--                    android:text="Name"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:textSize="15sp"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    />-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:id="@+id/clienttestimonials"-->
+<!--                    android:textSize="15sp"-->
+<!--                     android:text="@string/testimonials"-->
+<!--                    android:gravity="center"-->
+<!--                    />-->
+
+<!--            </LinearLayout>-->
+
+<!--        </androidx.cardview.widget.CardView>-->
+
+<!--       </LinearLayout>-->
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/testimonial"
             android:orientation="vertical"
-            android:layout_margin="10dp"
-            >
+            android:layout_margin="10dp">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/review"
-            android:text="Testimonials"
-            android:textSize="20sp"
-            android:textColor="@color/internscope"
-            android:textStyle="bold"
-            android:gravity="center"
-            />
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/clienttest"
-            android:elevation="10dp"
-            app:cardCornerRadius="10dp"
-            android:layout_margin="20dp"
-            >
-
-            <LinearLayout
+            <TextView
+                android:id="@+id/review"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="20dp"
-                android:id="@+id/clientdata"
-                android:layout_gravity="center"
-                >
+                android:text="Testimonials"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/internscope"
+                android:gravity="center" />
 
-                <ImageView
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:id="@+id/clientimg"
-                    android:src="@drawable/user_94"
-                    android:layout_gravity="center"
-                    />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvTestimonials"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:padding="8dp"
+                android:clipToPadding="false"
+                android:scrollbars="none" />
+        </LinearLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/clientname"
-                    android:text="Name"
-                    android:textStyle="bold"
-                    android:textSize="15sp"
-                    android:layout_gravity="center"
-                    />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/clienttestimonials"
-                    android:textSize="15sp"
-                     android:text="@string/testimonials"
-                    android:gravity="center"
-                    />
-
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
-
-       </LinearLayout>
 
     </LinearLayout>
 

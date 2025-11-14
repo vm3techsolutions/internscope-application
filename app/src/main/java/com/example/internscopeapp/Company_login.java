@@ -2,9 +2,11 @@ package com.example.internscopeapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,9 +39,28 @@ public class Company_login extends AppCompatActivity {
         userlogin = findViewById(R.id.loginbtn);
         forgot_pass = findViewById(R.id.forgot_pass);
         signup = findViewById(R.id.signup);
+        ImageView togglePassword = findViewById(R.id.togglePasswordVisibility);
+
+        final boolean[] isPasswordVisible = {false};
+
+        togglePassword.setOnClickListener(v -> {
+            if (isPasswordVisible[0]) {
+                // Hide password
+                userPass.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                togglePassword.setImageResource(R.drawable.close_eye);
+            } else {
+                // Show password
+                userPass.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                togglePassword.setImageResource(R.drawable.view);
+            }
+
+            // Move cursor to end of text after toggling
+            userPass.setSelection(userPass.getText().length());
+            isPasswordVisible[0] = !isPasswordVisible[0];
+        });
 
         // Initialize SessionManager
-        sessionManager = new SessionManager(this);
+        sessionManager = new  SessionManager(this);
 
         // Change screen heading dynamically if needed (optional)
         setTitle(userType.equals("user") ? "Candidate Login" : "Company Login");
@@ -58,7 +79,7 @@ public class Company_login extends AppCompatActivity {
 
         // Forgot password click
         forgot_pass.setOnClickListener(v -> {
-            startActivity(new Intent(Company_login.this, forgotPass.class));
+            startActivity(new Intent(Company_login.this, ForgotPass.class));
         });
 
         // Signup click

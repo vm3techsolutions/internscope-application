@@ -7,3 +7,24 @@ public class UploadResponse {
         return url;
     }
 }
+
+//package com.example.internscopeapp;
+//
+//import com.google.gson.annotations.SerializedName;
+//
+//public class UploadResponse {
+//
+//    @SerializedName("signedUrl")
+//    private String signedUrl;
+//
+//    @SerializedName("s3Key")
+//    private String s3Key;
+//
+//    public String getSignedUrl() {
+//        return signedUrl;
+//    }
+//
+//    public String getS3Key() {
+//        return s3Key;
+//    }
+//}

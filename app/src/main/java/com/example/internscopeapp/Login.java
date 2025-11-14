@@ -103,10 +103,14 @@ package com.example.internscopeapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.text.InputType;
+import android.widget.ImageView;
+
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -137,9 +141,28 @@ public class Login extends AppCompatActivity {
         userlogin = findViewById(R.id.loginbtn);
         forgot_pass = findViewById(R.id.forgot_pass);
         signup = findViewById(R.id.signup);
+        ImageView togglePassword = findViewById(R.id.togglePasswordVisibility);
+
+        final boolean[] isPasswordVisible = {false};
+
+        togglePassword.setOnClickListener(v -> {
+            if (isPasswordVisible[0]) {
+                // Hide password
+                userPass.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                togglePassword.setImageResource(R.drawable.close_eye);
+            } else {
+                // Show password
+                userPass.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                togglePassword.setImageResource(R.drawable.view);
+            }
+
+            // Move cursor to end of text after toggling
+            userPass.setSelection(userPass.getText().length());
+            isPasswordVisible[0] = !isPasswordVisible[0];
+        });
 
         // Initialize SessionManager
-        sessionManager = new SessionManager(this);
+        sessionManager = new  SessionManager(this);
 
         // Change screen heading dynamically if needed (optional)
        // setTitle(userType.equals("company") ? "Company Login" : "Candidate Login");
@@ -158,7 +181,7 @@ public class Login extends AppCompatActivity {
 
         // Forgot password click
         forgot_pass.setOnClickListener(v -> {
-            startActivity(new Intent(Login.this, forgotPass.class));
+            startActivity(new Intent(Login.this, ForgotPass.class));
         });
 
         // Signup click
@@ -170,16 +193,21 @@ public class Login extends AppCompatActivity {
     private void loginUser(String email, String password) {
         ApiService apiService = RetrofitClient.getClient().create(ApiService.class);
 
+        Call<LoginResponse> call = null;
+
         LoginRequest loginRequest = new LoginRequest(email, password);
 
         // Dynamically choose API call based on user type
-        Call<LoginResponse> call;
+
+
         if (userType.equals("company")) {
             call = apiService.loginCompany(loginRequest);
+
         } else {
             call = apiService.loginUser(loginRequest);
         }
 
+        Log.d("API_URL", call.request().url().toString());
         call.enqueue(new Callback<LoginResponse>() {
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {

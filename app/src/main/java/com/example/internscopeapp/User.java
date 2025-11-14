@@ -37,6 +37,8 @@ public class User {
     @SerializedName("language")
     private String language;
 
+    @SerializedName("resume")
+    private String resume;
     @SerializedName("gender")
     private String gender;
 
@@ -56,5 +58,6 @@ public class User {
     public String getQualification() { return qualification; }
     public String getLanguage() { return language; }
     public String getGender() { return gender; }
+    public String getResume(){return  resume;}
     public String getDescription() { return description; }
 }

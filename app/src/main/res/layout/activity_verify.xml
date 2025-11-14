@@ -1,67 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Verify"
-    android:orientation="vertical"
-    android:background="@color/white">
+    android:background="@color/white"
+    android:fillViewport="true">
 
-    <ImageView
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:src="@drawable/verification"
-        android:layout_marginTop="30dp"
-        android:layout_gravity="center_horizontal"
-        />
-
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Verification"
-        android:gravity="center_horizontal"
-        android:textStyle="bold"
-        android:textSize="32sp"
-        android:textColor="@color/black"
-        />
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="24dp">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/verifications"
-        android:textColor="@color/black"
-        android:gravity="center_horizontal"
-        android:textSize="17sp"
-        android:layout_marginTop="20dp"
-        />
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Reset Your Password"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:textColor="@color/internscope"
+            android:layout_marginBottom="30dp" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="18"
-        android:layout_marginHorizontal="30dp"
-        android:background="@drawable/shadow"
-        android:layout_marginTop="30dp"
-        android:paddingVertical="15dp"
-        android:textColorHint="@color/internscope"
-        android:hint="Verification Code"
-        android:textSize="16sp"
-        android:paddingLeft="20dp"
-        android:layout_gravity="center"
-        />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="New Password*"
+            android:textSize="16sp"
+            android:textColor="@color/internscope"
+            android:layout_marginBottom="8dp" />
 
-    <Button
-        android:id="@+id/verify"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:backgroundTint="@color/internscope"
-        android:text="Verify"
-        android:textSize="18sp"
-        android:textColor="@color/white"
-        android:layout_marginTop="20dp"
-        android:textAllCaps="false"/>
+        <EditText
+            android:id="@+id/etNewPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter new password"
+            android:inputType="textPassword"
+            android:padding="14dp"
+            android:background="@drawable/shadow"
+            android:textSize="16sp"
+            android:layout_marginBottom="20dp" />
 
-</LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Confirm Password*"
+            android:textSize="16sp"
+            android:textColor="@color/internscope"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:id="@+id/etConfirmPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Confirm new password"
+            android:inputType="textPassword"
+            android:padding="14dp"
+            android:background="@drawable/shadow"
+            android:textSize="16sp"
+            android:layout_marginBottom="30dp" />
+
+        <Button
+            android:id="@+id/btnResetPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Reset Password"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/yellow_shade"
+            android:paddingVertical="14dp"
+            android:layout_marginBottom="25dp"
+            android:layout_marginTop="10dp" />
+
+        <TextView
+            android:id="@+id/tvBackToLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Go back to Login"
+            android:textSize="16sp"
+            android:textColor="@color/internscope"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp" />
+
+    </LinearLayout>
+</ScrollView>
