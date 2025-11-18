@@ -1,8 +1,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:padding="12dp"
     android:layout_marginBottom="10dp"
-    android:background="@drawable/bg_cart_card"
+    android:background="@color/white"
     android:elevation="3dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -26,12 +27,23 @@
         android:stretchColumns="1">
 
         <TableRow>
-            <TextView android:text="Unit Price:" android:textColor="@color/internscope" />
-            <TextView android:id="@+id/tvUnitPrice" android:text="₹0.00" android:textStyle="bold" />
+
+            <TextView
+                android:text="Unit Price:"
+                android:textColor="@color/internscope" />
+
+            <TextView
+                android:id="@+id/tvUnitPrice"
+                android:text="₹0.00"
+                android:textStyle="bold" />
         </TableRow>
 
         <TableRow>
-            <TextView android:text="Quantity:" android:textColor="@color/internscope" />
+
+            <TextView
+                android:text="Quantity:"
+                android:textColor="@color/internscope" />
+
             <LinearLayout
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
@@ -39,14 +51,13 @@
                 android:layout_height="wrap_content">
 
                 <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
                     android:id="@+id/btnDecrease"
                     android:src="@android:drawable/ic_delete"
-                    android:backgroundTintMode="multiply"
-                    android:backgroundTint="@color/internscope"
                     android:contentDescription="Decrease"
-                    android:clickable="true"/>
+                    android:clickable="true"
+                    app:tint="#D0EF8338" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -55,16 +66,16 @@
                     android:text="1"
                     android:textSize="18sp"
                     android:layout_marginHorizontal="8dp"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
                 <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/btnIncrease"
                     android:src="@android:drawable/ic_menu_add"
+                    android:background="#00FFFFFF"
                     android:contentDescription="Increase"
-                    android:backgroundTint="@color/yellow_shade"
-                    android:paddingVertical="10dp"/>
+                    app:tint="@color/yellow_shade" />
             </LinearLayout>
         </TableRow>
 

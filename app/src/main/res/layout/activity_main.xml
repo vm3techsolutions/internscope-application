@@ -9,7 +9,7 @@
     android:layout_height="match_parent"
     android:textAlignment="center"
     android:background="@color/white"
-    tools:context=".MainActivity"
+    tools:context="com.interns.internscopeapp.MainActivity"
     android:orientation="vertical">
 
     <TextView

@@ -5,14 +5,14 @@ plugins {
 }
 
 android {
-    namespace = "com.example.internscopeapp"
+    namespace = "com.interns.internscopeapp"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.internscopeapp"
+        applicationId = "com.interns.internscopeapp"
         minSdk = 26
-        targetSdk = 34
-        versionCode = 1
+        targetSdk = 35
+        versionCode = 6
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"

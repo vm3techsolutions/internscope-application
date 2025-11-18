@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.internscopeapp">
+    package="com.interns.internscopeapp">
 
     <uses-feature
         android:name="android.hardware.telephony"
@@ -27,34 +27,34 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".CartActivity"
+            android:name="com.interns.internscopeapp.CartActivity"
             android:exported="false" />
         <activity
-            android:name=".EditJobActivity"
+            android:name="com.interns.internscopeapp.EditJobActivity"
             android:exported="false" />
         <activity
-            android:name=".UserDashboard"
+            android:name="com.interns.internscopeapp.UserDashboard"
             android:exported="false" />
         <activity
-            android:name=".CompanyDashboard"
+            android:name="com.interns.internscopeapp.CompanyDashboard"
             android:exported="false" />
         <activity
-            android:name=".CompanyEditProfile"
+            android:name="com.interns.internscopeapp.CompanyEditProfile"
             android:exported="false" />
         <activity
-            android:name=".CompanyProfile"
+            android:name="com.interns.internscopeapp.CompanyProfile"
             android:exported="false" />
         <activity
-            android:name=".CompanySignup"
+            android:name="com.interns.internscopeapp.CompanySignup"
             android:exported="false" />
         <activity
-            android:name=".Company_login"
+            android:name="com.interns.internscopeapp.Company_login"
             android:exported="false" />
         <activity
-            android:name=".CheckoutActivity"
+            android:name="com.interns.internscopeapp.CheckoutActivity"
             android:exported="false" />
         <activity
-            android:name=".PaymentActivity"
+            android:name="com.interns.internscopeapp.PaymentActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -68,7 +68,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".EditProfiles"
+            android:name="com.interns.internscopeapp.EditProfiles"
             android:exported="false" />
         <!--
         <activity
@@ -78,40 +78,40 @@
             android:theme="@style/Theme.InternscopeApp.NoActionBar" />
         -->
         <activity
-            android:name=".PostJob"
+            android:name="com.interns.internscopeapp.PostJob"
             android:exported="false" />
         <activity
-            android:name=".Packages"
+            android:name="com.interns.internscopeapp.Packages"
             android:exported="false" />
         <activity
-            android:name=".Subscription"
+            android:name="com.interns.internscopeapp.Subscription"
             android:exported="false" />
         <activity
-            android:name=".Profile"
+            android:name="com.interns.internscopeapp.Profile"
             android:exported="false" />
         <activity
-            android:name=".Jobs"
+            android:name="com.interns.internscopeapp.Jobs"
             android:exported="false" />
         <activity
-            android:name=".JobDetailActivity"
+            android:name="com.interns.internscopeapp.JobDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".ApplyJobActivity"
+            android:name="com.interns.internscopeapp.ApplyJobActivity"
             android:exported="false" />
         <activity
-            android:name=".Opportunity"
+            android:name="com.interns.internscopeapp.Opportunity"
             android:exported="false" />
         <activity
-            android:name=".Courses"
+            android:name="com.interns.internscopeapp.Courses"
             android:exported="false" />
         <activity
-            android:name=".Home"
+            android:name="com.interns.internscopeapp.Home"
             android:exported="false" />
         <activity
-            android:name=".Alert"
+            android:name="com.interns.internscopeapp.Alert"
             android:exported="false" />
 
-        <activity android:name=".Verify"
+        <activity android:name="com.interns.internscopeapp.Verify"
             android:exported="true">
             <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
@@ -124,18 +124,18 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SignUp"
+            android:name="com.interns.internscopeapp.SignUp"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".ForgotPass"
+            android:name="com.interns.internscopeapp.ForgotPass"
             android:exported="false" />
         <activity
-            android:name=".Login"
+            android:name="com.interns.internscopeapp.Login"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".MainActivity"
+            android:name="com.interns.internscopeapp.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

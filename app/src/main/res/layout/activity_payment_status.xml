@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:background="@color/white"
     android:padding="24dp"
-    tools:context=".PaymentStatusActivity">
+    tools:context="com.interns.internscopeapp.PaymentStatusActivity">
 
     <!-- Status Icon -->
     <ImageView

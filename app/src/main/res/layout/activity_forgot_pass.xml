@@ -50,7 +50,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:backgroundTint="@color/yellow_shade"
-        android:text="Send Code"
+        android:text="Send Resent Link"
         android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"

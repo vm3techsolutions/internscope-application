@@ -38,7 +38,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:589584469180:android:dcb37458588997e44654b9",
         "android_client_info": {
-          "package_name": "com.example.internscopeapp"
+          "package_name": "com.interns.internscopeapp"
         }
       },
       "oauth_client": [
@@ -46,7 +46,7 @@
           "client_id": "589584469180-i2d8sjctlm3hrp9p05knkks94c3s48od.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.internscopeapp",
+            "package_name": "com.interns.internscopeapp",
             "certificate_hash": "ff90d35fc9f6e3391910b6747e6c44cf7f573492"
           }
         },
