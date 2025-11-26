@@ -20,7 +20,6 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@drawable/all_shadow"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
         <!-- Main Content Scroll -->

@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#F4F4F4">
 
     <!-- ==================== MAIN CONTENT ===================== -->
     <LinearLayout
@@ -17,14 +18,12 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@drawable/all_shadow"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/internscope"
     android:fillViewport="true">
 
     <LinearLayout
@@ -69,7 +68,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Private Limited | 51-200 Employees"
-            android:textColor="#E0E0E0"
+            android:textColor="@color/internscope"
             android:textSize="15sp"
             android:layout_marginTop="6dp"
             android:gravity="center" />
@@ -80,7 +79,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TechVision is an AI-driven SaaS company helping enterprises with digital transformation."
-            android:textColor="#DADADA"
+            android:textColor="@color/black"
             android:textSize="14sp"
             android:gravity="center"
             android:layout_marginTop="10dp"
@@ -95,7 +94,8 @@
             android:layout_marginTop="28dp"
             app:cardCornerRadius="16dp"
             app:cardElevation="6dp"
-            android:backgroundTint="#FFFFFF">
+            android:backgroundTint="#FFFFFF"
+            android:layout_margin="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"

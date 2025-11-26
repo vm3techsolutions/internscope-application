@@ -7,13 +7,7 @@
         android:name="android.hardware.telephony"
         android:required="true" />
 
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission
-        android:name="android.permission.MANAGE_EXTERNAL_STORAGE"
-        tools:ignore="ScopedStorage" />
 
     <application
         android:allowBackup="true"
@@ -27,34 +21,48 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name="com.interns.internscopeapp.CartActivity"
+            android:name=".SplashScreen"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".CartActivity"
             android:exported="false" />
         <activity
-            android:name="com.interns.internscopeapp.EditJobActivity"
+            android:name=".EditJobActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:name=".UserDashboard"
             android:exported="false" />
         <activity
-            android:name="com.interns.internscopeapp.UserDashboard"
+            android:name=".CompanyDashboard"
             android:exported="false" />
         <activity
-            android:name="com.interns.internscopeapp.CompanyDashboard"
+            android:name=".CompanyEditProfile"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:name=".CompanyProfile"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:name=".CompanySignup"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:name=".Company_login"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:name=".CheckoutActivity"
             android:exported="false" />
         <activity
-            android:name="com.interns.internscopeapp.CompanyEditProfile"
-            android:exported="false" />
-        <activity
-            android:name="com.interns.internscopeapp.CompanyProfile"
-            android:exported="false" />
-        <activity
-            android:name="com.interns.internscopeapp.CompanySignup"
-            android:exported="false" />
-        <activity
-            android:name="com.interns.internscopeapp.Company_login"
-            android:exported="false" />
-        <activity
-            android:name="com.interns.internscopeapp.CheckoutActivity"
-            android:exported="false" />
-        <activity
-            android:name="com.interns.internscopeapp.PaymentActivity"
+            android:name=".PaymentActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -68,80 +76,79 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.interns.internscopeapp.EditProfiles"
-            android:exported="false" />
-        <!--
-        <activity
-            android:name=".Navigationmenus"
+            android:name=".EditProfiles"
             android:exported="false"
-            android:label="@string/title_activity_navigation"
-            android:theme="@style/Theme.InternscopeApp.NoActionBar" />
-        -->
-        <activity
-            android:name="com.interns.internscopeapp.PostJob"
-            android:exported="false" />
-        <activity
-            android:name="com.interns.internscopeapp.Packages"
-            android:exported="false" />
-        <activity
-            android:name="com.interns.internscopeapp.Subscription"
-            android:exported="false" />
-        <activity
-            android:name="com.interns.internscopeapp.Profile"
-            android:exported="false" />
-        <activity
-            android:name="com.interns.internscopeapp.Jobs"
-            android:exported="false" />
-        <activity
-            android:name="com.interns.internscopeapp.JobDetailActivity"
-            android:exported="false" />
-        <activity
-            android:name="com.interns.internscopeapp.ApplyJobActivity"
-            android:exported="false" />
-        <activity
-            android:name="com.interns.internscopeapp.Opportunity"
-            android:exported="false" />
-        <activity
-            android:name="com.interns.internscopeapp.Courses"
-            android:exported="false" />
-        <activity
-            android:name="com.interns.internscopeapp.Home"
-            android:exported="false" />
-        <activity
-            android:name="com.interns.internscopeapp.Alert"
-            android:exported="false" />
+            android:windowSoftInputMode="adjustResize"/>
 
-        <activity android:name="com.interns.internscopeapp.Verify"
+        <activity
+            android:name=".PostJob"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:name=".Packages"
+            android:exported="false" />
+        <activity
+            android:name=".Subscription"
+            android:exported="false" />
+        <activity
+            android:name=".Profile"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:name=".Jobs"
+            android:exported="false" />
+        <activity
+            android:name=".JobDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ApplyJobActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Opportunity"
+            android:exported="false" />
+        <activity
+            android:name=".Courses"
+            android:exported="false" />
+        <activity
+            android:name=".Home"
+            android:exported="false" />
+        <activity
+            android:name=".Alert"
+            android:exported="false" />
+        <activity
+            android:name=".Verify"
             android:exported="true">
             <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+
                 <data
-                    android:scheme="http://192.168.0.104:4000"
-                    android:host="reset-password" />
+                    android:host="reset-password"
+                    android:scheme="http://192.168.0.104:4000" />
             </intent-filter>
         </activity>
         <activity
-            android:name="com.interns.internscopeapp.SignUp"
+            android:name=".SignUp"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name="com.interns.internscopeapp.ForgotPass"
+            android:name=".ForgotPass"
             android:exported="false" />
         <activity
-            android:name="com.interns.internscopeapp.Login"
+            android:name=".Login"
             android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
+            android:windowSoftInputMode="adjustResize"
+            />
         <activity
-            android:name="com.interns.internscopeapp.MainActivity"
+            android:name=".MainActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
         </activity>
 
         <meta-data

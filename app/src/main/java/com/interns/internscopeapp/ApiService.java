@@ -78,6 +78,16 @@ public interface ApiService {
     @GET("api/company/myprofile")
     Call<CompanyProfileResponse> getCompanyProfile();
 
+    @GET("api/company/view-certificate")
+    Call<UploadResponse> getCompanyDocViewUrl(
+            @Header("Authorization") String token,
+            @Query("key") String s3Key
+    );
+
+
+
+
+
 
     // ================= JOBS =================
     @GET("api/jobs/AllJob")

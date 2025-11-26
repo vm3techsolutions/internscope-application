@@ -11,15 +11,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@color/white"
-        android:paddingTop="30dp">
+        android:background="@color/white">
 
         <!-- Toolbar -->
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@drawable/all_shadow"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
         <!-- PAGE CONTENT -->
@@ -27,7 +25,6 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingTop="20dp"
             android:paddingBottom="20dp">
 
             <TextView

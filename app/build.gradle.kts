@@ -12,7 +12,7 @@ android {
         applicationId = "com.interns.internscopeapp"
         minSdk = 26
         targetSdk = 35
-        versionCode = 6
+        versionCode = 9
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -85,4 +85,9 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+
+    //slider images
+    implementation ("androidx.viewpager2:viewpager2:1.0.0")
+    implementation ("me.relex:circleindicator:2.1.6")
+
 }

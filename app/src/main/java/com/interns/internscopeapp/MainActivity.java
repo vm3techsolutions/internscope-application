@@ -88,7 +88,11 @@ package com.interns.internscopeapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -122,24 +126,21 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-//        ApiService apiService = ApiClient.getClient(this).create(ApiService.class);
-//        apiService.testConnection().enqueue(new Callback<Map<String, String>>() {
-//            @Override
-//            public void onResponse(Call<Map<String, String>> call, Response<Map<String, String>> response) {
-//                if (response.isSuccessful()) {
-//                    Log.d("Connection", "✅ Server Connected: " + response.body());
-//                    Toast.makeText(MainActivity.this, "✅ Connected to Live Server", Toast.LENGTH_SHORT).show();
-//                } else {
-//                    Log.e("Connection", "⚠️ Server reachable, but invalid response: " + response.code());
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<Map<String, String>> call, Throwable t) {
-//                Log.e("Connection", "❌ Connection failed: " + t.getMessage());
-//                Toast.makeText(MainActivity.this, "❌ Connection failed", Toast.LENGTH_SHORT).show();
-//            }
-//        });
+        LinearLayout companySection = findViewById(R.id.companySection);
+        LinearLayout candidateSection = findViewById(R.id.candidateSection);
+
+// Load animations
+        Animation slideLeft = AnimationUtils.loadAnimation(this, R.anim.slide_in_left);
+        Animation slideRight = AnimationUtils.loadAnimation(this, R.anim.slide_in_right);
+        Animation fadeIn = AnimationUtils.loadAnimation(this, R.anim.fade_scale);
+
+// Apply
+        companySection.startAnimation(slideLeft);
+
+        new Handler().postDelayed(() -> {
+            candidateSection.startAnimation(slideRight);
+        }, 300);   // slight delay for smooth effect
+
     }
 
 

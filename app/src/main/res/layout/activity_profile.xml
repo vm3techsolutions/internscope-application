@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#F4F4F4">
 
     <!-- ==================== MAIN CONTENT ===================== -->
     <LinearLayout
@@ -17,15 +18,14 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@drawable/all_shadow"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/internscope"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:background="#F4F4F4">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -52,6 +52,10 @@
         </androidx.cardview.widget.CardView>
 
         <!-- Name & Role -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
         <TextView
             android:id="@+id/tvFirstName"
             android:layout_width="wrap_content"
@@ -63,6 +67,10 @@
             android:layout_marginTop="16dp"
             android:gravity="center" />
 
+            <View
+                android:layout_width="10dp"
+                android:layout_height="wrap_content"/>
+
         <TextView
             android:id="@+id/tvLastName"
             android:layout_width="wrap_content"
@@ -71,15 +79,17 @@
             android:textColor="@color/yellow_shade"
             android:textSize="22sp"
             android:textStyle="bold"
-            android:layout_marginTop="2dp"
+            android:layout_marginTop="16dp"
             android:gravity="center" />
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/tvDesignation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="UI/UX Designer"
-            android:textColor="#E0E0E0"
+            android:textColor="@color/internscope"
             android:textSize="15sp"
             android:layout_marginTop="6dp"
             android:gravity="center" />
@@ -90,7 +100,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Passionate about design and technology. Looking for creative opportunities to grow."
-            android:textColor="#DADADA"
+            android:textColor="@color/black"
             android:textSize="14sp"
             android:gravity="center"
             android:layout_marginTop="10dp"
@@ -103,7 +113,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="28dp"
-            app:cardCornerRadius="16dp"
+            app:cardCornerRadius="5dp"
             app:cardElevation="6dp"
             android:backgroundTint="#FFFFFF">
 

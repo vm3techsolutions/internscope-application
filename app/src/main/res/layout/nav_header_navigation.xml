@@ -28,7 +28,6 @@
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
             android:src="@drawable/user_94"
-            android:background="@drawable/course_bg"
             />
 
 

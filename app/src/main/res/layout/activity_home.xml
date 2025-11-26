@@ -8,8 +8,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/white"
-    tools:context="com.interns.internscopeapp.Home">
+    android:background="#F4F4F4">
 
     <androidx.drawerlayout.widget.DrawerLayout
         android:id="@+id/drawer_layout"
@@ -29,7 +28,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-                android:background="@drawable/all_shadow"/>
+                />
 
 
 
@@ -45,53 +44,12 @@
         android:orientation="vertical"
         >
 
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_gravity="center_horizontal">
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/gradient_bg"
-                    android:elevation="4dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="180dp"
-                        android:orientation="horizontal"
-                        android:layout_gravity="center"
-                        android:background="@drawable/banner_app"
-                        android:paddingHorizontal="0dp">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="To Choose Your \n Level Best \n Dream Career."
-                            android:textSize="22sp"
-                            android:textStyle="bold"
-                            android:textColor="@color/yellow_shade"
-                            android:layout_gravity="center"
-                            android:layout_weight="1"
-                            android:paddingLeft="20dp"/>
-
-
-
-                    </LinearLayout>
-
-                </androidx.cardview.widget.CardView>
-
-
-            </LinearLayout>
-
         <HorizontalScrollView
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="16dp"
-            android:background="#F0F0F0"
+            android:background="#F4F4F4"
             android:scrollbars="none">
 
             <LinearLayout
@@ -261,13 +219,23 @@
 
         </HorizontalScrollView>
 
+        <!---slider images-->
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/sliderRecycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            />
+
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:padding="20dp"
-                android:gravity="center_horizontal">
+                android:gravity="center_horizontal"
+                android:background="#F4F4F4">
 
                 <!-- Main Title -->
                 <TextView

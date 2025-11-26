@@ -166,7 +166,6 @@ public class CompanyProfile extends BaseActivity {
 
         apiService = ApiClient.getClient(this).create(ApiService.class);
 
-        // Initialize Views (make sure IDs match your XML)
         companyLogo = findViewById(R.id.company_logo);
         tvCompanyName = findViewById(R.id.tvCompanyName);
         tvCompanyType = findViewById(R.id.tvCompanyType);
@@ -193,14 +192,12 @@ public class CompanyProfile extends BaseActivity {
         fetchCompanyProfile();
     }
 
-    // ✅ Fetch profile — no manual token, handled by AuthInterceptor
     private void fetchCompanyProfile() {
         apiService.getCompanyProfile().enqueue(new Callback<CompanyProfileResponse>() {
             @Override
             public void onResponse(Call<CompanyProfileResponse> call, Response<CompanyProfileResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    CompanyProfileResponse profile = response.body();
-                    populateProfile(profile);
+                    populateProfile(response.body());
                 } else {
                     Toast.makeText(CompanyProfile.this, "Failed to fetch profile", Toast.LENGTH_SHORT).show();
                     Log.e(TAG, "Error code: " + response.code());
@@ -210,19 +207,17 @@ public class CompanyProfile extends BaseActivity {
             @Override
             public void onFailure(Call<CompanyProfileResponse> call, Throwable t) {
                 Toast.makeText(CompanyProfile.this, "Network Error: " + t.getMessage(), Toast.LENGTH_LONG).show();
-                Log.e(TAG, "Failure: " + t.getMessage());
             }
         });
     }
 
     private void populateProfile(CompanyProfileResponse profile) {
-        // ✅ Company Info
+
         tvCompanyName.setText(nonNull(profile.getCompanyName()));
         tvCompanyType.setText(nonNull(profile.getCompanyType()) + " | " +
                 nonNull(profile.getCompanySize()) + " Employees");
         tvAboutCompany.setText(nonNull(profile.getDescription()));
 
-        // ✅ Contact Info
         tvCompanyEmail.setText("📧 " + nonNull(profile.getEmail()));
         tvCompanyPhone.setText("📞 " + nonNull(profile.getPhoneNumber()));
         tvWebsite.setText("🌐 " + nonNull(profile.getWebsite()));
@@ -231,35 +226,74 @@ public class CompanyProfile extends BaseActivity {
         tvCompanyLinkedIn.setText("🔗 " + nonNull(profile.getLinkedin()));
         tvCompanyTwitter.setText("🐦 " + nonNull(profile.getTwitter()));
 
-        // ✅ KYC Info
-//        tvKycMethod.setText(nonNull(profile.getKycMethod()));
-//        tvCertificateNumber.setText(nonNull(profile.getCertificateNumber()));
-//        tvCertificateFileUrl.setText("📎 " + nonNull(profile.getCertificateFileUrl()));
-
-        // ✅ KYC Info
         tvKycMethod.setText(nonNull(profile.getKycMethod()));
         tvCertificateNumber.setText(nonNull(profile.getCertificateNumber()));
 
-        String certUrl = profile.getCertificateFileUrl();
-        tvCertificateFileUrl.setText("📎 " + nonNull(certUrl));
+        String s3Key = profile.getCertificateFileUrl();
+        tvCertificateFileUrl.setText("📎 " + nonNull(s3Key));
 
-// ▶ Enable click to open document
-        if (certUrl != null && !certUrl.trim().isEmpty()) {
-            tvCertificateFileUrl.setOnClickListener(v -> {
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(certUrl));
-                startActivity(intent);
-            });
+        if (s3Key != null && !s3Key.trim().isEmpty() && !s3Key.equals("N/A")) {
+            tvCertificateFileUrl.setOnClickListener(v -> fetchKycViewUrl(s3Key));
         }
 
-
-        // ✅ Load company logo or certificate image (optional)
-        if (profile.getCertificateFileUrl() != null && !profile.getCertificateFileUrl().isEmpty()) {
+        if (s3Key != null && !s3Key.isEmpty()) {
             Glide.with(this)
                     .load(profile.getCertificateFileUrl())
                     .placeholder(R.drawable.user_94)
                     .error(R.drawable.user_94)
                     .into(companyLogo);
         }
+    }
+
+    /**
+     * Fetch a signed GET URL for the company document
+     */
+    private void fetchKycViewUrl(String s3Key) {
+
+        String token = "Bearer " + new SessionManager(this).getActiveToken();
+
+        apiService.getCompanyDocViewUrl(token, s3Key).enqueue(new Callback<UploadResponse>() {
+            @Override
+            public void onResponse(Call<UploadResponse> call, Response<UploadResponse> response) {
+                if (response.isSuccessful() && response.body() != null) {
+
+                    String fileUrl = response.body().getUrl();
+
+                    try {
+                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(fileUrl));
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent);
+                    } catch (Exception e) {
+                        Toast.makeText(CompanyProfile.this,
+                                "No app found to open this file",
+                                Toast.LENGTH_SHORT).show();
+                    }
+
+                } else {
+//                    Toast.makeText(CompanyProfile.this,
+//                            "Unable to load document URL",
+//                            Toast.LENGTH_SHORT).show();
+                    try {
+                        String errorMsg = response.errorBody().string();
+                        Log.e("DOC_ERROR", "Server Error: " + errorMsg);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+                    Toast.makeText(CompanyProfile.this,
+                            "Unable to load document",
+                            Toast.LENGTH_SHORT).show();
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<UploadResponse> call, Throwable t) {
+                Toast.makeText(CompanyProfile.this,
+                        "Document fetch failed",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private String nonNull(String value) {

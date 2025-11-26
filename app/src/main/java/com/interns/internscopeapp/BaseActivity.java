@@ -68,7 +68,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         ImageView img = header.findViewById(R.id.nav_profile_img);
 
         username.setText(currentUsername);
-        img.setImageResource(R.drawable.user);
+        img.setImageResource(R.drawable.user_94);
     }
 
     private void setupMenuVisibility() {
@@ -137,13 +137,32 @@ public abstract class BaseActivity extends AppCompatActivity {
             else if (id == R.id.nav_Applications)
                 startActivity(new Intent(this, Opportunity.class));
 
+//            else if (id == R.id.nav_logout) {
+//                sessionManager.logout();
+//                Intent intent = new Intent(this, Login.class);
+//                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//                startActivity(intent);
+//                finish();
+//            }
             else if (id == R.id.nav_logout) {
+
                 sessionManager.logout();
-                Intent intent = new Intent(this, Login.class);
+
+                Intent intent;
+
+                if ("user".equalsIgnoreCase(userType)) {
+                    // Candidate login
+                    intent = new Intent(this, Login.class);
+                } else {
+                    // Company login
+                    intent = new Intent(this, Company_login.class);
+                }
+
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
                 finish();
             }
+
 
             drawerLayout.closeDrawer(GravityCompat.START);
             return true;

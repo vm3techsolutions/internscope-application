@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/cardApplication"
     android:layout_width="match_parent"
@@ -8,7 +9,7 @@
     android:layout_margin="8dp"
     app:cardCornerRadius="8dp"
     app:cardElevation="4dp"
-    android:backgroundTint="#22FFFFFF"
+    android:background="@drawable/plain_border"
     android:foreground="?attr/selectableItemBackground">
 
     <LinearLayout
