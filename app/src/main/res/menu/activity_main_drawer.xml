@@ -55,10 +55,10 @@
             android:icon="@android:drawable/ic_menu_today"
             android:title="Plan &amp; Subscription" />
 
-<!--        <item-->
-<!--            android:id="@+id/nav_recomend"-->
-<!--            android:icon="@android:drawable/ic_menu_compass"-->
-<!--            android:title="Recommended Job" />-->
+        <item
+            android:id="@+id/nav_recomend"
+            android:icon="@android:drawable/sym_action_chat"
+            android:title="Story Behind Internscope" />
 
         <item
             android:id="@+id/nav_logout"

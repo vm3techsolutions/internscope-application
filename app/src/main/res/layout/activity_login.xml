@@ -3,8 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,20 +16,97 @@
         <ImageView
             android:id="@+id/login_logo"
             android:layout_width="match_parent"
-            android:layout_height="120dp"
+            android:layout_height="80dp"
             android:src="@drawable/internscopelogo"
-            android:layout_marginTop="60dp"
-            android:layout_marginBottom="30dp" />
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp" />
+
+     <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:orientation="vertical"
+         android:layout_margin="0dp"
+         android:padding="10dp">
+
+         <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:src="@drawable/enroll"
+             android:layout_gravity="center"/>
+
+         <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:orientation="vertical"
+             android:paddingHorizontal="10dp">
+
+             <TextView
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:text="On registering, you can"
+                 android:textColor="@color/internscope"
+                 android:textStyle="bold"
+                 android:textSize="18sp"
+                 android:paddingVertical="10dp"/>
+
+             <TextView
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:text="Find a job and grow your career"
+                 android:textSize="14sp"
+                 android:drawableStart="@drawable/check"
+                 android:drawableTint="@color/yellow_shade"
+                 android:drawablePadding="5dp"/>
+
+             <TextView
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:text="Build your profile and let organisations find you"
+                 android:textSize="14sp"
+                 android:drawableStart="@drawable/check"
+                 android:drawableTint="@color/yellow_shade"
+                 android:drawablePadding="5dp" />
+
+             <TextView
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:text="Get job postings delivered in your inbox"
+                 android:textSize="14sp"
+                 android:drawableStart="@drawable/check"
+                 android:drawableTint="@color/yellow_shade"
+                 android:drawablePadding="5dp" />
+
+             <TextView
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:text="Real time insights from industry experts"
+                 android:textSize="14sp"
+                 android:drawableStart="@drawable/check"
+                 android:drawableTint="@color/yellow_shade"
+                 android:drawablePadding="5dp" />
+
+             <TextView
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:text="Get mentorship and live assignment with campus to corporate program"
+                 android:textSize="14sp"
+                 android:drawableStart="@drawable/check"
+                 android:drawableTint="@color/yellow_shade"
+                 android:drawablePadding="5dp" />
+         </LinearLayout>
+
+     </LinearLayout>
 
         <!-- Title -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Candidate Login"
-            android:textSize="28sp"
+            android:textSize="22sp"
             android:textStyle="bold"
-            android:textColor="#000000"
-            android:layout_marginBottom="32dp" />
+            android:textColor="@color/yellow_shade"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"/>
 
         <!-- Email -->
         <EditText
@@ -42,19 +118,10 @@
             android:textSize="16sp"
             android:inputType="textEmailAddress"
             android:layout_marginBottom="15dp"
-            android:layout_marginEnd="0dp"/>
+            android:layout_marginEnd="0dp"
+            android:textColorHint="@color/yellow_shade"
+            />
 
-        <!--        &lt;!&ndash; Password &ndash;&gt;-->
-        <!--        <EditText-->
-        <!--            android:id="@+id/userPass"-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:hint="Password"-->
-        <!--            android:padding="15dp"-->
-        <!--            android:background="@drawable/shadow"-->
-        <!--            android:textSize="16sp"-->
-        <!--            android:inputType="textPassword"-->
-        <!--            android:layout_marginBottom="15dp"/>-->
 
         <!-- Password with Eye Toggle -->
         <RelativeLayout
@@ -73,7 +140,8 @@
                 android:layout_marginEnd="40dp"
                 android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"
-                android:drawablePadding="10dp" />
+                android:drawablePadding="10dp"
+                android:textColorHint="@color/yellow_shade"/>
 
             <ImageView
                 android:id="@+id/togglePasswordVisibility"
@@ -96,8 +164,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Forgot Password?"
-            android:textColor="#0D0D0D"
+            android:textColor="@color/yellow_shade"
             android:textSize="14sp"
+            android:textStyle="bold"
             android:gravity="end"
             android:layout_marginBottom="20dp"
             android:clickable="true"/>
@@ -127,13 +196,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:backgroundTint="@color/yellow_shade"
+                android:backgroundTint="#FF6F00"
                 android:textColor="@color/white"
                 android:text="Sign Up"
                 android:textSize="18sp"
-                android:layout_marginTop="15dp"/>
+                android:layout_marginTop="10dp"/>
 
         </LinearLayout>
+
 
     </LinearLayout>
 </ScrollView>

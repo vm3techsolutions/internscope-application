@@ -154,16 +154,9 @@ public interface ApiService {
             @Path("job_id") int jobId,
             @Body ApplyJobRequest applyRequest
     );
-//    @POST("api/user/apply/{job_id}")
-//    Call<GenericResponse> applyJob(
-//            @Header("Authorization") String token,
-//            @Body ApplyJobRequest body
-//    );
 
     @GET("api/user/job/applied")
     Call<List<AppliedJobResponse>> getAppliedJobs(@Header("Authorization") String token);
-    //@GET("api/user/job/applied")
-    //Call<List<AppliedJobResponse>> getAppliedJobs();
 
     @POST("api/user/job/apply/{job_id}")
     Call<Void> applyJob(@Path("job_id") int jobId, @Body ApplyJobRequestBody body);
@@ -173,10 +166,6 @@ public interface ApiService {
             @Header("Authorization") String token,
             @Path("user_id") int userId
     );
-
-
-//    @GET("api/user/job/applied/{userId}")
-//    Call<JsonObject> getAppliedJobs(@Header("Authorization") String token, @Path("userId") int userId);
 
     //===================Company Job List==================
 
@@ -328,14 +317,6 @@ public interface ApiService {
             @Body UpdateStatusRequest body
     );
 
-    // company stats - requires Authorization header
-//    @GET("api/company/transaction/details")
-//    Call<DashboardStatsResponse> getDashboardStats(@Header("Authorization") String token);
-//
-//    // applied candidates - requires Authorization header
-//    @GET("api/company/job/recived")
-//    Call<List<CandidateResponse>> getAppliedCandidates(@Header("Authorization") String token);
-
     @GET("api/company/transaction/details")
     Call<DashboardStatsResponse> getDashboardStats();
 
@@ -365,7 +346,7 @@ public interface ApiService {
     @POST("api/reset-password")
     Call<ApiResponse> resetUserPassword(@Field("token") String token, @Field("newPassword") String newPassword);
 
-    // Company routes
+    // ===========Company routes===========
     @FormUrlEncoded
     @POST("api/company/forgotCompany-password")
     Call<ApiResponse> forgotCompanyPassword(@Field("email") String email);
@@ -373,6 +354,12 @@ public interface ApiService {
     @FormUrlEncoded
     @POST("api/company/resetCompany-password")
     Call<ApiResponse> resetCompanyPassword(@Field("token") String token, @Field("newPassword") String newPassword);
+
+    //============Behind Story==========
+
+    @GET("stories")
+    Call<StoryResponse> getStories();
+
 
 }
 

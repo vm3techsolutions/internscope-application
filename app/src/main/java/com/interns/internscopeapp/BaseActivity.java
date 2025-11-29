@@ -85,6 +85,7 @@ public abstract class BaseActivity extends AppCompatActivity {
             menu.findItem(R.id.nav_subscription).setVisible(true);
             menu.findItem(R.id.nav_package).setVisible(false);
             menu.findItem(R.id.nav_Applications).setVisible(false);
+            menu.findItem(R.id.nav_recomend).setVisible(true);
         } else {
             menu.findItem(R.id.nav_dashboard).setVisible(false);
             menu.findItem(R.id.nav_companydashboard).setVisible(true);
@@ -96,6 +97,7 @@ public abstract class BaseActivity extends AppCompatActivity {
             menu.findItem(R.id.nav_subscription).setVisible(false);
             menu.findItem(R.id.nav_package).setVisible(true);
             menu.findItem(R.id.nav_Applications).setVisible(true);
+            menu.findItem(R.id.nav_recomend).setVisible(true);
         }
 
         menu.findItem(R.id.nav_logout).setVisible(true);
@@ -136,6 +138,10 @@ public abstract class BaseActivity extends AppCompatActivity {
 
             else if (id == R.id.nav_Applications)
                 startActivity(new Intent(this, Opportunity.class));
+
+            else if (id == R.id.nav_recomend) {
+                startActivity(new Intent(this, StoryListActivity.class));
+            }
 
 //            else if (id == R.id.nav_logout) {
 //                sessionManager.logout();
